@@ -1,13 +1,11 @@
 (function(window) {
-    var InteralRepresentation = function(O) {
-
-        gizmo.Filter(O,"Object");
+    var MvMatrix = function() {
 
         var me = {};
 
-        /*gizmo.Filter(O.points, "Array");
-
-        me._points = new $M( O.points );
+        me._matrix = new $M( [[1,0,0],
+                              [0,1,0],
+                              [0,0,1]] );
 
         me.Rotate = function(O) {
             gizmo.Filter(O.gradAngle || O.radAngle,"Number");
@@ -33,10 +31,10 @@
                 [e,f,1]
             ]);
 
-            this._points = this._points.x(transformMatrix);
+            this._matrix = this._matrix.x(transformMatrix);
 
             return this;
-        }
+        };
 
         me.Scale = function(O) {
             gizmo.Filter(O,"Object");
@@ -52,17 +50,17 @@
                 [0,0,1]
             ]);
 
-            this._points = this._points.x(transformMatrix);
+            this._matrix = this._matrix.x(transformMatrix);
 
             return this;
-        }
+        };
 
         me.TranslateTo = function(O) {
             gizmo.Filter(O,"Object");
             gizmo.Filter(O.x,"Number");
             gizmo.Filter(O.y,"Number");
 
-            var points = this._points.elements;
+/*            var points = this._points.elements;
             var p0x = O.x;
             var p0y = O.y;
             var p1x = ( points[1][0] - points[0][0] ) + O.x;
@@ -80,41 +78,16 @@
             this._points.elements[2][1] = p2y;
             this._points.elements[3][0] = p3x;
             this._points.elements[3][1] = p3y;
-
+*/
             return this;
-        }
+        };
 
-        me.GetPoints = function() {
-            return this._points.elements;
-        }
-
-        me.Show = function(ctx) {
-            var radiusOfpoints = 5
-            var points = this._points.elements;
-
-            ctx.save();
-
-            ctx.beginPath();
-
-                for(var i in points) {
-                    ctx.moveTo(points[i][0],points[i][1]);
-                    ctx.arc(points[i][0],points[i][1], radiusOfpoints, 0, Math.PI*2, false);
-                }
-
-            ctx.closePath();
-
-            ctx.strokeStyle = "green";
-            ctx.fillStyle = "#00ffaa";
-            ctx.stroke();
-            ctx.fill();
-
-            ctx.restore();
-
-            return this;
-        }*/
+        me.GetMatrix = function() {
+            return this._matrix;
+        };
 
         return me;
     }
 
-    ArmContext.InteralRepresentation = InteralRepresentation;
+    ArmContext.MvMatrix = MvMatrix;
 })();

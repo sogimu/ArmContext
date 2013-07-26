@@ -1,25 +1,27 @@
 (function(window) {
-    var C2dContextRepresentation = function(O) {
+    var Rect2dContextRepresentation = function(O) {
 
         gizmo.Filter(O,"Object");
 
-        var me = {};
+        var me = ArmContext.C2dContextRepresentation();
 
         me._ctx = O.ctx || null;
+        // GeometryProperties
         me._x = O.x || 0;
         me._y = O.y || 0;
         me._width = O.width || 10;
         me._height = O.height || 10;
         me._angle = O.radAngle || (O.gradAngle || 0) * Math.PI/180;
         me._scale = O.scale || {x:1,y:1};
+        // ViewProperties
         me._fillObject = O.fillObject || "default";
         me._strokeObject = O.strokeObject || "default";
         me._boundingBox = {};
         me._pictureUnderPrimitive = {};
 
-        me.Update = function(internalRepresentation) {
-            gizmo.Filter(internalRepresentation,"Object");
-            var points = internalRepresentation.GetPoints();
+        me.UpdateGeometryProperties = function(points) {
+            gizmo.Filter(points,"Array");
+
             gizmo.Filter(points[0],"Array");
             gizmo.Filter(points[0][0],"Number");
             gizmo.Filter(points[0][1],"Number");
@@ -65,5 +67,5 @@
         return me;
     };
 
-    ArmContext.C2dContextRepresentation = C2dContextRepresentation;
+    ArmContext.Rect2dContextRepresentation = Rect2dContextRepresentation;
 })();

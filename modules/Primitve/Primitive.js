@@ -15,15 +15,15 @@
         me._interalRepresentation = null;
         me._2dContextRepresentation = null;
         me._globalRepresentation = null;
+        me._mvMatrix = null;
 
         me.TranslateTo = function(O) {
             gizmo.Filter(O,"Object");
             gizmo.Filter(O.x,"Number");
             gizmo.Filter(O.y,"Number");
 
-            this._interalRepresentation.TranslateTo( O );
-            this._2dContextRepresentation.Update( this._interalRepresentation );
-            this._globalRepresentation.Update( this._2dContextRepresentation );
+            this._mvMatrix.TranslateTo( O );
+            this._globalRepresentation.Update( this._interalRepresentation.GetMatrixPoints(), this._2dContextRepresentation.GetVisualProperties(), this._mvMatrix);
 
             return this;
         };
@@ -34,9 +34,8 @@
             gizmo.Filter(O.point.x,"Number");
             gizmo.Filter(O.point.y,"Number");
 
-            this._interalRepresentation.Rotate( O );
-            this._2dContextRepresentation.Update( this._interalRepresentation );
-            this._globalRepresentation.Update( this._2dContextRepresentation );
+            this._mvMatrix.Rotate( O );
+            this._globalRepresentation.Update( this._interalRepresentation.GetMatrixPoints(), this._2dContextRepresentation.GetVisualProperties(), this._mvMatrix);
 
             return this;
         };
@@ -46,9 +45,8 @@
             gizmo.Filter(O.x,"Number");
             gizmo.Filter(O.y,"Number");
 
-            this._interalRepresentation.Scale( O );
-            this._2dContextRepresentation.Update( this._interalRepresentation.GetPoints() );
-            this._globalRepresentation.Update( this._2dContextRepresentation );
+            this._mvMatrix.Scale( O );
+            this._globalRepresentation.Update( this._interalRepresentation.GetMatrixPoints(), this._2dContextRepresentation.GetVisualProperties(), this._mvMatrix);
 
             return this;
         };

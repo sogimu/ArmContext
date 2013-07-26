@@ -1,5 +1,5 @@
 (function(window) {
-    var GlobalRepresentation = function(O) {
+    var RectGlobalRepresentation = function(O) {
 
         gizmo.Filter(O,"Object");
 
@@ -14,18 +14,13 @@
         me._strokeObject = O.strokeObject || "default";
         me._clipObject = O.clipObject || null;
 
-        me.Update = function(points, visualProperties) {
-            gizmo.Filter(points,"Array");
-
-            gizmo.Filter(points[0],"Array");
-            gizmo.Filter(points[0][0],"Number");
-            gizmo.Filter(points[0][1],"Number");
-            gizmo.Filter(points[0][2],"Number");
-
+        me.Update = function(points, visualProperties, mvMatrix) {
+            gizmo.Filter(points,"Object");
             gizmo.Filter(visualProperties,"Object");
+            gizmo.Filter(mvMatrix,"Object");
 
             // Метод не реализован
-            console.log("Virtual method Update");
+            console.log("Virtual method Update of RectGlobalRepresentation");
 
             return this;
         }
@@ -34,6 +29,6 @@
 
     }
 
-    ArmContext.GlobalRepresentation = GlobalRepresentation;
+    ArmContext.RectGlobalRepresentation = RectGlobalRepresentation;
 })();
 

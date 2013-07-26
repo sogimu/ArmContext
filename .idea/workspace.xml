@@ -7,14 +7,19 @@
     <file path="$PROJECT_DIR$/../2d-contex/test/index.html" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1369757831227" ignored="false" />
     <file path="/Layer.js" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1369762101589" ignored="false" />
     <file path="/ArmContext.js" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1372356503386" ignored="false" />
-    <file path="/index.html" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1372350804679" ignored="false" />
-    <file path="/main.js" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1372365043691" ignored="false" />
-    <file path="/Rect.js" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1372363089275" ignored="false" />
-    <file path="/InteralRepresentation.js" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1372364884674" ignored="false" />
+    <file path="/index.html" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1374852682079" ignored="false" />
+    <file path="/main.js" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1373017701885" ignored="false" />
+    <file path="/Rect.js" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1374853965754" ignored="false" />
+    <file path="/InteralRepresentation.js" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1373015143034" ignored="false" />
     <file path="/2dContextRepresentation.js" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1372195807628" ignored="false" />
-    <file path="/c2dContextRepresentation.js" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1372361972754" ignored="false" />
-    <file path="/GlobalRepresentation.js" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1372362123208" ignored="false" />
-    <file path="/Primitive.js" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1372362657933" ignored="false" />
+    <file path="/c2dContextRepresentation.js" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1372784452652" ignored="false" />
+    <file path="/GlobalRepresentation.js" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1372876762329" ignored="false" />
+    <file path="/Primitive.js" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1374773464512" ignored="false" />
+    <file path="/Rect2dContextRepresentation.js" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1372874825865" ignored="false" />
+    <file path="/C2dContextRepresentation.js" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1372876590953" ignored="false" />
+    <file path="/RectGlobalRepresentation.js" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1374854293953" ignored="false" />
+    <file path="/RectInteralRepresentation.js" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1374774031152" ignored="false" />
+    <file path="/MvMatrix.js" changelist="1d96d30c-3573-49ae-9e88-b8ca1e2e8afd" time="1374774466185" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,19 +39,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ArmContext.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/ArmContext/ArmContext.js">
+      <file leaf-file-name="Rect.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/Primitve/Rect/Rect.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="39" selection-start="142" selection-end="142" vertical-scroll-proportion="0.0">
+            <state line="28" column="45" selection-start="1072" selection-end="1072" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Rect.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/Primitve/Rect/Rect.js">
+      <file leaf-file-name="RectInteralRepresentation.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/Primitve/Rect/RectInteralRepresentation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="11" selection-start="1828" selection-end="1828" vertical-scroll-proportion="0.0">
+            <state line="9" column="31" selection-start="241" selection-end="241" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MvMatrix.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/Primitve/MvMatrix.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RectGlobalRepresentation.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/Primitve/Rect/RectGlobalRepresentation.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="33" selection-start="671" selection-end="671" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Rect2dContextRepresentation.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/Primitve/Rect/Rect2dContextRepresentation.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="55" selection-start="107" selection-end="107" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -55,7 +87,16 @@
       <file leaf-file-name="Primitive.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/Primitve/Primitive.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="44" selection-start="140" selection-end="140" vertical-scroll-proportion="0.0">
+            <state line="82" column="92" selection-start="2294" selection-end="2294" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="4" selection-start="661" selection-end="661" vertical-scroll-proportion="-12.708333">
               <folding />
             </state>
           </provider>
@@ -64,16 +105,7 @@
       <file leaf-file-name="GlobalRepresentation.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/Primitve/GlobalRepresentation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="c2dContextRepresentation.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/Primitve/c2dContextRepresentation.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="37" selection-start="1489" selection-end="1489" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="1034" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -82,7 +114,7 @@
       <file leaf-file-name="InteralRepresentation.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/Primitve/InteralRepresentation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="28" selection-start="967" selection-end="967" vertical-scroll-proportion="0.0">
+            <state line="1" column="0" selection-start="20" selection-end="20" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -91,7 +123,7 @@
       <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="60" selection-start="1107" selection-end="1107" vertical-scroll-proportion="0.8613861">
+            <state line="16" column="6" selection-start="422" selection-end="422" vertical-scroll-proportion="0.44526902">
               <folding />
             </state>
           </provider>
@@ -107,28 +139,30 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/source/ArmContext.js" />
-        <option value="$PROJECT_DIR$/source/Layer/Layer.js" />
-        <option value="$PROJECT_DIR$/modules/VisualObject/Rect/Rect.js" />
         <option value="$PROJECT_DIR$/modules/Layer/Layer.js" />
         <option value="$PROJECT_DIR$/modules/Rect/Rect.js" />
         <option value="$PROJECT_DIR$/modules/Primitve/2dContextRepresentation.js" />
-        <option value="$PROJECT_DIR$/test/index.html" />
         <option value="$PROJECT_DIR$/modules/ArmContext/ArmContext.js" />
-        <option value="$PROJECT_DIR$/modules/Primitve/Rect/Rect.js" />
         <option value="$PROJECT_DIR$/modules/Primitve/c2dContextRepresentation.js" />
+        <option value="$PROJECT_DIR$/modules/Primitve/Rect/Rect2dContextRepresentation.js" />
+        <option value="$PROJECT_DIR$/modules/Primitve/C2dContextRepresentation.js" />
         <option value="$PROJECT_DIR$/modules/Primitve/GlobalRepresentation.js" />
-        <option value="$PROJECT_DIR$/modules/Primitve/Primitive.js" />
+        <option value="$PROJECT_DIR$/modules/Primitve/MvMatrix.js" />
+        <option value="$PROJECT_DIR$/test/index.html" />
         <option value="$PROJECT_DIR$/modules/Primitve/InteralRepresentation.js" />
+        <option value="$PROJECT_DIR$/modules/Primitve/Rect/RectInteralRepresentation.js" />
+        <option value="$PROJECT_DIR$/modules/Primitve/Rect/Rect.js" />
+        <option value="$PROJECT_DIR$/modules/Primitve/Rect/RectGlobalRepresentation.js" />
+        <option value="$PROJECT_DIR$/modules/Primitve/Primitive.js" />
         <option value="$PROJECT_DIR$/test/main.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
-    <option name="y" value="31" />
-    <option name="width" value="1368" />
-    <option name="height" value="701" />
+    <option name="x" value="64" />
+    <option name="y" value="-4" />
+    <option name="width" value="1303" />
+    <option name="height" value="773" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -285,6 +319,10 @@
     <property name="DefaultHtmlFileTemplate" value="Html5" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/modules/Primitve" />
+      <recent name="$PROJECT_DIR$/modules/Primitve/Rect" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/modules/Rect" />
       <recent name="$PROJECT_DIR$/modules" />
@@ -353,15 +391,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="31" width="1368" height="701" extended-state="6" />
-    <editor active="false" />
+    <frame x="64" y="-4" width="1303" height="773" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24944155" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25316456" sideWeight="0.60108304" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2523511" sideWeight="0.60108304" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39891696" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298585" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -400,7 +438,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
-    <option name="SHORT_DIFF_HORISONTALLY" value="true" />
+    <option name="SHORT_DIFF_HORIZONTALLY" value="true" />
     <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
     <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
@@ -437,30 +475,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="27" selection-start="134" selection-end="134" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Layer/Layer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="33" selection-start="799" selection-end="799" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ArmContext/ArmContext.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="8" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Gizmo/source/modules/baseVariableFunction.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="1" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/Gizmo/source/modules/checks.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="54" selection-start="507" selection-end="507" vertical-scroll-proportion="0.42694497" />
@@ -478,16 +492,7 @@
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavascriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/HTML5.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1219" column="48" selection-start="21035" selection-end="21039" vertical-scroll-proportion="-27.565737">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="85" selection-start="596" selection-end="596" vertical-scroll-proportion="0.53222454">
-          <folding />
-        </state>
+        <state line="1219" column="48" selection-start="21035" selection-end="21039" vertical-scroll-proportion="-27.565737" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/ArmContext/ArmContext.js">
@@ -497,7 +502,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Primitve/C2dContextRepresentation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="60" selection-start="699" selection-end="699" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Primitve/Rect/Rect2dContextRepresentation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="55" selection-start="107" selection-end="107" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/modules/Primitve/GlobalRepresentation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="1034" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="4" selection-start="661" selection-end="661" vertical-scroll-proportion="-12.708333">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Primitve/MvMatrix.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
@@ -506,35 +539,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/Primitve/Rect/Rect.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="11" selection-start="1828" selection-end="1828" vertical-scroll-proportion="0.0">
+        <state line="28" column="45" selection-start="1072" selection-end="1072" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Primitve/Primitive.js">
+    <entry file="file://$PROJECT_DIR$/modules/Primitve/Rect/RectInteralRepresentation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="44" selection-start="140" selection-end="140" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Primitve/c2dContextRepresentation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="37" selection-start="1489" selection-end="1489" vertical-scroll-proportion="0.0">
+        <state line="9" column="31" selection-start="241" selection-end="241" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/Primitve/InteralRepresentation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="28" selection-start="967" selection-end="967" vertical-scroll-proportion="0.0">
+        <state line="1" column="0" selection-start="20" selection-end="20" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Primitve/Rect/RectGlobalRepresentation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="33" selection-start="671" selection-end="671" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Primitve/Primitive.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="92" selection-start="2294" selection-end="2294" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="60" selection-start="1107" selection-end="1107" vertical-scroll-proportion="0.8613861">
+        <state line="16" column="6" selection-start="422" selection-end="422" vertical-scroll-proportion="0.44526902">
           <folding />
         </state>
       </provider>

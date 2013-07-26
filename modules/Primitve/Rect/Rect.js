@@ -24,46 +24,49 @@
 
         var me = ArmContext.Primitie({});
 
+        // Инициализация видовой матрицы
+
+        me._mvMatrix = ArmContext.MvMatrix();
+
         // Инициализация внутреннего представления
-        me._interalRepresentation = ArmContext.InteralRepresentation({
-            points:
-                [ [0                 ,0               ,1],
-                  [(O.width || 10)   ,0               ,1],
-                  [(O.width || 10)   ,(O.height || 10),1],
-                  [0                 ,(O.height || 10),1] ]
-        }).TranslateTo({x: (O.x || 0),y: (O.y || 0)});
+        me._interalRepresentation = ArmContext.RectInteralRepresentation( O );
 
         // Инициализация canvas представления
-        me._2dContextRepresentation = ArmContext.C2dContextRepresentation({
-                   ctx: (O.ctx || null),
-            fillObject: (O.fillObject || "default"),
-          strokeObject: (O.strokeObject || "default"),
-           globalAlpha: (O.globalAlpha || 1),
-             lineWidth: (O.lineWidth || 1)
-        }).Update( me._interalRepresentation );
+        me._2dContextRepresentation = ArmContext.Rect2dContextRepresentation( O );
 
         // Инициализация глобального представления примитива
-        me._globalRepresentation = ArmContext.GlobalRepresentation({
-
-        }).Update( me._2dContextRepresentation );
+        me._globalRepresentation = ArmContext.RectGlobalRepresentation(me._interalRepresentation.GetMatrixPoints()  , me._2dContextRepresentation.GetVisualProperties(), me._mvMatrix.GetMatrix() );
 
         me.Draw = function() {
+            /*this._2dContextRepresentation.UpdateGeometryProperties( this._interalRepresentation.GetPoints() );
+
             var ctxRep = this._2dContextRepresentation;
             ctxRep._ctx.save();
-            ctxRep._ctx.beginPath();
 
+//            ctxRep._ctx.translate(ctxRep._x, ctxRep._y);
+//            ctxRep._ctx.rotate(-ctxRep._angle);
+//            ctxRep._ctx.translate(-ctxRep._x, -ctxRep._y);
+
+            // Вытягиваем повернутый прямоугольник
+            ctxRep._ctx.translate(ctxRep._x, ctxRep._y);
+            ctxRep._ctx.scale(this._2dContextRepresentation._scale.x, this._2dContextRepresentation._scale.y);
+            ctxRep._ctx.translate(-ctxRep._x, -ctxRep._y);
+
+            // Рисуем повернутый прямоугольник
+            //ctxRep._ctx.beginPath();
                 ctxRep._ctx.translate(ctxRep._x, ctxRep._y);
                 ctxRep._ctx.rotate(ctxRep._angle);
                 ctxRep._ctx.translate(-ctxRep._x, -ctxRep._y);
 
-                ctxRep._ctx.rect(ctxRep._x, ctxRep._y, ctxRep._width,ctxRep._height);
+                ctxRep._ctx.rect(ctxRep._x, ctxRep._y, 100,100);
+            //ctxRep._ctx.closePath();
 
-                ctxRep._ctx.stroke();
-                ctxRep._ctx.fill();
 
-            ctxRep._ctx.closePath();
+            ctxRep._ctx.stroke();
+            ctxRep._ctx.fill();
 
-            ctxRep._ctx.restore();
+
+            ctxRep._ctx.restore();*/
 
         }
 
