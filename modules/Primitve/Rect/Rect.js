@@ -25,7 +25,6 @@
         var me = ArmContext.Primitie({});
 
         // Инициализация видовой матрицы
-
         me._mvMatrix = ArmContext.MvMatrix();
 
         // Инициализация внутреннего представления
@@ -35,44 +34,32 @@
         me._2dContextRepresentation = ArmContext.Rect2dContextRepresentation( O );
 
         // Инициализация глобального представления примитива
-        me._globalRepresentation = ArmContext.RectGlobalRepresentation(me._interalRepresentation.GetMatrixPoints()  , me._2dContextRepresentation.GetVisualProperties(), me._mvMatrix.GetMatrix() );
+       // me._globalRepresentation = ArmContext.RectGlobalRepresentation(me._interalRepresentation.GetMatrixPoints()  , me._2dContextRepresentation.GetVisualProperties(), me._mvMatrix.GetMatrix() );
 
         me.Draw = function() {
-            /*this._2dContextRepresentation.UpdateGeometryProperties( this._interalRepresentation.GetPoints() );
 
             var ctxRep = this._2dContextRepresentation;
-            ctxRep._ctx.save();
+            var intRep = this._interalRepresentation;
+            var ctx = ctxRep._ctx;
 
-//            ctxRep._ctx.translate(ctxRep._x, ctxRep._y);
-//            ctxRep._ctx.rotate(-ctxRep._angle);
-//            ctxRep._ctx.translate(-ctxRep._x, -ctxRep._y);
+            ctx.save();
+                ctx.beginPath();
+                    params = this._mvMatrix.GetTransformParams();
+                    //ctx.translate(100,100);
+                    ctx.setTransform(params.a, params.b, params.c, params.d, params.e, params.f);
+                    //ctx.translate(-50,0);
+                    ctx.rect(intRep.GetX(), intRep.GetY(), intRep.GetWidth(), intRep.GetHeight());
+                ctx.closePath();
+            ctx.stroke();
+            ctx.fill();
 
-            // Вытягиваем повернутый прямоугольник
-            ctxRep._ctx.translate(ctxRep._x, ctxRep._y);
-            ctxRep._ctx.scale(this._2dContextRepresentation._scale.x, this._2dContextRepresentation._scale.y);
-            ctxRep._ctx.translate(-ctxRep._x, -ctxRep._y);
+            ctx.restore();
 
-            // Рисуем повернутый прямоугольник
-            //ctxRep._ctx.beginPath();
-                ctxRep._ctx.translate(ctxRep._x, ctxRep._y);
-                ctxRep._ctx.rotate(ctxRep._angle);
-                ctxRep._ctx.translate(-ctxRep._x, -ctxRep._y);
-
-                ctxRep._ctx.rect(ctxRep._x, ctxRep._y, 100,100);
-            //ctxRep._ctx.closePath();
-
-
-            ctxRep._ctx.stroke();
-            ctxRep._ctx.fill();
-
-
-            ctxRep._ctx.restore();*/
-
-        }
+        };
 
         return me;
 
-    }
+    };
 
     window.ArmContext.Rect = Rect;
 
