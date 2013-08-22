@@ -21,7 +21,13 @@
                 boundingBox: me._boundingBox,
                 pictureUnderPrimitive: me._pictureUnderPrimitive
             }
-        }
+        };
+
+        me.ShowDebugInfo = function(ctx) {
+            console.log("VisualProperties:");
+            console.log(this.GetVisualProperties());
+
+        };
 
         return me;
     };

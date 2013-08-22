@@ -28,18 +28,18 @@
         me._mvMatrix = ArmContext.MvMatrix();
 
         // Инициализация внутреннего представления
-        me._interalRepresentation = ArmContext.RectInteralRepresentation( O );
+        me._internalRepresentation = ArmContext.RectInternalRepresentation( O );
 
         // Инициализация canvas представления
         me._2dContextRepresentation = ArmContext.Rect2dContextRepresentation( O );
 
         // Инициализация глобального представления примитива
-       // me._globalRepresentation = ArmContext.RectGlobalRepresentation(me._interalRepresentation.GetMatrixPoints()  , me._2dContextRepresentation.GetVisualProperties(), me._mvMatrix.GetMatrix() );
+       me._globalRepresentation = ArmContext.RectGlobalRepresentation(me._internalRepresentation  , me._2dContextRepresentation, me._mvMatrix );
 
         me.Draw = function() {
 
             var ctxRep = this._2dContextRepresentation;
-            var intRep = this._interalRepresentation;
+            var intRep = this._internalRepresentation;
             var ctx = ctxRep._ctx;
 
             ctx.save();

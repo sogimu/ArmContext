@@ -26,28 +26,16 @@
             var f = (-x * b) - (y * (a-1));
 
             var transformMatrix = new $M([
-                    [a,c,e], // e
+                    [a,c,e],
                     [b,d,f],
                     [0,0,1]
             ]);
 
-            // var translateMatrix = new $M([
-            //         [1,0,x],
-            //         [0,1,y],
+            // var rotateMatrix = new $M([
+            //         [a,-b,0],
+            //         [b,a,0],
             //         [0,0,1]
             // ]);
-
-            // var retTranslateMatrix = new $M([
-            //         [0,0,-x],
-            //         [0,1,-y],
-            //         [0,0,1]
-            // ]);
-
-            var rotateMatrix = new $M([
-                    [a,-b,0],
-                    [b,a,0],
-                    [0,0,1]
-            ]);
 
             // this._matrix = this._matrix.x(rotateMatrix);
 
@@ -66,7 +54,7 @@
 
             var transformMatrix = new $M([
                 [x,0,0],
-                [0,-y,0],
+                [0,y,0],
                 [0,0,1]
             ]);
 
@@ -110,6 +98,15 @@
                 var f = matrix.elements[1][2];
 
                 return {a: a, b: b, c: c, d: d, e: e, f: f};
+
+        };
+
+        me.ShowDebugInfo = function(ctx) {
+            var matrix = this.GetMatrix();
+            console.log("mvMatrix:");
+            console.log(matrix.elements[0]);
+            console.log(matrix.elements[1]);
+            console.log(matrix.elements[2]);
 
         };
 

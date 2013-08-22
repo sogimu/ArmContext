@@ -11,26 +11,19 @@
     var Primitie = function() {
         var me = {};
 
-        me._interalRepresentation = null;
+        me._internalRepresentation = null;
         me._2dContextRepresentation = null;
         me._globalRepresentation = null;
         me._mvMatrix = null;
-        me._transformList = new ArmContext.TransformList({});
+        me._debug = ArmContext.Debug(me);
 
         me.TranslateTo = function(O) {
             gizmo.Filter(O,"Object");
             gizmo.Filter(O.x,"Number");
             gizmo.Filter(O.y,"Number");
 
-            // var x = A._mvMatrix._matrix.elements[0][2];
-            // var y = A._mvMatrix._matrix.elements[1][2];
-
-            // this._mvMatrix.TranslateTo( {x: 0, y:0} );
-            //this._mvMatrix.TranslateTo( O );
-            
-            this._interalRepresentation.TranslateTo( O );
-
-            //this._globalRepresentation.Update( this._interalRepresentation.GetMatrixPoints(), this._2dContextRepresentation.GetVisualProperties(), this._mvMatrix);
+            this._internalRepresentation.TranslateTo( O );
+            this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
 
             return this;
         };
@@ -41,11 +34,8 @@
             gizmo.Filter(O.point.x,"Number");
             gizmo.Filter(O.point.y,"Number");
 
-            //this._mvMatrix.TranslateTo({x: -O.point.x, y: -O.point.y});
             this._mvMatrix.Rotate( O );
-            //this._mvMatrix.TranslateTo({x: O.point.x, y: O.point.y});
-            
-            //wthis._globalRepresentation.Updateri( this._interalRepresentation.GetMatrixPoints(), this._2dContextRepresentation.GetVisualProperties(), this._mvMatrix);
+            this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
 
             return this;
         };
@@ -56,7 +46,7 @@
             gizmo.Filter(O.y,"Number");
 
             this._mvMatrix.Scale( O );
-            //this._globalRepresentation.Update( this._interalRepresentation.GetMatrixPoints(), this._2dContextRepresentation.GetVisualProperties(), this._mvMatrix);
+            //this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
 
             return this;
         };

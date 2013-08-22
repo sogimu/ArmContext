@@ -1,9 +1,16 @@
 (function(window) {
-    var InteralRepresentation = function(O) {
+    var InternalRepresentation = function(O) {
 
         gizmo.Filter(O,"Object");
 
         var me = {};
+
+        me._points = new $M( [
+            [0,0,0],
+            [10,0,0],
+            [10,10,1],
+            [0,10,1]
+        ] );
 
         me.Rotate = function(O) {
             gizmo.Filter(O.gradAngle || O.radAngle,"Number");
@@ -51,20 +58,20 @@
 
         me.GetPoints = function() {
             return this._points.elements;
-        }
+        };
 
-        me.Show = function(ctx) {
-            var radiusOfpoints = 5
-            var points = this._points.elements;
+        me.ShowPoints = function(ctx) {
+            var radiusOfpoints = 5;
+            var points = this.GetPoints();
 
             ctx.save();
 
             ctx.beginPath();
 
-                for(var i in points) {
-                    ctx.moveTo(points[i][0],points[i][1]);
-                    ctx.arc(points[i][0],points[i][1], radiusOfpoints, 0, Math.PI*2, false);
-                }
+            for(var i in points) {
+                ctx.moveTo(points[i][0],points[i][1]);
+                ctx.arc(points[i][0],points[i][1], radiusOfpoints, 0, Math.PI*2, false);
+            }
 
             ctx.closePath();
 
@@ -76,10 +83,35 @@
             ctx.restore();
 
             return this;
-        }
+        };
+
+        me.ShowDebugInfo = function(ctx) {
+            var points = this.GetPoints();
+
+            console.log("Points of internal representation");
+            for(var i in points) {
+                console.log(points[i]);
+            }
+        };
+
+        me.ShowPoints = function(ctx) {
+            var points = this.GetPoints();
+
+            for(var i in points) {      
+                CTX.save();
+                    CTX.beginPath();        
+                        CTX.fillStyle = "#ff0000";
+                        CTX.rect(points[i][0]-2,points[i][1]-2,4,4);
+                        CTX.stroke();
+                        CTX.fill();
+                    CTX.closePath();
+                CTX.restore();
+
+            }  
+        };
 
         return me;
     }
 
-    ArmContext.InteralRepresentation = InteralRepresentation;
+    ArmContext.InternalRepresentation = InternalRepresentation;
 })();
