@@ -7,6 +7,8 @@
             [0,0,0]
         ] );
 
+        me._polygone = new gizmo.Math.Polygone([[0,0,1]]);
+
         me.GetPoints = function() {
             return this._points.elements;
         };
@@ -32,11 +34,26 @@
 
             this.SetPoints( internalRepresentation.GetPoints() );
             this.SetMatrixOfPoints( this.GetMatrixOfPoints().x(mvMatrix.GetMatrix().transpose()) );
-
-            // Метод не реализован
-            //console.log("Virtual method Update");
+            
+            // update polygone
+            arrVectors = [];
+            var transformedPoints = this.GetPoints();
+            for(var i in transformedPoints) {
+                arrVectors.push(new gizmo.Math.Vector2D(transformedPoints[i][0],transformedPoints[i][1]));
+            }
+            this._polygone = new gizmo.Math.Polygone(arrVectors);
 
             return this;
+        };
+
+       me.HasPoint = function( x, y ) {
+            gizmo.Filter(x,"Number");
+            gizmo.Filter(y,"Number");
+
+            return this._polygone.HasPoint({x:x,y:y});
+
+            // Метод не реализован
+            //console.log("Method HasPoint have't realisation");
         };
 
         me.ShowDebugInfo = function(ctx) {

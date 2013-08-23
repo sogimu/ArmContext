@@ -17,6 +17,12 @@ window.onload = function() {
     X=200;
     Y=100;
 
+    Xf=200;
+    Yf=100
+
+    Xs=300;
+    Ys=100;
+
     A = new ArmContext.Rect({ctx: CTX, width : 50, height: 50});
     console.log(A);
 
@@ -26,10 +32,11 @@ window.onload = function() {
     //A.Rotate({gradAngle: 15, point: {x:X, y:Y}});
     
     setInterval(function() {
-
-        A.Rotate({gradAngle: 3, point: {x:X, y:Y}});
+        //A.Rotate({gradAngle: 15, point: {x:X, y:Y}});
         //A.Scale({x: 0.99, y:1});
         
+        //A.TranslateTo({x:x, y:y});
+           
         CTX.clearRect(0,0,500,500);
         A.Draw();
         
@@ -52,7 +59,16 @@ window.onload = function() {
         CTX.save();
             CTX.beginPath();        
                 CTX.fillStyle = "#00ff00";
-                CTX.arc(X,Y, Math.sqrt((x-X)*(x-X)+(y-Y)*(y-Y)), 0, Math.PI*2, false);
+                CTX.arc(Xf,Yf, Math.sqrt((x-Xf)*(x-Xf)+(y-Yf)*(y-Yf)), 0, Math.PI*2, false);
+                CTX.stroke();
+                //CTX.fill();
+            CTX.closePath();
+        CTX.restore();
+
+        CTX.save();
+            CTX.beginPath();        
+                CTX.fillStyle = "#0000ff";
+                CTX.arc(Xs,Ys, Math.sqrt((x-Xs)*(x-Xs)+(y-Ys)*(y-Ys)), 0, Math.PI*2, false);
                 CTX.stroke();
                 //CTX.fill();
             CTX.closePath();
@@ -62,6 +78,6 @@ window.onload = function() {
         A._globalRepresentation.ShowPoints(CTX);
         A._internalRepresentation.ShowPoints(CTX);
                         
-    }, 16);
+    }, 128);
 
 };

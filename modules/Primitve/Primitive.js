@@ -69,9 +69,9 @@
             gizmo.Filter(O.y,"Number");
 
             // Метод не реализован
-            console.log("Virtual method Has Point");
+            //console.log("Virtual method Has Point");
 
-            return this;
+            return this._globalRepresentation.HasPoint(O.x, O.y);
         };
 
         return me;
