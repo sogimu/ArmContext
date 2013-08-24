@@ -31,15 +31,19 @@
                     [0,0,1]
             ]);
 
-            // var rotateMatrix = new $M([
-            //         [a,-b,0],
-            //         [b,a,0],
-            //         [0,0,1]
-            // ]);
+            // a,b,0
+            // c,d,0
+            // e,f,0
 
-            // this._matrix = this._matrix.x(rotateMatrix);
+            var rotateMatrix = new $M([
+                    [a,b,0], // -b
+                    [-b,a,0], // b
+                    [0,0,1]
+            ]);
 
-            this._matrix = this._matrix.x(transformMatrix);
+            this._matrix = this._matrix.x(rotateMatrix);
+
+            //this._matrix = this._matrix.x(transformMatrix);
 
             return this;
         };
@@ -53,8 +57,8 @@
             var y = O.y;
 
             var transformMatrix = new $M([
-                [x,0,0],
-                [0,y,0],
+                [x,0,0], //x,0,0
+                [0,y,0], //0,y,0
                 [0,0,1]
             ]);
 
@@ -72,9 +76,9 @@
             var y = O.y;
 
             var transformMatrix = new $M([
-                [1,0,x],
-                [0,1,y],
-                [0,0,1]
+                [1,0,0], // 1,0,x
+                [0,1,0], // 0,1,y
+                [x,y,1]
             ]);
 
             this._matrix = this._matrix.x(transformMatrix);
@@ -90,12 +94,19 @@
         me.GetTransformParams = function() {
                 var matrix = this.GetMatrix();
 
+                // var a = matrix.elements[0][0];
+                // var b = matrix.elements[1][0];
+                // var c = matrix.elements[0][1];
+                // var d = matrix.elements[1][1];
+                // var e = matrix.elements[0][2];
+                // var f = matrix.elements[1][2];
+
                 var a = matrix.elements[0][0];
-                var b = matrix.elements[1][0];
-                var c = matrix.elements[0][1];
+                var b = matrix.elements[0][1];
+                var c = matrix.elements[1][0];
                 var d = matrix.elements[1][1];
-                var e = matrix.elements[0][2];
-                var f = matrix.elements[1][2];
+                var e = matrix.elements[2][0];
+                var f = matrix.elements[2][1];
 
                 return {a: a, b: b, c: c, d: d, e: e, f: f};
 

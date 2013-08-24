@@ -46,7 +46,8 @@
                 ctx.beginPath();
                     params = this._mvMatrix.GetTransformParams();
                     //ctx.translate(100,100);
-                    ctx.setTransform(params.a, params.b, params.c, params.d, params.e, params.f);
+                    ctx.setTransform(1,0,0,1,0,0);
+                    ctx.transform(params.a, params.b, params.c, params.d, params.e, params.f);
                     //ctx.translate(-50,0);
                     ctx.rect(intRep.GetX(), intRep.GetY(), intRep.GetWidth(), intRep.GetHeight());
                 ctx.closePath();

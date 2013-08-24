@@ -25,7 +25,7 @@
         me.SetWidth = function(O) {
             gizmo.Filter(O, "Number");
             this._width = O;
-            this.UpdatePoints({x:this._x, y: this._y, width: this._width, height: this._height});
+            this.UpdatePoints({ x: this.GetX(), y: this.GetY(), width: this.GetWidth(), height: this.GetHeight() });
         };
 
         me.GetHeight = function() {
@@ -46,7 +46,7 @@
         me.SetX = function(O) {
             gizmo.Filter(O, "Number");
             this._x = O;
-            this.UpdatePoints({x:this._x, y: this._y, width: this._width, height: this._height});
+            this.UpdatePoints({ x: this.GetX(), y: this.GetY(), width: this.GetWidth(), height: this.GetHeight() });
         };
 
         me.GetX = function() {
@@ -73,38 +73,7 @@
         ] );
         };
 
-        me.TranslateTo = function(O) {
-            gizmo.Filter(O,"Object");
-            gizmo.Filter(O.x,"Number");
-            gizmo.Filter(O.y,"Number");
-
-            // var points = this._points.elements;
-            // var p0x = O.x;
-            // var p0y = O.y;
-            // var p1x = ( points[1][0] - points[0][0] ) + O.x;
-            // var p1y = ( points[1][1] - points[0][1] ) + O.y;
-            // var p2x = ( points[2][0] - points[0][0] ) + O.x;
-            // var p2y = ( points[2][1] - points[0][1] ) + O.y;
-            // var p3x = ( points[3][0] - points[0][0] ) + O.x;
-            // var p3y = ( points[3][1] - points[0][1] ) + O.y;
-
-            // this._points.elements[0][0] = p0x;
-            // this._points.elements[0][1] = p0y;
-            // this._points.elements[1][0] = p1x;
-            // this._points.elements[1][1] = p1y;
-            // this._points.elements[2][0] = p2x;
-            // this._points.elements[2][1] = p2y;
-            // this._points.elements[3][0] = p3x;
-            // this._points.elements[3][1] = p3y;
-
-            this.SetX(O.x);
-            this.SetY(O.y);
-
-            return this;
-        };
-
-
-        me.UpdatePoints({x:this._x, y: this._y, width: this._width, height: this._height});
+        me.UpdatePoints({ x: me.GetX(), y: me.GetY(), width: me.GetWidth(), height: me.GetHeight() });
 
         return me;
     }

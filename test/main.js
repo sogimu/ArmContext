@@ -20,24 +20,24 @@ window.onload = function() {
     Xf=200;
     Yf=100
 
-    Xs=300;
+    Xs=350;
     Ys=100;
 
     A = new ArmContext.Rect({ctx: CTX, width : 50, height: 50});
     console.log(A);
 
     A.TranslateTo({x:x, y:y});
-    // A.Scale({x: 0.5, y:1});
+    //A.Scale({x: 1, y:1});
     
     //A.Rotate({gradAngle: 15, point: {x:X, y:Y}});
     
     setInterval(function() {
-        //A.Rotate({gradAngle: 15, point: {x:X, y:Y}});
+        A.Rotate({gradAngle: 15, point: {x:X, y:Y}});
         //A.Scale({x: 0.99, y:1});
         
         //A.TranslateTo({x:x, y:y});
            
-        CTX.clearRect(0,0,500,500);
+        //CTX.clearRect(0,0,500,500);
         A.Draw();
         
         CTX.save();
@@ -75,8 +75,8 @@ window.onload = function() {
         CTX.restore();
 
         //A._debug.ShowDebugInfo(CTX);
-        A._globalRepresentation.ShowPoints(CTX);
-        A._internalRepresentation.ShowPoints(CTX);
+         A._globalRepresentation.ShowPoints(CTX);
+         A._internalRepresentation.ShowPoints(CTX);
                         
     }, 128);
 

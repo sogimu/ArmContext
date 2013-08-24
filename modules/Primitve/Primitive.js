@@ -22,7 +22,8 @@
             gizmo.Filter(O.x,"Number");
             gizmo.Filter(O.y,"Number");
 
-            this._internalRepresentation.TranslateTo( O );
+            //this._internalRepresentation.TranslateTo( O );
+            this._mvMatrix.TranslateTo( O );
             this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
 
             return this;
@@ -34,7 +35,10 @@
             gizmo.Filter(O.point.x,"Number");
             gizmo.Filter(O.point.y,"Number");
 
+            this._mvMatrix.TranslateTo( {x: -O.point.x, y: -O.point.y} );
             this._mvMatrix.Rotate( O );
+            this._mvMatrix.TranslateTo( {x:O.point.x, y:O.point.y} );
+            
             this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
 
             return this;
