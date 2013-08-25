@@ -21,7 +21,13 @@
             gizmo.Filter(O.x,"Number");
             gizmo.Filter(O.y,"Number");
 
-            this._mvMatrix.Translate( O.x, O.y );
+            var gX = this._globalRepresentation.GetX();
+            var gY = this._globalRepresentation.GetY();
+
+            var dX = O.x - gX;
+            var dY = O.y - gY;
+
+            this._mvMatrix.Translate( dX, dY );
             this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
 
             return this;
