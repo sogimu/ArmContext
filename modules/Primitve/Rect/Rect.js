@@ -22,7 +22,7 @@
 
         gizmo.Filter(O,"Object");
 
-        var me = ArmContext.Primitie({});
+        var me = ArmContext.Primitie();
 
         // Инициализация видовой матрицы
         me._mvMatrix = ArmContext.MvMatrix();
@@ -34,13 +34,13 @@
         me._2dContextRepresentation = ArmContext.Rect2dContextRepresentation( O );
 
         // Инициализация глобального представления примитива
-       me._globalRepresentation = ArmContext.RectGlobalRepresentation(me._internalRepresentation  , me._2dContextRepresentation, me._mvMatrix );
+        me._globalRepresentation = ArmContext.RectGlobalRepresentation(me._internalRepresentation  , me._2dContextRepresentation, me._mvMatrix );
 
         me.Draw = function() {
 
             var ctxRep = this._2dContextRepresentation;
             var intRep = this._internalRepresentation;
-            var ctx = ctxRep._ctx;
+            var ctx = ctxRep.GetCtx();
 
             ctx.save();
                 ctx.beginPath();

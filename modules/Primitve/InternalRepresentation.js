@@ -29,7 +29,6 @@
             var points = this.GetPoints();
 
             ctx.save();
-
             ctx.beginPath();
 
             for(var i in points) {
@@ -43,8 +42,7 @@
             ctx.stroke();
             ctx.fill();
 
-            ctx.restore()
-            ;
+            ctx.restore();
 
             return this;
         };

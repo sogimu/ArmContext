@@ -92,6 +92,12 @@
             return this._globalRepresentation.HasPoint(O.x, O.y);
         };
 
+        me.Update = function(O) {
+            this._internalRepresentation.Update( O );
+            this._2dContextRepresentation.Update( O );
+           me._globalRepresentation = ArmContext.RectGlobalRepresentation(me._internalRepresentation  , me._2dContextRepresentation, me._mvMatrix );
+            
+        };
         return me;
 
     }

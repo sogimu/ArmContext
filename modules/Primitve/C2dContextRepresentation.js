@@ -7,35 +7,34 @@
  */
 
 (function(window) {
-    var C2dContextRepresentation = function() {
+    var C2dContextRepresentation = function(O) {
 
         var me = {};
 
+        //  Not view properties
         me._ctx = null;
-
-        // ViewProperties
-        me._fillObject = "default";
-        me._strokeObject = "default";
-        me._widthLine = "default";
+        
+        // Properties not for user updating
         me._boundingBox = {};
         me._pictureUnderPrimitive = {};
 
-        // Возвращает визуальные свойства
-        me.GetVisualProperties = function() {
-            return {
-                fillObject: me._fillObject = "default",
-                strokeObject: me._strokeObject = "default",
-                widthLine: me._widthLine,
-                boundingBox: me._boundingBox,
-                pictureUnderPrimitive: me._pictureUnderPrimitive
-            }
+        me.Update = function(O) {
+            this._ctx = O.ctx || this._ctx;
+
         };
+
+        me.GetCtx = function() {
+            return this._ctx;
+        };
+
 
         me.ShowDebugInfo = function(ctx) {
             console.log("VisualProperties:");
             console.log(this.GetVisualProperties());
 
         };
+
+        me.Update( O );
 
         return me;
     };
