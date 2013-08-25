@@ -3,6 +3,24 @@
 
         var me = ArmContext.GlobalRepresentation();
 
+        me.GetX = function() {
+            return this.GetPoints()[0][0];
+        };
+
+        me.GetY = function() {
+            return this.GetPoints()[0][1];
+        };
+
+        me.GetWidth = function() {
+            var ponts = this.GetPoints();
+            return points[2][0] - points[0][0];
+        };
+        
+        me.GetHeight = function() {
+            var ponts = this.GetPoints();
+            return points[2][1] - points[0][1];
+        };
+        
         me.ShowPoints = function(ctx) {
             var points = this.GetPoints();
                 CTX.save();

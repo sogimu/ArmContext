@@ -21,7 +21,7 @@
             gizmo.Filter(O.x,"Number");
             gizmo.Filter(O.y,"Number");
 
-            this._mvMatrix.TranslateTo( O );
+            this._mvMatrix.Translate( O.x, O.y );
             this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
 
             return this;
@@ -33,9 +33,11 @@
             gizmo.Filter(O.point.x,"Number");
             gizmo.Filter(O.point.y,"Number");
 
-            this._mvMatrix.TranslateTo( {x: -O.point.x, y: -O.point.y} );
-            this._mvMatrix.Rotate( O );
-            this._mvMatrix.TranslateTo( {x:O.point.x, y:O.point.y} );
+            var radAngle = O.radAngle || ( (O.gradAngle > 360 ? O.gradAngle % 360:O.gradAngle) / 180 * Math.PI);
+
+            this._mvMatrix.Translate( -O.point.x, -O.point.y );
+            this._mvMatrix.Rotate( radAngle );
+            this._mvMatrix.Translate( O.point.x, O.point.y );
             
             this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
 
@@ -47,7 +49,15 @@
             gizmo.Filter(O.x,"Number");
             gizmo.Filter(O.y,"Number");
 
-            this._mvMatrix.Scale( O );
+            var gX = this._globalRepresentation.GetX();
+            var gY = this._globalRepresentation.GetY();
+
+            var dX = gX - (gX * O.x);
+            var dY = gY - (gY * O.y);
+
+            this._mvMatrix.Scale( O.x, O.y );
+            this._mvMatrix.Translate( dX, dY );
+
             this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
 
             return this;
@@ -69,6 +79,9 @@
             gizmo.Filter(O,"Object");
             gizmo.Filter(O.x,"Number");
             gizmo.Filter(O.y,"Number");
+
+            // Метод не реализован
+            //console.log("Virtual method Has Point");
 
             return this._globalRepresentation.HasPoint(O.x, O.y);
         };

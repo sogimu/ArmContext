@@ -31,16 +31,16 @@ window.onload = function() {
     A.TranslateTo({x:x, y:y});
     B.TranslateTo({x:x, y:y+100});
     
-    //A.Scale({x: 1.5, y:1});
-    //B.Scale({x: 1.5, y:1});
+    A.Scale({x: 1.5, y:1});
+    // B.Scale({x: 1.5, y:1});
     
     //A.Rotate({gradAngle: 15, point: {x:X, y:Y}});
     
     setInterval(function() {
-        A.Rotate({gradAngle: 15, point: {x:X, y:Y}});
-        B.Rotate({gradAngle: -5, point: {x:X, y:Y}});
+        // A.Rotate({gradAngle: 15, point: {x:X, y:Y}});
+        // B.Rotate({gradAngle: -5, point: {x:X, y:Y}});
     
-        //A.Scale({x: 0.99, y:1});
+        A.Scale({x: 0.99, y:1.01});
         
         //A.TranslateTo({x:x, y:y});
            

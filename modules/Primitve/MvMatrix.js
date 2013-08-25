@@ -12,32 +12,32 @@
         var me = {};
 
         me._matrix = new $M( [[1,0,0],
-                                                      [0,1,0],
-                                                      [0,0,1]] );
+                                                [0,1,0],
+                                                [0,0,1]] );
 
-        me.Rotate = function(O) {
-            gizmo.Filter(O.gradAngle || O.radAngle,"Number");
-            gizmo.Filter(O.point,"Object");
-            gizmo.Filter(O.point.x,"Number");
-            gizmo.Filter(O.point.y,"Number");
+        me.Rotate = function( angle ) {
+            //gizmo.Filter(O.gradAngle || O.radAngle,"Number");
+            // gizmo.Filter(O.point,"Object");
+            // gizmo.Filter(O.point.x,"Number");
+            // gizmo.Filter(O.point.y,"Number");
 
-            var radAngle = O.radAngle || ( (O.gradAngle > 360 ? O.gradAngle % 360:O.gradAngle) / 180 * Math.PI);
+            // var radAngle = O.radAngle || ( (O.gradAngle > 360 ? O.gradAngle % 360:O.gradAngle) / 180 * Math.PI);
 
-            var x = O.point.x;
-            var y = O.point.y;
+            // var x = O.point.x;
+            // var y = O.point.y;
 
-            var a = Math.cos(radAngle);
-            var b = Math.sin(radAngle);
-            var c = -b;
-            var d = a;
-            var e = (-x * (a-1)) + (y * b);
-            var f = (-x * b) - (y * (a-1));
+            var a = Math.cos(angle);
+            var b = Math.sin(angle);
+            // var c = -b;
+            // var d = a;
+            // var e = (-x * (a-1)) + (y * b);
+            // var f = (-x * b) - (y * (a-1));
 
-            var transformMatrix = new $M([
-                    [a,c,e],
-                    [b,d,f],
-                    [0,0,1]
-            ]);
+            // var transformMatrix = new $M([
+            //         [a,c,e],
+            //         [b,d,f],
+            //         [0,0,1]
+            // ]);
 
             // a,b,0
             // c,d,0
@@ -56,13 +56,13 @@
             return this;
         };
 
-        me.Scale = function(O) {
-            gizmo.Filter(O,"Object");
-            gizmo.Filter(O.x,"Number");
-            gizmo.Filter(O.y,"Number");
+        me.Scale = function( x, y ) {
+            //gizmo.Filter(O,"Object");
+            gizmo.Filter(x,"Number");
+            gizmo.Filter(y,"Number");
 
-            var x = O.x;
-            var y = O.y;
+            // var x = O.x;
+            // var y = O.y;
 
             var transformMatrix = new $M([
                 [x,0,0], //x,0,0
@@ -75,13 +75,13 @@
             return this;
         };
 
-        me.TranslateTo = function(O) {
-            gizmo.Filter(O,"Object");
-            gizmo.Filter(O.x,"Number");
-            gizmo.Filter(O.y,"Number");
+        me.Translate = function( x, y ) {
+            //gizmo.Filter(O,"Object");
+            gizmo.Filter(x,"Number");
+            gizmo.Filter(y,"Number");
 
-            var x = O.x;
-            var y = O.y;
+            // var x = O.x;
+            // var y = O.y;
 
             var transformMatrix = new $M([
                 [1,0,0], // 1,0,x
