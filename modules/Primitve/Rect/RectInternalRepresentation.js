@@ -39,8 +39,9 @@
             this.UpdatePoints({x:this._x, y: this._y, width: this._width, height: this._height});
         };
 
-        me.GetMatrixPoints = function() {
-            return this._points;
+        me.GetX = function() {
+            //return this._points.elements[0][0];
+            return this._x;
         };
 
         me.SetX = function(O) {
@@ -49,9 +50,8 @@
             this.UpdatePoints({ x: this.GetX(), y: this.GetY(), width: this.GetWidth(), height: this.GetHeight() });
         };
 
-        me.GetX = function() {
-            //return this._points.elements[0][0];
-            return this._x;
+        me.GetY = function() {
+            return this._y;
         };
 
         me.SetY = function(O) {
@@ -60,8 +60,13 @@
             this.UpdatePoints({x:this._x, y: this._y, width: this._width, height: this._height});
         };
 
-        me.GetY = function() {
-            return this._y;
+        me.GetPointsOfMatrix = function() {
+            return this._points;
+        };
+
+        me.SetPointsOfMatrix = function(O) {
+            gizmo.Filter(O, "Array");
+            return this._points;
         };
 
         me.UpdatePoints = function(O) {

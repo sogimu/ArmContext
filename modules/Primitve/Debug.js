@@ -1,3 +1,11 @@
+/**
+ * Описывает класс содержащий методы необходимые для отладки примитива.
+ *
+ * @this {ArmContext.Debug}
+ * @author <a href="mailto:sogimu@nxt.ru">Alexander Lizin aka Sogimu</a>
+ * @version 0.1
+ */
+
 (function(window) {
     var Debug = function( O ) {
 

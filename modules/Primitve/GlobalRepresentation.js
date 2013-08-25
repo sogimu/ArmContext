@@ -1,3 +1,11 @@
+/**
+ * Описывает абстрактный класс ответственный за просчёт полигона точек опоясывающих примитив.
+ *
+ * @this {ArmContext.GlobalRepresentation}
+ * @author <a href="mailto:sogimu@nxt.ru">Alexander Lizin aka Sogimu</a>
+ * @version 0.1
+ */
+
 (function(window) {
     var GlobalRepresentation = function() {
 
@@ -33,7 +41,7 @@
             gizmo.Filter(mvMatrix,"Object");
 
             this.SetPoints( internalRepresentation.GetPoints() );
-            this.SetMatrixOfPoints( this.GetMatrixOfPoints().x(mvMatrix.GetMatrix()/*.transpose()*/) );
+            this.SetMatrixOfPoints( this.GetMatrixOfPoints().x(mvMatrix.GetMatrix()) );
             
             // update polygone
             arrVectors = [];
@@ -69,51 +77,17 @@
         me.ShowPoints = function(ctx) {
             var points = this.GetPoints();
 
-            // for(var i in points) {      
-            //     CTX.save();
-            //         CTX.beginPath();        
-            //             CTX.fillStyle = "#00ff00";
-            //             CTX.rect(points[i][0]-2,points[i][1]-2,4,4);
-            //             CTX.stroke();
-            //             CTX.fill();
-            //         CTX.closePath();
-            //     CTX.restore();
-
-            // }
-
-                CTX.save();
-                    CTX.beginPath();        
-                        CTX.fillStyle = "#ff0000";
-                        CTX.rect(points[0][0]-2,points[0][1]-2,4,4);
-                        CTX.stroke();
-                        CTX.fill();
-                    CTX.closePath();
-                CTX.restore();
+            for(var i in points) {      
                 CTX.save();
                     CTX.beginPath();        
                         CTX.fillStyle = "#00ff00";
-                        CTX.rect(points[1][0]-2,points[1][1]-2,4,4);
+                        CTX.rect(points[i][0]-2,points[i][1]-2,4,4);
                         CTX.stroke();
                         CTX.fill();
                     CTX.closePath();
                 CTX.restore();
-                CTX.save();
-                    CTX.beginPath();        
-                        CTX.fillStyle = "#0000ff";
-                        CTX.rect(points[2][0]-2,points[2][1]-2,4,4);
-                        CTX.stroke();
-                        CTX.fill();
-                    CTX.closePath();
-                CTX.restore();
-                CTX.save();
-                    CTX.beginPath();        
-                        CTX.fillStyle = "#aaffbb";
-                        CTX.rect(points[3][0]-2,points[3][1]-2,4,4);
-                        CTX.stroke();
-                        CTX.fill();
-                    CTX.closePath();
-                CTX.restore();
-  
+
+            }  
         };
 
 

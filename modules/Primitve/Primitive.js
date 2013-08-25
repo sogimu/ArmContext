@@ -1,7 +1,6 @@
 /**
- * Описывает виртуальный класс Primitive.
+ * Описывает виртуальный класс Primitive. Методы и свойства общие для примитивов.
  *
- * @constructor
  * @this {ArmContext.Primitie}
  * @author <a href="mailto:sogimu@nxt.ru">Alexander Lizin aka Sogimu</a>
  * @version 0.1
@@ -22,7 +21,6 @@
             gizmo.Filter(O.x,"Number");
             gizmo.Filter(O.y,"Number");
 
-            //this._internalRepresentation.TranslateTo( O );
             this._mvMatrix.TranslateTo( O );
             this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
 
@@ -50,7 +48,7 @@
             gizmo.Filter(O.y,"Number");
 
             this._mvMatrix.Scale( O );
-            //this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
+            this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
 
             return this;
         };
@@ -71,9 +69,6 @@
             gizmo.Filter(O,"Object");
             gizmo.Filter(O.x,"Number");
             gizmo.Filter(O.y,"Number");
-
-            // Метод не реализован
-            //console.log("Virtual method Has Point");
 
             return this._globalRepresentation.HasPoint(O.x, O.y);
         };
