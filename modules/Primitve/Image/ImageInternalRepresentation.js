@@ -37,11 +37,11 @@
             this._height = O.height || this._height;
 
             this._points = new $M( [
-                [0,0,1],
-                [this._width,0,1],
+                [0                   ,0                     ,1],
+                [this._width,0                     ,1],
                 [this._width,this._height,1],
-                [0,this._height,1]
-            ] );
+                [0                   ,this._height,1]            
+                ] );
         };
 
         me.Set({width: O.width || 10, height: O.height || 10 });

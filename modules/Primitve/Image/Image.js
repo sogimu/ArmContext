@@ -24,9 +24,6 @@
 
         var me = ArmContext.Primitie();
 
-        // Инициализация видовой матрицы
-        me._mvMatrix = ArmContext.MvMatrix();
-
         // Инициализация внутреннего представления
         me._internalRepresentation = ArmContext.ImageInternalRepresentation( O );
 

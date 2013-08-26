@@ -13,6 +13,7 @@
 
         //  Not view properties
         me._ctx = null;
+        me._layer = null;
 
         // View properties
         me._globalAlpha = 1;  // 0 < 1 
@@ -31,6 +32,9 @@
 
         me.Set = function(O) {
             this._ctx = O.ctx || this._ctx;
+            this._layer = O.layer || this._layer;
+            this._ctx = this._layer ? this._layer.GetCtx() : this._ctx;
+   
             this._globalAlpha = O.globalAlpha || this._globalAlpha;
             this._shadowColor = O.shadowColor || this._shadowColor;
             // this._shadowBlur = O.shadowBlur || this._shadowBlur;

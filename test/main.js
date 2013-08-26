@@ -1,16 +1,7 @@
 window.onload = function() {
 
-    var container = document.getElementById("container");
-
-    var canvas = document.createElement('canvas');
-    canvas.width = 500;
-    canvas.height = 500;
-    canvas.id = "canvas";
-
-    canvas.style.position = 'absolute';
-    container.appendChild( canvas );
-    CTX = canvas.getContext('2d');
-
+    var layer1 = ArmContext.Layer({name: "layer1", container: "container"});
+    CTX = layer1._ctx;
     x=250;
     y=50;
 
@@ -23,9 +14,9 @@ window.onload = function() {
     Xs=350;
     Ys=100;
 
-    A = new ArmContext.Rect({ctx: CTX, width : 150, height: 150});
+    A = new ArmContext.Rect({layer: layer1, width : 150, height: 150});
     console.log(A);
-    B = new ArmContext.Image({ctx: CTX, src: "img/gras.jpg", width : 100, height: 100});
+    B = new ArmContext.Image({layer: layer1, src: "img/gras.jpg", width : 100, height: 100});
     console.log(B);
 
     // A.TranslateTo({x:x, y:y});
@@ -38,7 +29,7 @@ window.onload = function() {
 
     setInterval(function() {
        // A.Rotate({gradAngle: 15, x:X, y:Y});
-        B.Rotate({gradAngle: -5, x:X, y:Y});
+        B.Rotate({gradAngle: 1, x:X, y:Y});
     
         // A.Scale({x: 0.99, y:1.01});
         
@@ -90,7 +81,7 @@ window.onload = function() {
         // A._internalRepresentation.ShowPoints(CTX);
         // B._internalRepresentation.ShowPoints(CTX);
                          
-    }, 128);
+    }, 16);
     
     this.container.onmousemove = function(e) {
         if(A.HasPoint({x: e.x, y: e.y})) {

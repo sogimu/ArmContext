@@ -13,7 +13,7 @@
         me._internalRepresentation = null;
         me._2dContextRepresentation = null;
         me._globalRepresentation = null;
-        me._mvMatrix = null;
+        me._mvMatrix = ArmContext.MvMatrix();
         me._debug = ArmContext.Debug(me);
 
         me.TranslateTo = function(O) {
