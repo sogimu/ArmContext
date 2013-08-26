@@ -29,7 +29,7 @@
         me._boundingBox = {};
         me._pictureUnderPrimitive = {};
 
-        me.Update = function(O) {
+        me.Set = function(O) {
             this._ctx = O.ctx || this._ctx;
             this._globalAlpha = O.globalAlpha || this._globalAlpha;
             this._shadowColor = O.shadowColor || this._shadowColor;
@@ -85,7 +85,7 @@
 
         };
 
-        me.Update( O );
+        me.Set( O );
 
         return me;
     };

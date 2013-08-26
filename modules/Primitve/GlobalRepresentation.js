@@ -12,10 +12,10 @@
         var me = {};
 
         me._points = new $M( [
-            [0,0,0]
+            [0,0,1]
         ] );
 
-        me._polygone = new gizmo.Math.Polygone([[0,0,1]]);
+        me._polygone = new gizmo.Math.Polygone(me._points.elements);
 
         me.GetPoints = function() {
             return this._points.elements;
@@ -43,7 +43,7 @@
             this.SetPoints( internalRepresentation.GetPoints() );
             this.SetMatrixOfPoints( this.GetMatrixOfPoints().x(mvMatrix.GetMatrix()) );
             
-            // update polygone
+            // polygone updating
             arrVectors = [];
             var transformedPoints = this.GetPoints();
             for(var i in transformedPoints) {

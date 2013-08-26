@@ -37,33 +37,14 @@
        me._globalRepresentation = ArmContext.ImageGlobalRepresentation(me._internalRepresentation  , me._2dContextRepresentation, me._mvMatrix );
 
         me.Draw = function() {
-            var ctxRep = this._2dContextRepresentation;    
-            if(ctxRep.IsLoaded()) {
-                this.Draw = function() {
-
-                    var ctxRep = this._2dContextRepresentation;
-                    var intRep = this._internalRepresentation;
-                    var ctx = ctxRep._ctx;
-
-                    ctx.save();
-                        //ctx.beginPath();
-                            params = this._mvMatrix.GetTransformParams();
-                            ctx.setTransform(params.a, params.b, params.c, params.d, params.e, params.f);
-                            ctx.drawImage(ctxRep.GetImage(), 0,0, intRep.GetWidth(), intRep.GetHeight());
-                       // ctx.closePath();
-
-                    // ctx.fillStyle = ctxRep.GetFillObject();
-                    // ctx.strokeStyle = ctxRep.GetStrokeObject();
-                    // ctx.lineWidth = ctxRep.GetLineWidth();
-   
-                    //ctx.stroke();
-                    //ctx.fill();
-                    ctx.restore();
-                };
-                this.Draw();
-            }
-
-
+            var ctxRep = this._2dContextRepresentation;
+            var intRep = this._internalRepresentation;
+            var ctx = ctxRep._ctx;
+            ctx.save();
+                params = this._mvMatrix.GetTransformParams();
+                ctx.setTransform(params.a, params.b, params.c, params.d, params.e, params.f);
+                ctx.drawImage(ctxRep.GetImage(), 0,0, intRep.GetWidth(), intRep.GetHeight());
+            ctx.restore();
         };
 
         return me;
