@@ -23,31 +23,29 @@ window.onload = function() {
     Xs=350;
     Ys=100;
 
-    A = new ArmContext.Rect({ctx: CTX, width : 50, height: 50});
+    A = new ArmContext.Rect({ctx: CTX, width : 150, height: 150});
     console.log(A);
     B = new ArmContext.Image({ctx: CTX, src: "img/gras.jpg", width : 100, height: 100});
     console.log(B);
 
-    A.TranslateTo({x:x, y:y});
+    // A.TranslateTo({x:x, y:y});
     B.TranslateTo({x:x, y:y+100});
     
     //A.Scale({x: 1.5, y:1});
     // B.Scale({x: 1.5, y:1});
     
-    //A.Rotate({gradAngle: 15, point: {x:X, y:Y}});
-    
+    //A.Rotate({gradAngle: 15, x:X, y:Y});
+
     setInterval(function() {
-        A.Rotate({gradAngle: 15, point: {x:X, y:Y}});
-        B.Rotate({gradAngle: -5, point: {x:X, y:Y}});
+       // A.Rotate({gradAngle: 15, x:X, y:Y});
+        B.Rotate({gradAngle: -5, x:X, y:Y});
     
         // A.Scale({x: 0.99, y:1.01});
         
         //A.TranslateTo({x:x, y:y});
            
         CTX.clearRect(0,0,500,500);
-        A.Draw();
-        B.Draw();
-
+    
         CTX.save();
             CTX.beginPath();        
                 CTX.arc(x,y, 3, 0, Math.PI*2, false);
@@ -82,7 +80,10 @@ window.onload = function() {
             CTX.closePath();
         CTX.restore();
 
-         // A._debug.ShowDebugInfo(CTX);
+        A.Draw();
+        B.Draw();
+
+        // A._debug.ShowDebugInfo(CTX);
         A._globalRepresentation.ShowPoints(CTX);
         B._globalRepresentation.ShowPoints(CTX);
 
@@ -90,5 +91,11 @@ window.onload = function() {
         // B._internalRepresentation.ShowPoints(CTX);
                          
     }, 128);
+    
+    this.container.onmousemove = function(e) {
+        if(A.HasPoint({x: e.x, y: e.y})) {
+            console.log("Win!");
+        }
+    };
 
 };

@@ -37,7 +37,6 @@
         me._globalRepresentation = ArmContext.RectGlobalRepresentation(me._internalRepresentation  , me._2dContextRepresentation, me._mvMatrix );
 
         me.Draw = function() {
-
             var ctxRep = this._2dContextRepresentation;
             var intRep = this._internalRepresentation;
             var ctx = ctxRep.GetCtx();
@@ -48,6 +47,20 @@
                     ctx.setTransform(params.a, params.b, params.c, params.d, params.e, params.f);
                     ctx.rect(0,0, intRep.GetWidth(), intRep.GetHeight());
                 ctx.closePath();
+
+            ctx.fillStyle = ctxRep.GetFillObject();
+            ctx.strokeStyle = ctxRep.GetStrokeObject();
+            ctx.lineWidth = ctxRep.GetLineWidth();
+
+            ctx.globalAlpha = ctxRep.GetGlobalAlpha();
+            ctx.shadowColor = ctxRep.GetShadowColor();
+//            ctx.shadowBlur = ctxRep.GetShadowBlur();
+            ctx.shadowOffsetX = ctxRep.GetShadowOffsetX();
+            ctx.shadowOffsetY = ctxRep.GetShadowOffsetY();
+            // ctx.lineCap = ctxRep.GetLineCap();
+            // ctx.lineDash = ctxRep.GetLineDash();
+            // ctx.lineJoin = ctxRep.GetLineJoin();                    
+
             ctx.stroke();
             ctx.fill();
 

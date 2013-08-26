@@ -4,9 +4,7 @@
         gizmo.Filter(O,"Object");
 
         var me = new ArmContext.InternalRepresentation({});
-
-//        me._points = new $M([[me._x,me._y,1],[me._x+me._width,me._y,1],[me._x+me._width,me._y+me._height,1],[me._x,me._y+me._height,1]]);
-
+        
         me.GetWidth = function() {
             return this._width;
         };
@@ -34,7 +32,7 @@
             return this._points;
         };
 
-        me.Update = function(O) {
+        me.Set = function(O) {
             this._width = O.width || this._width;
             this._height = O.height || this._height;
 
@@ -46,7 +44,7 @@
             ] );
         };
 
-        me.Update({width: O.width || 10, height: O.height || 10 });
+        me.Set({width: O.width || 10, height: O.height || 10 });
 
         return me;
     }

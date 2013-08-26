@@ -35,7 +35,7 @@
             return this._points = O;
         };
 
-        me.Update = function(internalRepresentation, C2dContextRepresentation, mvMatrix) {
+        me.Set = function(internalRepresentation, C2dContextRepresentation, mvMatrix) {
             gizmo.Filter(internalRepresentation,"Object");
             gizmo.Filter(C2dContextRepresentation,"Object");
             gizmo.Filter(mvMatrix,"Object");

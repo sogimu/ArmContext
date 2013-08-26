@@ -76,16 +76,12 @@
         };
 
         me.Translate = function( x, y ) {
-            //gizmo.Filter(O,"Object");
             gizmo.Filter(x,"Number");
             gizmo.Filter(y,"Number");
 
-            // var x = O.x;
-            // var y = O.y;
-
             var transformMatrix = new $M([
-                [1,0,0], // 1,0,x
-                [0,1,0], // 0,1,y
+                [1,0,0],
+                [0,1,0],
                 [x,y,1]
             ]);
 
@@ -93,6 +89,21 @@
 
             return this;
  
+        };
+
+        me.Scos = function( x, y ) {
+            gizmo.Filter(x,"Number");
+            gizmo.Filter(y,"Number");
+
+            var transformMatrix = new $M([
+                [1,y,0],
+                [x,1,0],
+                [0,0,1]
+            ]);
+
+            this._matrix = this._matrix.x(transformMatrix);
+
+            return this;
         };
 
         me.GetMatrix = function() {

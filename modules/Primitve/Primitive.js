@@ -28,24 +28,34 @@
             var dY = O.y - gY;
 
             this._mvMatrix.Translate( dX, dY );
-            this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
+            this._globalRepresentation.Set( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
+
+            return this;
+        };
+
+        me.Translate = function(O) {
+            gizmo.Filter(O,"Object");
+            gizmo.Filter(O.x,"Number");
+            gizmo.Filter(O.y,"Number");
+
+            this._mvMatrix.Translate( O.x, O.y );
+            this._globalRepresentation.Set( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
 
             return this;
         };
 
         me.Rotate = function(O) {
             gizmo.Filter(O.gradAngle || O.radAngle,"Number");
-            gizmo.Filter(O.point,"Object");
-            gizmo.Filter(O.point.x,"Number");
-            gizmo.Filter(O.point.y,"Number");
+            gizmo.Filter(O.x,"Number");
+            gizmo.Filter(O.y,"Number");
 
             var radAngle = O.radAngle || ( (O.gradAngle > 360 ? O.gradAngle % 360:O.gradAngle) / 180 * Math.PI);
 
-            this._mvMatrix.Translate( -O.point.x, -O.point.y );
+            this._mvMatrix.Translate( -O.x, -O.y );
             this._mvMatrix.Rotate( radAngle );
-            this._mvMatrix.Translate( O.point.x, O.point.y );
+            this._mvMatrix.Translate( O.x, O.y );
             
-            this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
+            this._globalRepresentation.Set( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
 
             return this;
         };
@@ -64,7 +74,19 @@
             this._mvMatrix.Scale( O.x, O.y );
             this._mvMatrix.Translate( dX, dY );
 
-            this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
+            this._globalRepresentation.Set( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
+
+            return this;
+        };
+
+        me.Scos = function(O) {
+            gizmo.Filter(O,"Object");
+            gizmo.Filter(O.x,"Number");
+            gizmo.Filter(O.y,"Number");
+
+            this._mvMatrix.Scos( O.x, O.y );
+
+            this._globalRepresentation.Set( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
 
             return this;
         };
@@ -92,15 +114,16 @@
             return this._globalRepresentation.HasPoint(O.x, O.y);
         };
 
-        me.Update = function(O) {
-            this._internalRepresentation.Update( O );
-            this._2dContextRepresentation.Update( O );
-           me._globalRepresentation = ArmContext.RectGlobalRepresentation(me._internalRepresentation  , me._2dContextRepresentation, me._mvMatrix );
-            
+        me.Set = function(O) {
+            this._internalRepresentation.Set( O );
+            this._2dContextRepresentation.Set( O ); 
+            this._globalRepresentation.Set( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
+
         };
+
         return me;
 
-    }
+    };
 
     window.ArmContext.Primitie = Primitie;
 

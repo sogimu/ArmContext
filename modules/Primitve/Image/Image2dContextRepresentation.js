@@ -4,17 +4,26 @@
         gizmo.Filter(O,"Object");
 
         var me = ArmContext.C2dContextRepresentation( O );
+        // View properties
+        me._fillObject = "#ff0000";
+        me._strokeObject = "#000000";
+        me._lineWidth = 10;
 
-        // ViewProperties
         me._src = null;
         me._image = null;
         me._isLoaded = false;
-        //me._boundingBox = {};
-        //me._pictureUnderPrimitive = {};
 
-        me._ctx = O.ctx || null;
-        me._src = O.src || null;
-        me._image = O.image || null;
+        me.GetFillObject = function() {
+            return this._fillObject;
+        };
+
+        me.GetStrokeObject = function() {
+            return this._strokeObject;
+        };
+
+        me.GetLineWidth = function() {
+            return this._lineWidth;
+        };
 
         me.GetImage = function() {
             return this._image;
@@ -41,6 +50,15 @@
             console.log("Loaded");
         };
 
+        me.Set = function(O) {
+            this._fillObject = O.fillObject || this._fillObject;
+            this._strokeObject = O.strokeObject || this._strokeObject;
+            this._lineWidth    = O.lineWidth || this._lineWidth;
+            this._src = O.src || this._src;
+            this._image = O.image || this._image;             
+        };
+
+        me.Set( O );
         me.Load(me._src);
 
         return me;

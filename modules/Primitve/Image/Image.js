@@ -46,13 +46,18 @@
                     var ctx = ctxRep._ctx;
 
                     ctx.save();
-                        ctx.beginPath();
+                        //ctx.beginPath();
                             params = this._mvMatrix.GetTransformParams();
                             ctx.setTransform(params.a, params.b, params.c, params.d, params.e, params.f);
                             ctx.drawImage(ctxRep.GetImage(), 0,0, intRep.GetWidth(), intRep.GetHeight());
-                        ctx.closePath();
-                    ctx.stroke();
-                    ctx.fill();
+                       // ctx.closePath();
+
+                    // ctx.fillStyle = ctxRep.GetFillObject();
+                    // ctx.strokeStyle = ctxRep.GetStrokeObject();
+                    // ctx.lineWidth = ctxRep.GetLineWidth();
+   
+                    //ctx.stroke();
+                    //ctx.fill();
                     ctx.restore();
                 };
                 this.Draw();
