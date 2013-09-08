@@ -28,7 +28,8 @@
             var dY = O.y - gY;
 
             this._mvMatrix.Translate( dX, dY );
-            this._globalRepresentation.Set( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
+
+            this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
 
             return this;
         };
@@ -39,7 +40,8 @@
             gizmo.Filter(O.y,"Number");
 
             this._mvMatrix.Translate( O.x, O.y );
-            this._globalRepresentation.Set( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
+
+            this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
 
             return this;
         };
@@ -55,7 +57,7 @@
             this._mvMatrix.Rotate( radAngle );
             this._mvMatrix.Translate( O.x, O.y );
             
-            this._globalRepresentation.Set( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
+            this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
 
             return this;
         };
@@ -74,7 +76,7 @@
             this._mvMatrix.Scale( O.x, O.y );
             this._mvMatrix.Translate( dX, dY );
 
-            this._globalRepresentation.Set( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
+            this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
 
             return this;
         };
@@ -86,7 +88,7 @@
 
             this._mvMatrix.Scos( O.x, O.y );
 
-            this._globalRepresentation.Set( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
+            this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
 
             return this;
         };
@@ -114,10 +116,10 @@
             return this._globalRepresentation.HasPoint(O.x, O.y);
         };
 
-        me.Set = function(O) {
-            this._internalRepresentation.Set( O );
-            this._2dContextRepresentation.Set( O ); 
-            this._globalRepresentation.Set( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
+        me.Update = function(O) {
+            this._internalRepresentation.Update( O );
+            this._2dContextRepresentation.Update( O ); 
+            this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
 
         };
 

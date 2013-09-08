@@ -1,9 +1,9 @@
 (function(window) {
-    var Rect2dContextRepresentation = function(O) {
+    var Rect2dContextRepresentation = function() {
 
-        gizmo.Filter(O,"Object");
+        var me = ArmContext.C2dContextRepresentation();
 
-        var me = ArmContext.C2dContextRepresentation( O );
+        me.parentUpdate = me.Update ? me.Update : null;
         
         // View properties
         me._fillObject = "#ff0000";
@@ -22,14 +22,14 @@
             return this._lineWidth;
         };
 
-        me.Set = function(O) {
+        me.Update = function(O) {
+            if(this.parentUpdate) {    this.parentUpdate( O );    };
+
             me._fillObject = O.fillObject || me._fillObject;
             me._strokeObject = O.strokeObject || me._strokeObject;
             me._lineWidth    = O.lineWidth || me._lineWidth;
              
         };
-
-        me.Set( O );
 
         return me;
     };

@@ -1,5 +1,5 @@
 (function(window) {
-    var RectGlobalRepresentation = function(internalRepresentation, c2dContextRepresentation, mvMatrix) {
+    var RectGlobalRepresentation = function() {
 
         var me = ArmContext.GlobalRepresentation();
 
@@ -57,8 +57,6 @@
                 CTX.restore();
   
         };
-
-        me.Set( internalRepresentation, c2dContextRepresentation, mvMatrix );
 
         return me;
 

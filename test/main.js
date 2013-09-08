@@ -16,11 +16,16 @@ window.onload = function() {
 
     A = new ArmContext.Rect({layer: layer1, width : 150, height: 150});
     console.log(A);
-    B = new ArmContext.Image({layer: layer1, src: "img/gras.jpg", width : 100, height: 100});
-    console.log(B);
+    var Image0 = new Image();
+    Image0.src = "img/gras.jpg";
+    Image0.onload = function() {
+        B = new ArmContext.Image({layer: layer1, image: Image0, width : 100, height: 100});
+        console.log(B);
+        B.TranslateTo({x:x, y:y+100});
 
+    }
+    
     // A.TranslateTo({x:x, y:y});
-    B.TranslateTo({x:x, y:y+100});
     
     //A.Scale({x: 1.5, y:1});
     // B.Scale({x: 1.5, y:1});

@@ -7,7 +7,7 @@
  */
 
 (function(window) {
-    var C2dContextRepresentation = function(O) {
+    var C2dContextRepresentation = function() {
 
         var me = {};
 
@@ -30,7 +30,7 @@
         me._boundingBox = {};
         me._pictureUnderPrimitive = {};
 
-        me.Set = function(O) {
+        me.Update = function(O) {
             this._ctx = O.ctx || this._ctx;
             this._layer = O.layer || this._layer;
             this._ctx = this._layer ? this._layer.GetCtx() : this._ctx;
@@ -88,8 +88,6 @@
             console.log("Method have not realisation");
 
         };
-
-        me.Set( O );
 
         return me;
     };

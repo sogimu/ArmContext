@@ -18,20 +18,20 @@
  */
 
 (function(window) {
-    var Rect = function(O) {
+    var Rect = function( O ) {
 
         gizmo.Filter(O,"Object");
 
         var me = ArmContext.Primitie();
 
         // Инициализация внутреннего представления
-        me._internalRepresentation = ArmContext.RectInternalRepresentation( O );
+        me._internalRepresentation = ArmContext.RectInternalRepresentation();
 
         // Инициализация canvas представления
-        me._2dContextRepresentation = ArmContext.Rect2dContextRepresentation( O );
+        me._2dContextRepresentation = ArmContext.Rect2dContextRepresentation();
 
         // Инициализация глобального представления примитива
-        me._globalRepresentation = ArmContext.RectGlobalRepresentation(me._internalRepresentation  , me._2dContextRepresentation, me._mvMatrix );
+        me._globalRepresentation = ArmContext.RectGlobalRepresentation();
 
         me.Draw = function() {
             var ctxRep = this._2dContextRepresentation;
@@ -65,10 +65,12 @@
 
         };
 
+        me.Update( O );
+
         return me;
 
     };
 
     window.ArmContext.Rect = Rect;
 
-})(window);
+})(window);     

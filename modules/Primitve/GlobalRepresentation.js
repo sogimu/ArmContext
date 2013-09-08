@@ -35,7 +35,7 @@
             return this._points = O;
         };
 
-        me.Set = function(internalRepresentation, C2dContextRepresentation, mvMatrix) {
+        me.Update = function(internalRepresentation, C2dContextRepresentation, mvMatrix) {
             gizmo.Filter(internalRepresentation,"Object");
             gizmo.Filter(C2dContextRepresentation,"Object");
             gizmo.Filter(mvMatrix,"Object");
@@ -43,6 +43,12 @@
             this.SetPoints( internalRepresentation.GetPoints() );
             this.SetMatrixOfPoints( this.GetMatrixOfPoints().x(mvMatrix.GetMatrix()) );
             
+            this.UpdatePolygone();
+
+            return this;
+        };
+
+        me.UpdatePolygone = function() {
             // polygone updating
             arrVectors = [];
             var transformedPoints = this.GetPoints();
@@ -51,10 +57,10 @@
             }
             this._polygone = new gizmo.Math.Polygone(arrVectors);
 
-            return this;
+            return this;  
         };
 
-       me.HasPoint = function( x, y ) {
+        me.HasPoint = function( x, y ) {
             gizmo.Filter(x,"Number");
             gizmo.Filter(y,"Number");
 

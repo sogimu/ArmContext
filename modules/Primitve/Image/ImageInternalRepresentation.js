@@ -1,9 +1,10 @@
 (function(window) {
-    var ImageInternalRepresentation = function(O) {
+    var ImageInternalRepresentation = function() {
+        
+        var me = new ArmContext.InternalRepresentation();
 
-        gizmo.Filter(O,"Object");
-
-        var me = new ArmContext.InternalRepresentation({});
+        this._width = 10;
+        this._height = 10;
 
         me.GetWidth = function() {
             return this._width;
@@ -32,7 +33,7 @@
             return this._points;
         };
 
-        me.Set = function(O) {
+        me.Update = function(O) {
             this._width = O.width || this._width;
             this._height = O.height || this._height;
 
@@ -43,8 +44,6 @@
                 [0                   ,this._height,1]            
                 ] );
         };
-
-        me.Set({width: O.width || 10, height: O.height || 10 });
 
         return me;
     }

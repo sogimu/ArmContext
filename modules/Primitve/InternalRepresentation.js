@@ -7,9 +7,7 @@
  */
 
 (function(window) {
-    var InternalRepresentation = function(O) {
-
-        gizmo.Filter(O,"Object");
+    var InternalRepresentation = function() {
 
         var me = {};
 
