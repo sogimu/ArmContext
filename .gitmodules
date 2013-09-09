@@ -1,0 +1,3 @@
+[submodule "lib/Gizmo"]
+	path = lib/Gizmo
+	url = https://github.com/sogimu/Gizmo.git
