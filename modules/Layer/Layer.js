@@ -19,6 +19,16 @@
 			return this._ctx;
 		};
 
+		me.SetName = function( O ) {
+			gizmo.Filter(O,"String");
+			this._name = O;
+		};
+
+		me.GetName = function() {
+			return this._name;
+		};
+
+
 		me.SetContainerElement = function( O ) {
 			// gizmo.Filter(O,"HTMLBodyElement");
 			this._containerElement = O;
@@ -29,59 +39,51 @@
 			this._canvasElement = O;
 		};
 
-		me.SetName = function() {
-			gizmo.Filter(O,"Object");
-			this._canvasElemetName = O;			
-		}
+
+		me.Init = function() {
+			var container;
+			if(this._containerElementName == null) {
+				container = document.getElementsByTagName("body")[0];
+			} else {
+				container = document.getElementById(this._containerElementName);
+			}
+			
+			var canvas = document.createElement('canvas');
+			canvas.width = this._width;
+			canvas.height = this._height;
+			canvas.id = this._canvasElemetName;
+			canvas.style.position = 'absolute';
+			container.appendChild( canvas );
+			var ctx = canvas.getContext('2d');
+
+			this.SetName( this._canvasElementName );
+			this.SetContainerElement( container );
+			this.SetCanvasElement( canvas );
+			this.SetCtx( ctx );
+
+		};
 
 		me.Set = function( O ) {
-			var canvasElemetName = O.name || this._canvasElemetName;
-			var containerElementName = O.container || this._containerElementName;
-			var width = O.width || this._width;
-			var height = O.height || this._height;
-			var left = O.left || this._left;
-			var top = O.top || this._top;
+			this.SetName( O.name || this.GetName() );
+			if(document.getElementById( this.GetName() ) == null) {
+				me._canvasElementName = this.GetName();
+			} else {
+				me._canvasElementName = this.GetName() + "." + ArmContext.GetNewUnicalNumber();
+			}			
+			this._containerElementName = O.container || this._containerElementName;
+			this._width = O.width || this._width;
+			this._height = O.height || this._height;
+			this._left = O.left || this._left;
+			this._top = O.top || this._top;
+			this._zindex = O.zindex || this._zindex;
+ 
 
-			this.Init( containerElementName, canvasElemetName, width, height, left, top );
+			this.Init();
 		};
-
-		me.Init = function( containerElementName, canvasElemetName, width, height, left, top) {
-			// try {
-				var container;
-				if(containerElementName == null) {
-					container = document.getElementsByTagName("body")[0];
-				} else {
-					container = document.getElementById(containerElementName);
-				}
-				
-				var canvas = document.createElement('canvas');
-				canvas.width = width;
-				canvas.height = height;
-				canvas.id = canvasElemetName;
-				canvas.style.position = 'absolute';
-				container.appendChild( canvas );
-				var ctx = canvas.getContext('2d');
-
-				this.SetName( canvasElemetName );
-				this.SetContainerElement( container );
-				this.SetCanvasElement( canvas );
-				this.SetCtx( ctx );
-			// };
-
-			// catch(e) {
-			// 	console.log("Same error into Method Init of class Layer!");
-			// };
-		};
-
 
 		me._defaultName = "Layer";
 		me._ctx = null;
-
-	        	var layerName = me.GetDefaultName() + ArmContext.GetNewUnicalNumber();
-		if(document.getElementById(layerName) == null) {
-			me._canvasElemetName = layerName;
-		};
-	 		
+		me._name = me.GetDefaultName() + ArmContext.GetNewUnicalNumber();	 		
 		me._canvasElement = null;
 		me._containerElement = null;
 		me._width = 500;

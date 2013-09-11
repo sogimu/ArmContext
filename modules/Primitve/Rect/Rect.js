@@ -45,18 +45,39 @@
                     ctx.rect(0,0, intRep.GetWidth(), intRep.GetHeight());
                 ctx.closePath();
 
-            ctx.fillStyle = ctxRep.GetFillObject();
-            ctx.strokeStyle = ctxRep.GetStrokeObject();
-            ctx.lineWidth = ctxRep.GetLineWidth();
-
-            ctx.globalAlpha = ctxRep.GetGlobalAlpha();
-            ctx.shadowColor = ctxRep.GetShadowColor();
-//            ctx.shadowBlur = ctxRep.GetShadowBlur();
-            ctx.shadowOffsetX = ctxRep.GetShadowOffsetX();
-            ctx.shadowOffsetY = ctxRep.GetShadowOffsetY();
-            // ctx.lineCap = ctxRep.GetLineCap();
-            // ctx.lineDash = ctxRep.GetLineDash();
-            // ctx.lineJoin = ctxRep.GetLineJoin();                    
+            if(ctxRep.GetFillObject() != "default") {
+                ctx.setFillColor( ctxRep.GetFillObject() );
+            }
+            if(ctxRep.GetStrokeObject() != "default") {
+                ctx.setStrokeColor( ctxRep.GetStrokeObject() );
+            }
+            if(ctxRep.GetLineWidth() != "default") {
+                ctx.setLineWidth( ctxRep.GetLineWidth() );
+            }
+            if(ctxRep.GetGlobalAlpha() != "default") {
+                ctx.setAlpha( ctxRep.GetGlobalAlpha() );
+            }
+            if(ctxRep.GetShadowColor() != "default") {
+                ctx.shadowColor = ctxRep.GetShadowColor();
+            }
+            if(ctxRep.GetShadowBlur() != "default") {
+                ctx.shadowBlur = ctxRep.GetShadowBlur();
+            }
+            if(ctxRep.GetShadowOffsetX() != "default") {
+                ctx.shadowOffsetX = ctxRep.GetShadowOffsetX();
+            }
+            if(ctxRep.GetShadowOffsetY() != "default") {
+                ctx.shadowOffsetY = ctxRep.GetShadowOffsetY();
+            }
+            if(ctxRep.GetLineCap() != "default") {
+                ctx.setLineCap( ctxRep.GetLineCap() );
+            }
+            if(ctxRep.GetLineDash() != "default") {
+                ctx.setLineDash( ctxRep.GetLineDash() );
+            }
+            if(ctxRep.GetLineJoin() != "default") {
+                ctx.setLineJoin( ctxRep.GetLineJoin() );
+            }                    
 
             ctx.stroke();
             ctx.fill();

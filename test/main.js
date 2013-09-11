@@ -1,6 +1,6 @@
 window.onload = function() {
 
-    var layer1 = ArmContext.Layer({name: "layer1", container: "container"});
+    layer1 = ArmContext.Layer({name: "layer1", container: "container"});
     CTX = layer1._ctx;
     x=250;
     y=50;
@@ -14,7 +14,7 @@ window.onload = function() {
     Xs=350;
     Ys=100;
 
-    A = new ArmContext.Rect({layer: layer1, width : 150, height: 150});
+    A = new ArmContext.Rect({layer: layer1, width : 150, height: 150, lineDash: [1,2,3], lineWidth: 7, globalAlpha: 0.5, strokeObject: "#ff0000", fillObject: "#00ff00", shadowOffsetX: 15, shadowOffsetY: 15, shadowColor: "#0000ff"});
     console.log(A);
     var Image0 = new Image();
     Image0.src = "img/gras.jpg";
