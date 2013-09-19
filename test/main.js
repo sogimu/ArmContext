@@ -15,25 +15,27 @@ window.onload = function() {
     Ys=100;
 
     A = new ArmContext.Rect({layer: layer1, width : 150, height: 150, lineDash: [1,2,3], lineWidth: 7, globalAlpha: 0.5, strokeObject: "#ff0000", fillObject: "#00ff00", shadowOffsetX: 15, shadowOffsetY: 15, shadowColor: "#0000ff", zindex: 23});
+    A.name = "A";
     console.log(A);
     var Image0 = new Image();
     Image0.src = "img/gras.jpg";
     Image0.onload = function() {
         B = new ArmContext.Image({layer: layer1, image: Image0, width : 100, height: 100});
+        B.name = "B";
         console.log(B);
         B.TranslateTo({x:x, y:y+100});
 
-    }
+    
     layer1.Start();    
     
     A.TranslateTo({x:x, y:y});
     
-    A.Scale({x: 1.5, y:1});
+    A.Scale({x: 0.5, y:1});
     // B.Scale({x: 1.5, y:1});
     
     A.Rotate({gradAngle: 15, x:X, y:Y});
 
-    setInterval(function() {
+    //setInterval(function() {
         A.Rotate({gradAngle: 15, x:X, y:Y});
         B.Rotate({gradAngle: 1, x:X, y:Y});
     
@@ -80,19 +82,45 @@ window.onload = function() {
     //     // A.Draw();
     //     // B.Draw();
 
-    //     // A._debug.ShowDebugInfo(CTX);
+        // A._debug.ShowDebugInfo(CTX);
         // A._globalRepresentation.ShowPoints(CTX);
         // B._globalRepresentation.ShowPoints(CTX);
 
     //     // A._internalRepresentation.ShowPoints(CTX);
         // B._internalRepresentation.ShowPoints(CTX);
                          
-    }, 1000);
+    //}, 32);
     
-    layer1._canvasElement.onmousemove = function(e) {
-        if(B.HasPoint({x: e.offsetX, y: e.offsetY})) {
-            console.log("Win!");
+    // layer1._canvasElement.onmousemove = function(e) {
+    //     // if(A.HasPoint({x: e.offsetX, y: e.offsetY})) {
+    //     //     console.log("Win!");
+
+    //     // }
+    //     lastObj = null;
+    //     var tmpObj = layer1.GetTopestPrimitiveUnderPoint({x: e.offsetX, y: e.offsetY});
+    //     if(tmpObj != lastObj) {
+    //         lastObj = tmpObj;
+    //         console.log(lastObj.name);
+
+    //     }
+    // };
+
+    layer1.SetLisener("onMouseMove",function(e) {
+        // if(A.HasPoint({x: e.offsetX, y: e.offsetY})) {
+        //     console.log("Win!");
+
+        // }
+        lastObj = null;
+        var tmpObj = layer1.GetTopestPrimitiveUnderPoint({x: e.offsetX, y: e.offsetY});
+        if(tmpObj != lastObj) {
+            lastObj = tmpObj;
+            console.log(lastObj.name);
+
         }
-    };
+    });
+
+    layer1.ListenMouseEvents();
+
+}
 
 };

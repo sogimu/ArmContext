@@ -33,28 +33,80 @@
         	this._childs = gizmo.nativeSort({mas: this._childs, target: '<', field: '_2dContextRepresentation._zindex'});
         };
 
-		me.GetDefaultName = function() {
-			return this._defaultName;
-		};
+        me.SetLisener = function(name,func) {
+            gizmo.Filter(name,"String");
+            gizmo.Filter(func,"Function");
+            if(name && func) {
+            	if(this['_'+name]) {
+            		gizmo.Filter(this['_'+name], "Array");
+            		var index = 0;
+		            if( (index = this['_'+name].indexOf(func)) == -1) {
+	            		this['_'+name].push( func );
+
+		            } else {
+		            	console.log("This Function allredy added for event " + name + " of layer " + this.GetName());
+		            }
+            	} else {
+                	this['_'+name] = [];
+                	this.SetLisener(name, func);
+                }        
+            }
+
+            return this;
+        };
+
+        me.GetLisener = function(name) {
+            gizmo.Filter(name,"String");
+            if(this['_'+name]) {
+                return this['_'+name];        
+            };
+
+            return false;
+
+        };
+
+        me.GetTopestPrimitiveUnderPoint = function(O) {
+            gizmo.Filter(O,"Object");
+            gizmo.Filter(O.x,"Number");
+            gizmo.Filter(O.y,"Number");
+
+            for(var i=this._childs.length-1;i>=0;i--) {
+            	if(this._childs[i].IsLisened()) {
+            		if( this._childs[i].HasPoint(O) ) {
+            			return this._childs[i];
+            		}
+            	}
+            }
+
+            return null;
+
+        };
 
 		me.SetCtx = function( O ) {
 			gizmo.Filter(O,"CanvasRenderingContext2D");
 			this._ctx = O;	
 		};
 
-		me.GetCtx = function() {
-			return this._ctx;
-		};
-
 		me.SetName = function( O ) {
 			gizmo.Filter(O,"String");
 			this._name = O;
+		};
+		
+		me.GetCtx = function() {
+			return this._ctx;
 		};
 
 		me.GetName = function() {
 			return this._name;
 		};
+		
+		me.GetDefaultName = function() {
+			return this._defaultName;
+		};
 
+		me.GetCanvasElement = function() {
+			return this._canvasElement;
+		};
 
 		me.SetContainerElement = function( O ) {
 			// gizmo.Filter(O,"HTMLBodyElement");
@@ -65,6 +117,26 @@
 			gizmo.Filter(O,"HTMLCanvasElement");
 			this._canvasElement = O;
 		};
+
+        me.ListenMouseEvents = function() {
+        	var self = this;
+            this.GetCanvasElement().onmousedown = function(e) {
+            	self.__onMouseDown(e);
+            };
+            this.GetCanvasElement().onmouseup = function(e) {
+            	self.__onMouseUp(e);
+            };
+            this.GetCanvasElement().onmousemove = function(e) {
+            	self.__onMouseMove(e);
+            };
+        };
+
+        me.NotListenMouseEvents = function() {
+            this.GetCanvasElement().onmousedown = null;
+            this.GetCanvasElement().onmouseup = null;
+            this.GetCanvasElement().onmousemove = null;
+        };
+
 
 
 		me.Init = function() {
@@ -104,6 +176,44 @@
             };
         };
 
+        // event form mouse
+        me.__onMouseDown = function(e) {
+        	if(this._onMouseDown) {
+	        	gizmo.Filter(this._onMouseDown, "Array");
+	            for(var i in this._onMouseDown) {
+            	    this._onMouseDown[i](e);  
+	                  
+	            };
+        	};
+
+
+        };
+
+        me.__onMouseUp = function(e) {
+        	if(this._onMouseUp) {
+	        	gizmo.Filter(this._onMouseUp, "Array");
+	            for(var i in this._onMouseUp) {
+            	    this._onMouseUp[i](e);  
+	                  
+	            };
+        	};
+
+        }
+
+        me.__onMouseMove = function(e) {
+        	if(this._onMouseMove) {
+	        	gizmo.Filter(this._onMouseMove, "Array");
+	            for(var i in this._onMouseMove) {
+            	    this._onMouseMove[i](e);  
+	                  
+	            };
+        	};
+
+        };
+
+        me._onMouseDown = [];
+        me._onMouseUp = [];
+        me._onMouseMove = [];
 
 		me.Set = function( O ) {
 			this.SetName( O.name || this.GetName() );

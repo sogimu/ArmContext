@@ -16,6 +16,8 @@
         me._mvMatrix = ArmContext.MvMatrix();
         me._debug = ArmContext.Debug(me);
 
+        me._isLisened = true;
+
         me.TranslateTo = function(O) {
             gizmo.Filter(O,"Object");
             gizmo.Filter(O.x,"Number");
@@ -120,7 +122,16 @@
             this._internalRepresentation.Update( O );
             this._2dContextRepresentation.Update( O );
             this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
-            
+
+        };
+
+        me.SetLisened = function( O ) {
+            gizmo.Filter(O, "Boolean");
+            this._isLisened = O;
+        };
+
+        me.IsLisened = function() {
+            return this._isLisened;
         };
 
         return me;
