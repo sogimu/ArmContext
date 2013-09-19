@@ -22,13 +22,13 @@
 
         gizmo.Filter(O,"Object");
 
-        var me = ArmContext.Primitie();
+        var me = ArmContext.Primitive();
 
         // Инициализация внутреннего представления
         me._internalRepresentation = ArmContext.RectInternalRepresentation();
 
         // Инициализация canvas представления
-        me._2dContextRepresentation = ArmContext.Rect2dContextRepresentation();
+        me._2dContextRepresentation = ArmContext.Rect2dContextRepresentation(me);
 
         // Инициализация глобального представления примитива
         me._globalRepresentation = ArmContext.RectGlobalRepresentation();
@@ -83,6 +83,15 @@
             ctx.fill();
 
             ctx.restore();
+
+        };
+
+        me.Clear = function() {
+            var ctxRep = this._2dContextRepresentation;
+            var intRep = this._internalRepresentation;
+            var ctx = ctxRep.GetCtx();
+
+            ctx.clearRect(0,0,500,500);
 
         };
 

@@ -1,7 +1,9 @@
 (function(window) {
-    var Image2dContextRepresentation = function() {
+    var Image2dContextRepresentation = function(primitive) {
 
         var me = ArmContext.C2dContextRepresentation();
+
+        me._primitive = primitive;
 
         me.parentUpdate = me.Update ? me.Update : null;
 

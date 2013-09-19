@@ -22,13 +22,13 @@
 
         gizmo.Filter(O,"Object");
 
-        var me = ArmContext.Primitie();
+        var me = ArmContext.Primitive();
 
         // Инициализация внутреннего представления
         me._internalRepresentation = ArmContext.ImageInternalRepresentation();
 
         // Инициализация canvas представления
-        me._2dContextRepresentation = ArmContext.Image2dContextRepresentation();
+        me._2dContextRepresentation = ArmContext.Image2dContextRepresentation(me);
 
         // Инициализация глобального представления примитива
         me._globalRepresentation = ArmContext.ImageGlobalRepresentation();
@@ -42,6 +42,15 @@
                 ctx.setTransform(params.a, params.b, params.c, params.d, params.e, params.f);
                 ctx.drawImage(ctxRep.GetImage(), 0,0, intRep.GetWidth(), intRep.GetHeight());
             ctx.restore();
+        };
+
+        me.Clear = function() {
+            var ctxRep = this._2dContextRepresentation;
+            var intRep = this._internalRepresentation;
+            var ctx = ctxRep.GetCtx();
+
+            ctx.clearRect(0,0,500,500);
+
         };
 
         me.Update( O );

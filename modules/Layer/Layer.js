@@ -1,10 +1,37 @@
 
 (function(window) {
-	var Layer = function(O) {
+	var Layer = function( O ) {
 
 		gizmo.Filter(O,"Object");
 
 		var me = {};
+
+        me.AddPrimitive = function( O ) {
+            gizmo.Filter(O,"Object");
+            this._childs.push(O);
+
+            this.SortByZindex();
+        };
+
+        me.RemovePrimitive = function( O ) {
+            gizmo.Filter(O,"Object");
+            var index = 0;
+            if( (index = this._childs.indexOf(O)) != -1) {
+                delete( this._childs[ index ] );
+            };
+        };
+
+        me.Start = function() {
+        	this._loop.Start();
+        };
+
+        me.Stop = function() {
+        	this._loop.Stop();
+        };
+
+        me.SortByZindex = function() {
+        	this._childs = gizmo.nativeSort({mas: this._childs, target: '<', field: '_2dContextRepresentation._zindex'});
+        };
 
 		me.GetDefaultName = function() {
 			return this._defaultName;
@@ -12,7 +39,7 @@
 
 		me.SetCtx = function( O ) {
 			gizmo.Filter(O,"CanvasRenderingContext2D");
-			this._ctx = O;
+			this._ctx = O;	
 		};
 
 		me.GetCtx = function() {
@@ -63,6 +90,21 @@
 
 		};
 
+        me.__draw = function() {
+            for(var i in this._childs) {
+                this._childs[i].Draw();
+            }
+            
+        };
+
+        me.__clear = function() {
+            //for(var i=0;i<this._childs.length;i++) {            
+            for(var i=this._childs.length-1;i>=0;i--) {
+                this._childs[i].Clear();
+            };
+        };
+
+
 		me.Set = function( O ) {
 			this.SetName( O.name || this.GetName() );
 			if(document.getElementById( this.GetName() ) == null) {
@@ -76,7 +118,7 @@
 			this._left = O.left || this._left;
 			this._top = O.top || this._top;
 			this._zindex = O.zindex || this._zindex;
- 
+			this._fps = O.fps || this._fps;
 
 			this.Init();
 		};
@@ -90,7 +132,19 @@
 		me._height = 500;
 		me._left = 0;
 		me._top = 0;
+		me._fps = 0;
 
+		me._childs = [];
+
+		me._loop = new ArmContext.Loop({
+			"stepFunc": (function(O) {
+        					return function() {
+				            	O.__clear();
+					            O.__draw();                            
+					        };
+					    })(me),
+			"fps": me._fps
+		});
 
 		me.Set( O );
 

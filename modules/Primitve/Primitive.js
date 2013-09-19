@@ -7,7 +7,7 @@
  */
 
 (function(window) {
-    var Primitie = function() {
+    var Primitive = function() {
         var me = {};
 
         me._internalRepresentation = null;
@@ -118,15 +118,15 @@
 
         me.Update = function(O) {
             this._internalRepresentation.Update( O );
-            this._2dContextRepresentation.Update( O ); 
+            this._2dContextRepresentation.Update( O );
             this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
-
+            
         };
 
         return me;
 
     };
 
-    window.ArmContext.Primitie = Primitie;
+    window.ArmContext.Primitive = Primitive;
 
 })(window);
