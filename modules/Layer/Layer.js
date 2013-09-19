@@ -230,6 +230,8 @@
 			this._zindex = O.zindex || this._zindex;
 			this._fps = O.fps || this._fps;
 
+			this._loop.Set( O );
+
 			this.Init();
 		};
 

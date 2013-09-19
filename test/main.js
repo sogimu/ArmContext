@@ -1,6 +1,6 @@
 window.onload = function() {
 
-    layer1 = ArmContext.Layer({name: "layer1", container: "container", fps: 15});
+    layer1 = ArmContext.Layer({name: "layer1", container: "container", fps: 1});
     CTX = layer1._ctx;
     x=250;
     y=50;
@@ -35,7 +35,7 @@ window.onload = function() {
     
     A.Rotate({gradAngle: 15, x:X, y:Y});
 
-    //setInterval(function() {
+    setInterval(function() {
         A.Rotate({gradAngle: 15, x:X, y:Y});
         B.Rotate({gradAngle: 1, x:X, y:Y});
     
@@ -89,7 +89,7 @@ window.onload = function() {
     //     // A._internalRepresentation.ShowPoints(CTX);
         // B._internalRepresentation.ShowPoints(CTX);
                          
-    //}, 32);
+    }, 32);
     
     // layer1._canvasElement.onmousemove = function(e) {
     //     // if(A.HasPoint({x: e.offsetX, y: e.offsetY})) {

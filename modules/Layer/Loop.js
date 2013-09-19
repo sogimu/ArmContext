@@ -10,20 +10,8 @@
         me.Start = function() {
 	        if(this._isRuning) {
 	            this.Stop();
-	            // this.NotListenMouseKeyboardEvents();
 
 	        };
-
-	        // this.ListenMouseKeyboardEvents();
-
-	        // var stepFunc = (function(O) {
-	        //     return function() {
-	        //         O.__clear();
-	        //         O.__draw();                            
-	        //     };
-	        // })(this);
-
-	        // this._stepFunc();
 	        
 	        this._onEachFrame( this._stepFunc );
 
@@ -34,9 +22,8 @@
 
         me.Stop = function() {
             if(this._isRuning) {
-                    // armlib.NotListenMouseKeyboardEvents();
-                    this._cancelAnimationFrame.call(window,this._request);
-                    this._isRuning = false;
+                this._cancelAnimationFrame.call(window,this._request);
+                this._isRuning = false;
             };
         };
 
