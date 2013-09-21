@@ -8,17 +8,19 @@
 
         me.AddPrimitive = function( O ) {
             gizmo.Filter(O,"Object");
-            this._childs.push(O);
+            // this._childs.push(O);
 
-            this.SortByZindex();
+            // this.SortByZindex();
+            this._primitives.Add( O );
         };
 
         me.RemovePrimitive = function( O ) {
             gizmo.Filter(O,"Object");
-            var index = 0;
-            if( (index = this._childs.indexOf(O)) != -1) {
-                delete( this._childs[ index ] );
-            };
+            // var index = 0;
+            // if( (index = this._childs.indexOf(O)) != -1) {
+            //     delete( this._childs[ index ] );
+            // };
+        	return this._primitives.Remove( O );
         };
 
         me.Start = function() {
@@ -29,9 +31,9 @@
         	this._loop.Stop();
         };
 
-        me.SortByZindex = function() {
-        	this._childs = gizmo.nativeSort({mas: this._childs, target: '<', field: '_2dContextRepresentation._zindex'});
-        };
+        // me.SortByZindex = function() {
+        // 	this._childs = gizmo.nativeSort({mas: this._childs, target: '<', field: '_2dContextRepresentation._zindex'});
+        // };
 
         me.SetLisener = function(name,func) {
             gizmo.Filter(name,"String");
@@ -70,17 +72,22 @@
             gizmo.Filter(O.x,"Number");
             gizmo.Filter(O.y,"Number");
 
-            for(var i=this._childs.length-1;i>=0;i--) {
-            	if(this._childs[i].IsLisened()) {
-            		if( this._childs[i].HasPoint(O) ) {
-            			return this._childs[i];
-            		}
-            	}
-            }
+            // for(var i=this._childs.length-1;i>=0;i--) {
+            // 	if(this._childs[i].IsLisened()) {
+            // 		if( this._childs[i].HasPoint(O) ) {
+            // 			return this._childs[i];
+            // 		}
+            // 	}
+            // }
 
-            return null;
+            // return null;
+            return this._primitives.GetIntersectionGroups( O );
 
         };
+
+	    me.SortByZindex = function() {
+	    	this._primitives.SortByZindex();
+	    };
 
 		me.SetCtx = function( O ) {
 			gizmo.Filter(O,"CanvasRenderingContext2D");
@@ -162,18 +169,74 @@
 
 		};
 
+        me.__calculateClearAndDrawQuane = function() {  //0 < x < n
+	  		var changedPrimitives = this._childs.GetChanged(); // n
+    		var intersectionGroups = changedPrimitives.GetIntersectionGroups(); // [0..n]^2
+    		for(var i in intersectionGroups) { // [o..n/2]
+    			var intersectionedPrimitives = intersectionGroups[i];
+
+    			var oneBoundingBox = intersectionedPrimitives.GetBoundingBox(); // [0..n]*[0..n/2]
+    			var drawNeededPrimitives = this._childs.GetIntersectionedPrimitives( oneBoundingBox ); // n*[0..n/2]
+    			this._clearAreas.Add( oneBoundingBox );
+    			this._drawNeededPrimitives.Add( drawNeededPrimitives );
+
+    		}
+
+    		// n+n*n+n/2*(n+n) = n+2*(n^2); 10обек = 210 итер
+    		// - Большая сложность
+    		// + Малая область очистки экрана; =v2/2 
+    		// - Несколько отчисток экрана; накладные рассходы 
+    		// + Не большое кол-во перересовок
+
+    		// second variant
+
+			var intersectionPrimitives = this._childs.GetIntersectionedPrimitives(); // n^2
+			var globalBoundiingBox = intersectionPrimitives.GetBoundingBox(); // n
+			var drawNeededPrimitives = this._childs.GetIntersectionedPrimitives( globalBoundingBox ); // n
+
+			// n*n+2n; 10обек = 120 итер
+			// + Малая сложность
+			// - Большие области для очистки экрана; =v1*2
+			// + Одна отчистка за иттерацию; нет накладных рассходов
+			// - Большое количество прорисовок
+
+
+			// (v1i/vi2) (v1a/v1a*2) (0.1/0.001) (v1d/v1d*5) 
+			// ~1.8*15			0.5*10    100*0.1    0.2 * 5
+
+			// 27                 5        10        0.1 
+			// 15                 10       0.1
+
+        };
+
         me.__draw = function() {
-            for(var i in this._childs) {
-                this._childs[i].Draw();
-            }
+            // for(var i in this._drawNeededPrimitives) {
+            // 	var drawNeededPrimitiv = this._drawNeededPrimitives[i];
+            //     drawNeededPrimitiv.Draw();
+            // }
+            // for(var i in this._childs) {
+            //     this._childs[i].Draw();
+            // };
+			var primitives = this._primitives.GetArray();
+            for(var primitive in primitives) {
+            	primitives[primitive].Draw();
+            };
             
         };
 
-        me.__clear = function() {
-            //for(var i=0;i<this._childs.length;i++) {            
-            for(var i=this._childs.length-1;i>=0;i--) {
-                this._childs[i].Clear();
+        me.__clear = function() {            
+            // for(var i in this._clearAreas) {
+            // 	var clearArea = clearAreas[i];
+            // 	this.GetCtx().clearRect( clearArea.x,clearArea.y,clearArea.width, clearArea.height );
+            // };            
+            // for(var i in this._childs) {
+            //     this._childs[i].Clear();
+            // };
+            var primitives = this._primitives.GetArray();
+            for(var primitive in primitives) {
+            	primitives[primitive].Clear();
             };
+
         };
 
         // event form mouse
@@ -198,7 +261,7 @@
 	            };
         	};
 
-        }
+        };
 
         me.__onMouseMove = function(e) {
         	if(this._onMouseMove) {
@@ -210,10 +273,6 @@
         	};
 
         };
-
-        me._onMouseDown = [];
-        me._onMouseUp = [];
-        me._onMouseMove = [];
 
 		me.Set = function( O ) {
 			this.SetName( O.name || this.GetName() );
@@ -236,21 +295,33 @@
 		};
 
 		me._defaultName = "Layer";
-		me._ctx = null;
 		me._name = me.GetDefaultName() + ArmContext.GetNewUnicalNumber();	 		
-		me._canvasElement = null;
+		
 		me._containerElement = null;
+		me._canvasElement = null;
+		me._ctx = null;
+		
 		me._width = 500;
 		me._height = 500;
 		me._left = 0;
 		me._top = 0;
+		
 		me._fps = 0;
 
-		me._childs = [];
+        me._onMouseDown = [];
+        me._onMouseUp = [];
+        me._onMouseMove = [];
+
+        // me._childs = [];
+		me._primitives = new ArmContext.Primitives();
+
+		this._clearAreas = [];
+		this._drawNeededPrimitives = [];
 
 		me._loop = new ArmContext.Loop({
 			"stepFunc": (function(O) {
         					return function() {
+        						// O.__calculateClearAndDrawQuane();
 				            	O.__clear();
 					            O.__draw();                            
 					        };

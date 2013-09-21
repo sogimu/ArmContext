@@ -15,6 +15,7 @@
         me._globalRepresentation = null;
         me._mvMatrix = ArmContext.MvMatrix();
         me._debug = ArmContext.Debug(me);
+        me._boundingBox = null;
 
         me._isLisened = true;
 
@@ -116,6 +117,10 @@
             //console.log("Virtual method Has Point");
 
             return this._globalRepresentation.HasPoint(O.x, O.y);
+        };
+
+        me.GetBoundingBox = function() {
+            return this._globalRepresentation.GetBoundingBox();
         };
 
         me.Update = function(O) {
