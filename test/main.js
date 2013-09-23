@@ -1,6 +1,6 @@
 window.onload = function() {
 
-    layer1 = ArmContext.Layer({name: "layer1", container: "container", fps: 1});
+    layer1 = ArmContext.Layer({name: "layer1", container: "container", fps: 0});
     CTX = layer1._ctx;
     x=250;
     y=50;
@@ -89,7 +89,7 @@ window.onload = function() {
     //     // A._internalRepresentation.ShowPoints(CTX);
         // B._internalRepresentation.ShowPoints(CTX);
                          
-    }, 32);
+    }, 100  );
     
     // layer1._canvasElement.onmousemove = function(e) {
     //     // if(A.HasPoint({x: e.offsetX, y: e.offsetY})) {
