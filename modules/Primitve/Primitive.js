@@ -173,7 +173,7 @@
             // this._boundingBox.Update( this._globalRepresentation );
             // this.Update();
 
-            // return this;
+            return this;
         };
 
         me._scos = function(O) {

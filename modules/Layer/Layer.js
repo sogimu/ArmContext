@@ -241,8 +241,12 @@
             // }
 			var primitives = this._primitives.GetArray();
             for(var primitive in primitives) {
-            	primitives[primitive].Draw();
-
+            	// if(primitives[primitive].IsChanged()) {
+                    // if(primitives[primitive].name == "A") {
+                    //     console.log("Draw A!!!");
+                    // }
+                    primitives[primitive].Draw();
+                // }
             };
            
             
@@ -259,7 +263,13 @@
             // // };            
             var primitives = this._primitives.GetArray();
             for(var primitive in primitives) {
-            	primitives[primitive].Clear();
+                // if(primitives[primitive].IsChanged()) {
+                    // if(primitives[primitive].name == "A") {
+                        // console.log("Clear A!!!");
+                    // }
+                	primitives[primitive].Clear();
+                    // console.log(primitive + " Is Changed");
+                // }
             };
             // CTX.clearRect(0,0,1300,600);
 
@@ -268,7 +278,12 @@
         me.__update = function() {
             var primitives = this._primitives.GetArray();
             for(var primitive in primitives) {
-                primitives[primitive].Update();
+                primitives[primitive].Update();    
+                // if(primitives[primitive].IsChanged()) {
+                    // console.log(primitives[primitive].name + " Is Changed");
+                // } else {
+                    // console.log(primitives[primitive].name + " Is not Changed");
+                // }
             };
 
         };

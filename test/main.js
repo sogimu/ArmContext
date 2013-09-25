@@ -19,13 +19,16 @@ window.onload = function() {
     
 
     mas = [];
-    count = 200;
+    count = 2;
     for(var i=0;i<count;i++) {
-    // A = new ArmContext.Rect({layer: layer1, width : 150, height: 150, lineDash: [1,2,3]/*, lineWidth: 7*/, globalAlpha: 0.5, strokeObject: "#ff0000", fillObject: "#00ff00", /*shadowOffsetX: 15, shadowOffsetY: 15,*/ shadowColor: "#0000ff", zindex: 23});
+    A = new ArmContext.Rect({layer: layer1, width : 150, height: 150, lineDash: [1,2,3]/*, lineWidth: 7*/, globalAlpha: 0.5, strokeObject: "#ff0000", fillObject: "#00ff00", /*shadowOffsetX: 15, shadowOffsetY: 15,*/ shadowColor: "#0000ff", zindex: 23})
+    .TranslateTo({x: 200, y: 100})
+    A.name = "A";
     mas[i] = {elem: {}, speed: 1, point: {}};
     // mas[i].elem = new ArmContext.Rect({layer: layer1, width : 10, height: 15, /*lineDash: [1,2,3],*/ /*lineWidth: 7,*/ /*globalAlpha: 0.7,*/ /*strokeObject: "#ff0000",*/ fillObject: "#0000ff", /*shadowOffsetX: 15, shadowOffsetY: 15,*/ /*shadowColor: "#0000ff", zindex: 50*/});
     mas[i].elem = new ArmContext.Image({layer: layer1, image: Image0, width : 100, height: 100});
-    mas[i].speed = 15 - 30 *Math.random();
+    mas[i].elem.name = "Image "+i;
+    mas[i].speed = 1 - 2 *Math.random();
     mas[i].point = {x: 1300 *Math.random(), y: 600 * Math.random()};
 }
     // A.name = "A";
@@ -55,7 +58,7 @@ window.onload = function() {
         // C.Rotate({gradAngle: -1, x:X, y:Y});
         // B.Rotate({gradAngle: 1, x:X, y:Y});
             for(var i=0;i<count;i++) {
-        mas[i].elem.Rotate({gradAngle: mas[i].speed, x:mas[i].point.x, y:mas[i].point.y});
+        mas[i].elem.Rotate({gradAngle: mas[i].speed, x:100, y:mas[i].point.y});
 
 }
         // A.Scale({x: 0.99, y:1.01});
@@ -108,7 +111,7 @@ window.onload = function() {
     //     // A._internalRepresentation.ShowPoints(CTX);
         // B._internalRepresentation.ShowPoints(CTX);
         layer1.ReDraw();                 
-    }, 1 );
+    }, 10 );
     
     // layer1._canvasElement.onmousemove = function(e) {
     //     // if(A.HasPoint({x: e.offsetX, y: e.offsetY})) {
