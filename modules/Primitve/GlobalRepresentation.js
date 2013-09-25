@@ -7,10 +7,13 @@
  */
 
 (function(window) {
-    var GlobalRepresentation = function() {
+    var GlobalRepresentation = function(primitive) {
 
         var me = {};
 
+        // Ссылка на примитив-владелец объекта данного класса
+        me._primitive = primitive;
+        
         me._points = new $M( [
             [0,0,1]
         ] );
@@ -44,6 +47,8 @@
             this.SetMatrixOfPoints( this.GetMatrixOfPoints().x(mvMatrix.GetMatrix()) );
             
             this.UpdatePolygone();
+
+            // console.log("GlobalRepresentation.Update");
 
             return this;
         };

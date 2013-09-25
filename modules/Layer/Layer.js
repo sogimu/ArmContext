@@ -18,13 +18,13 @@
         	return this._primitives.Remove( O );
         };
 
-        me.Start = function() {
-        	this._loop.Start();
-        };
+        // me.Start = function() {
+        // 	this._loop.Start();
+        // };
 
-        me.Stop = function() {
-        	this._loop.Stop();
-        };
+        // me.Stop = function() {
+        // 	this._loop.Stop();
+        // };
 
         me.SortByZindex = function() {
             this._primitives.SortByZindex();
@@ -56,10 +56,9 @@
             gizmo.Filter(name,"String");
             if(this['_'+name]) {
                 return this['_'+name];        
-            };
-
-            return false;
-
+            } else {
+                return false;
+            }
         };
 
         me.GetTopestPrimitiveUnderPoint = function(O) {
@@ -155,18 +154,19 @@
 
 		};
 
-        me.__calculateClearAndDrawQuane = function() {  //0 < x < n
-	  		// var changedPrimitives = this._childs.GetChanged(); // n
-    	// 	var intersectionGroups = changedPrimitives.GetIntersectionGroups(); // [0..n]^2
-    	// 	for(var i in intersectionGroups) { // [o..n/2]
-    	// 		var intersectionedPrimitives = intersectionGroups[i];
+        me.CalculateClearAndDrawQuane = function() {  //0 < x < n
+	  		var changedPrimitives = this._primitives.GetChanged(); // n
+    		// var intersectionGroups = changedPrimitives.GetIntersectionGroups(); // [0..n]^2
+    		// for(var i in intersectionGroups) { // [o..n/2]
+    			// var intersectionedPrimitives = intersectionGroups[i];
 
-    	// 		var oneBoundingBox = intersectionedPrimitives.GetBoundingBox(); // [0..n]*[0..n/2]
-    	// 		var drawNeededPrimitives = this._childs.GetIntersectionedPrimitives( oneBoundingBox ); // n*[0..n/2]
-    	// 		this._clearAreas.Add( oneBoundingBox );
-    	// 		this._drawNeededPrimitives.Add( drawNeededPrimitives );
+    			var oneBoundingBox = /*intersectionedPrimitives*/changedPrimitives.GetOneBoundingBox(); // [0..n]*[0..n/2]
+    			// var primitivesNeededDrawing = this._primitives.GetIntersectionedPrimitives( oneBoundingBox ); // n*[0..n/2]
+    			// this._clearAreas.Add( oneBoundingBox );
+                this._clearAreas = oneBoundingBox;
+    			// this._primitivesNeededDrawing.Add( primitivesNeededDrawing );
 
-    	// 	}
+    		// }
 
     		// n+n*n+n/2*(n+n) = n+2*(n^2); 10обек = 210 итер
     		// - Большая сложность
@@ -195,34 +195,89 @@
 
         };
 
+        // me.FindClearAndDrawAreas = function() {
+        //     var ClearAreas = [];
+
+        //     var changedPrimitives = this._primitives.GetChanged(); // n
+        //     var intersectionGroups = changedPrimitives.GetIntersectionGroups(); // [0..n]^2
+        //     for(var i in intersectionGroups) { // [o..n/2]
+        //         var intersectionedPrimitives = intersectionGroups[i];
+
+        //         var oneBoundingBox = intersectionedPrimitives.GetBoundingBox(); // [0..n]*[0..n/2]
+        //         var drawNeededPrimitives = this._primitives.GetIntersectionedPrimitives( oneBoundingBox ); // n*[0..n/2]
+        //         this._clearAreas.Add( oneBoundingBox );
+        //         this._drawNeededPrimitives.Add( drawNeededPrimitives );
+
+        //     };
+
+        //     return ClearAreas;
+
+        // };
+
+        // me.FindPrimitivesNeededDrawing = function() {
+        //     var PrimitivesNeededDrawing = [];
+
+        //     var changedPrimitives = this._primitives.GetChanged(); // n
+        //     var intersectionGroups = changedPrimitives.GetIntersectionGroups(); // [0..n]^2
+        //     for(var i in intersectionGroups) { // [o..n/2]
+        //         var intersectionedPrimitives = intersectionGroups[i];
+
+        //         var oneBoundingBox = intersectionedPrimitives.GetBoundingBox(); // [0..n]*[0..n/2]
+        //         var drawNeededPrimitives = this._primitives.GetIntersectionedPrimitives( oneBoundingBox ); // n*[0..n/2]
+        //         this._clearAreas.Add( oneBoundingBox );
+        //         this._drawNeededPrimitives.Add( drawNeededPrimitives );
+
+        //     }
+
+        //     return PrimitivesNeededDrawing;
+            
+        // };
+
         me.__draw = function() {
-            // for(var i in this._drawNeededPrimitives) {
-            // 	var drawNeededPrimitiv = this._drawNeededPrimitives[i];
-            //     drawNeededPrimitiv.Draw();
+            // var primitivesNeededDrawing = this.FindPrimitivesNeededDrawing();
+            // var primitivesNeededDrawing = this._primitivesNeedingDrawing;
+            // for(var primitive in primitivesNeededDrawing) {
+            // 	primitivesNeededDrawing[primitive].Draw();
             // }
-            // for(var i in this._childs) {
-            //     this._childs[i].Draw();
-            // };
 			var primitives = this._primitives.GetArray();
             for(var primitive in primitives) {
             	primitives[primitive].Draw();
+
             };
+           
             
         };
 
-        me.__clear = function() {            
-            // for(var i in this._clearAreas) {
-            // 	var clearArea = clearAreas[i];
-            // 	this.GetCtx().clearRect( clearArea.x,clearArea.y,clearArea.width, clearArea.height );
-            // };            
-            // for(var i in this._childs) {
-            //     this._childs[i].Clear();
-            // };
+        me.__clear = function() {
+            // var clearAreas = this.FindClearAreas();
+            // var clearAreas = this._clearAreas;            
+            // for(var i in clearAreas) {
+            	// var clearArea = clearAreas[i];
+                // this.GetCtx().clearRect( clearArea.x,clearArea.y,clearArea.width, clearArea.height );
+             //    var points = clearAreas.GetOldPoints();
+            	// this.GetCtx().clearRect( points.point0.x,points.point0.y,points.width, points.height );
+            // // };            
             var primitives = this._primitives.GetArray();
             for(var primitive in primitives) {
             	primitives[primitive].Clear();
             };
+            // CTX.clearRect(0,0,1300,600);
 
+        };
+
+        me.__update = function() {
+            var primitives = this._primitives.GetArray();
+            for(var primitive in primitives) {
+                primitives[primitive].Update();
+            };
+
+        };
+
+        me.ReDraw = function() {
+            // this.CalculateClearAndDrawQuane();
+            this.__clear();
+            this.__draw();
+            this.__update();
         };
 
         // event form mouse
@@ -273,9 +328,9 @@
 			this._left = O.left || this._left;
 			this._top = O.top || this._top;
 			this._zindex = O.zindex || this._zindex;
-			this._fps = O.fps || this._fps;
+			// this._fps = O.fps || this._fps;
 
-			this._loop.Set( O );
+			// this._loop.Set( O );
 
 			this.Init();
 		};
@@ -292,7 +347,7 @@
 		me._left = 0;
 		me._top = 0;
 		
-		me._fps = 0;
+		// me._fps = 0;
 
         me._onMouseDown = [];
         me._onMouseUp = [];
@@ -301,19 +356,18 @@
         // me._childs = [];
 		me._primitives = new ArmContext.Primitives();
 
-		me._clearAreas = [];
-		me._drawNeededPrimitives = [];
-
-		me._loop = new ArmContext.Loop({
-			"stepFunc": (function(O) {
-        					return function() {
-        						// O.__calculateClearAndDrawQuane();
-				            	O.__clear();
-					            O.__draw();                            
-					        };
-					    })(me),
-			"fps": me._fps
-		});
+		// me._loop = new ArmContext.Loop({
+		// 	"stepFunc": (function(O) {
+  //       					return function() {
+  //       						// O.__calculateClearAndDrawQuane();
+  //                               O.__clear();
+  //                               O.__draw();
+  //                               O.__update();
+                                                            
+		// 			        };
+		// 			    })(me),
+		// 	"fps": me._fps
+		// });
 
 		me.Set( O );
 
