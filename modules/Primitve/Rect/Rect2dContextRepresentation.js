@@ -67,49 +67,67 @@
                 switch( name ) {
                     case "fillObject" : { 
                         this._fillObject  = O[name];
-                        this._onChanged ? this._onChanged.call(primitive) : null;
+                        if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
                     }; break;
                     
                     case "strokeObject" : {
                         this._strokeObject = O[name];
-                        this._onChanged ? this._onChanged.call(primitive) : null;
+                        if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
                     };
                     break;
 
                     case "lineWidth" : { 
                         this._lineWidth  = O[name];
-                        this._onChanged ? this._onChanged.call(primitive) : null;
+                        if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
                     }; break;
                     
                     case "lineDash" : {
                         this._lineDash = O[name];
-                        this._onChanged ? this._onChanged.call(primitive) : null;
+                        if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
                     };
                     break;
 
                     case "miterLimit" : { 
                         this._miterLimit  = O[name];
-                        this._onChanged ? this._onChanged.call(primitive) : null;
+                        if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
                     }; break;
                     
                     case "lineCap" : {
                         switch(O[name]) {
                             case "butt" : { 
                                 this._lineCap  = O[name];
-                                this._onChanged ? this._onChanged.call(primitive) : null;
+                                if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
                             }; break;
                             
                             case "round" : { 
                                 this._lineCap  = O[name];
-                                this._onChanged ? this._onChanged.call(primitive) : null;
+                                if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
                             }; break;
                             
                             case "square" : { 
                                 this._lineCap  = O[name];
-                                this._onChanged ? this._onChanged.call(primitive) : null;
+                                if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
                             }; break;
                         }
-                        this._onChanged ? this._onChanged.call(primitive) : null;
+                        if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
                     };
                     break;
 
@@ -117,20 +135,28 @@
                         switch(O[name]) {
                             case "miter" : { 
                                 this._lineJoin  = O[name];
-                                this._onChanged ? this._onChanged.call(primitive) : null;
+                                if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
                             }; break;
 
                             case "round" : { 
                                 this._lineJoin  = O[name];
-                                this._onChanged ? this._onChanged.call(primitive) : null;
+                                if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
                             }; break;
                             
                             case "bevel" : { 
                                 this._lineJoin  = O[name];
-                                this._onChanged ? this._onChanged.call(primitive) : null;
+                                if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
                             }; break;
                         };
-                        this._onChanged ? this._onChanged.call(primitive) : null;
+                        if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
                     };
                     break;
                 };

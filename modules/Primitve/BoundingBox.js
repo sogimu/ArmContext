@@ -129,7 +129,7 @@
 
         return me;
 
-    };0,0
+    };
 
     window.ArmContext.BoundingBox = BoundingBox;
 

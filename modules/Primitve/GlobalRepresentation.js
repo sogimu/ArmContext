@@ -48,8 +48,6 @@
             
             this.UpdatePolygone();
 
-            // console.log("GlobalRepresentation.Update");
-
             return this;
         };
 

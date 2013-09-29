@@ -152,6 +152,11 @@
 			this.SetCanvasElement( canvas );
 			this.SetCtx( ctx );
 
+            // Initializing fps counter (stats.js from mrdoob)
+            stats = new Stats();
+            stats.setMode( 0 );
+            document.body.appendChild( stats.domElement );
+
 		};
 
         me.CalculateClearAndDrawQuane = function() {  //0 < x < n
@@ -253,6 +258,7 @@
         };
 
         me.__clear = function() {
+            stats.begin();
             // var clearAreas = this.FindClearAreas();
             // var clearAreas = this._clearAreas;            
             // for(var i in clearAreas) {
@@ -285,6 +291,8 @@
                     // console.log(primitives[primitive].name + " Is not Changed");
                 // }
             };
+
+            stats.end();
 
         };
 

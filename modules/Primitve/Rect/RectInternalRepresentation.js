@@ -38,11 +38,15 @@
                 switch( name ) {
                     case "width" : { 
                         this._width  = O[name];
-                        this._onChanged ? this._onChanged.call(primitive) : null;
+                        if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
                     }; break;
                     case "height" : {
                         this._height = O[name];
-                        this._onChanged ? this._onChanged.call(primitive) : null;
+                        if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
                     };
                     break;
                 };
