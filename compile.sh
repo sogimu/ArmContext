@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# --compilation_level
-# WHITESPACE_ONLY
-# SIMPLE_OPTIMIZATIONS
-# ADVANCED_OPTIMIZATIONS
-
 NAME="armcontext"
 VERSION="0.5.0"
 RASHIR="js"
