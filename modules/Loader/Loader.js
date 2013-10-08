@@ -22,12 +22,18 @@
         me._isLoadedAllObjects = false;
         me._typies = ["image","song"];
 
-        me._AddNewObjectToLoadList = function(name, path, type) {
+        me.AddObject = function(name, path, type) {
+            gizmo.Filter("String", name);
+            gizmo.Filter("String", path);
+            gizmo.Filter("String", type);
+
             this._loadList.push({name: name, path: path, type: type, object: null, isLoaded: false});
 
         };
 
         me._onLoadObject = function(object) {
+            gizmo.Filter("Object", name);
+            
             this._countLoadedObjects++;
             if(this.__onLoadObject) {
                 var progress = (this._countLoadedObjects / this._loadList.length) * 100;
@@ -46,7 +52,7 @@
 
         };
 
-        me.Start = function(O) {
+        me.Start = function() {
             var Hadlers = [];
 
             var self = this;
@@ -132,19 +138,21 @@
         };
 
         me.Set = function(O) {
+            gizmo.Filter("Object", name);
+            
             var typies = this._typies;
             
             for(var type in O) {
                 switch( type ) {
                     case typies[0] : {
                         for (var name in O[ typies[0] ]) {
-                            this._AddNewObjectToLoadList( name, O[ typies[0] ][name], typies[0] );
+                            this.AddObject( name, O[ typies[0] ][name], typies[0] );
                         };
                     }; break;
                     
                     case typies[1] : {
                         for (var name in O[ typies[1] ]) {
-                            this._AddNewObjectToLoadList( name, O[ typies[1] ][name], typies[1] );
+                            this.AddObject( name, O[ typies[1] ][name], typies[1] );
                         };
                     };
                     break;
