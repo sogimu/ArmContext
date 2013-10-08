@@ -13,7 +13,7 @@
 (function(window) {
     var Loader = function( O ) {
 
-        gizmo.Filter(O,"Object");
+        gizmo.Filter(O, "Object");
 
         var me = {};
 
@@ -23,16 +23,16 @@
         me._typies = ["image","song"];
 
         me.AddObject = function(name, path, type) {
-            gizmo.Filter("String", name);
-            gizmo.Filter("String", path);
-            gizmo.Filter("String", type);
+            gizmo.Filter(name, "String");
+            gizmo.Filter(path, "String");
+            gizmo.Filter(type, "String");
 
             this._loadList.push({name: name, path: path, type: type, object: null, isLoaded: false});
 
         };
 
         me._onLoadObject = function(object) {
-            gizmo.Filter("Object", name);
+            gizmo.Filter(object, "Object");
             
             this._countLoadedObjects++;
             if(this.__onLoadObject) {
@@ -99,7 +99,8 @@
         };
 
         me.GetObject = function(name) {
-            gizmo.Filter(name,"String");
+            gizmo.Filter(name, "String");
+
             var haveObjectWithName = false;
             var objectIndex = -1;
 
@@ -127,8 +128,8 @@
         };
 
         me.SetLisener = function(name, func) {
-            gizmo.Filter(name,"String");
-            gizmo.Filter(func,"Function");
+            gizmo.Filter(name, "String");
+            gizmo.Filter(func, "Function");
             if(name && func) {
                 this['__' + name] = func;
             }
@@ -138,7 +139,7 @@
         };
 
         me.Set = function(O) {
-            gizmo.Filter("Object", name);
+            gizmo.Filter(O, "Object");
             
             var typies = this._typies;
             
