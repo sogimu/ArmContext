@@ -112,9 +112,9 @@
             var onmouseupCounter = 0
             var onmousemoveCounter = 0
 
-            var onmousedownFrec = 100
-            var onmouseupFrec = 100
-            var onmousemoveFrec = 100
+            var onmousedownFrec = 1
+            var onmouseupFrec = 1
+            var onmousemoveFrec = 10
             
             this.GetCanvasElement().onmousedown = function(e) {
                 if(onmousedownCounter++ == onmousedownFrec) {
