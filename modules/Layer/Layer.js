@@ -26,10 +26,6 @@
         // 	this._loop.Stop();
         // };
 
-        me.SortByZindex = function() {
-            this._primitives.SortByZindex();
-        };
-
         me.SetLisener = function(name,func) {
             gizmo.Filter(name,"String");
             gizmo.Filter(func,"Function");
@@ -112,14 +108,31 @@
 
         me.ListenMouseEvents = function() {
         	var self = this;
+            var onmousedownCounter = 0
+            var onmouseupCounter = 0
+            var onmousemoveCounter = 0
+
+            var onmousedownFrec = 100
+            var onmouseupFrec = 100
+            var onmousemoveFrec = 100
+            
             this.GetCanvasElement().onmousedown = function(e) {
-            	self.__onMouseDown(e);
+                if(onmousedownCounter++ == onmousedownFrec) {
+                	self.__onMouseDown(e);
+                    onmousedownCounter = 0;
+                }
             };
             this.GetCanvasElement().onmouseup = function(e) {
-            	self.__onMouseUp(e);
+                if(onmouseupCounter++ == onmouseupFrec) {
+                    self.__onMouseUp(e);
+                    onmouseupCounter = 0;
+                }
             };
             this.GetCanvasElement().onmousemove = function(e) {
-            	self.__onMouseMove(e);
+            	if(onmousemoveCounter++ == onmousemoveFrec) {
+                    self.__onMouseMove(e);
+                    onmousemoveCounter = 0;
+                }
             };
         };
 
