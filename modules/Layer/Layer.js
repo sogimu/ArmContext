@@ -114,7 +114,7 @@
 
             var onmousedownFrec = 1
             var onmouseupFrec = 1
-            var onmousemoveFrec = 10
+            var onmousemoveFrec = 3
             
             this.GetCanvasElement().onmousedown = function(e) {
                 if(onmousedownCounter++ == onmousedownFrec) {
@@ -123,16 +123,10 @@
                 }
             };
             this.GetCanvasElement().onmouseup = function(e) {
-                if(onmouseupCounter++ == onmouseupFrec) {
-                    self.__onMouseUp(e);
-                    onmouseupCounter = 0;
-                }
+                self.__onMouseUp(e);    
             };
             this.GetCanvasElement().onmousemove = function(e) {
-            	if(onmousemoveCounter++ == onmousemoveFrec) {
-                    self.__onMouseMove(e);
-                    onmousemoveCounter = 0;
-                }
+        	    self.__onMouseMove(e);    
             };
         };
 
