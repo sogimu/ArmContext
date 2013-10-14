@@ -18,14 +18,6 @@
         	return this._primitives.Remove( O );
         };
 
-        // me.Start = function() {
-        // 	this._loop.Start();
-        // };
-
-        // me.Stop = function() {
-        // 	this._loop.Stop();
-        // };
-
         me.SetLisener = function(name,func) {
             gizmo.Filter(name,"String");
             gizmo.Filter(func,"Function");
@@ -108,19 +100,9 @@
 
         me.ListenMouseEvents = function() {
         	var self = this;
-            var onmousedownCounter = 0
-            var onmouseupCounter = 0
-            var onmousemoveCounter = 0
 
-            var onmousedownFrec = 1
-            var onmouseupFrec = 1
-            var onmousemoveFrec = 3
-            
             this.GetCanvasElement().onmousedown = function(e) {
-                if(onmousedownCounter++ == onmousedownFrec) {
-                	self.__onMouseDown(e);
-                    onmousedownCounter = 0;
-                }
+            	self.__onMouseDown(e);
             };
             this.GetCanvasElement().onmouseup = function(e) {
                 self.__onMouseUp(e);    
@@ -166,16 +148,16 @@
 
 		};
 
-        me.CalculateClearAndDrawQuane = function() {  //0 < x < n
-	  		var changedPrimitives = this._primitives.GetChanged(); // n
+     //    me.CalculateClearAndDrawQuane = function() {  //0 < x < n
+	  		// var changedPrimitives = this._primitives.GetChanged(); // n
     		// var intersectionGroups = changedPrimitives.GetIntersectionGroups(); // [0..n]^2
     		// for(var i in intersectionGroups) { // [o..n/2]
     			// var intersectionedPrimitives = intersectionGroups[i];
 
-    			var oneBoundingBox = /*intersectionedPrimitives*/changedPrimitives.GetOneBoundingBox(); // [0..n]*[0..n/2]
+    			// var oneBoundingBox = /*intersectionedPrimitives*/changedPrimitives.GetOneBoundingBox(); // [0..n]*[0..n/2]
     			// var primitivesNeededDrawing = this._primitives.GetIntersectionedPrimitives( oneBoundingBox ); // n*[0..n/2]
     			// this._clearAreas.Add( oneBoundingBox );
-                this._clearAreas = oneBoundingBox;
+                // this._clearAreas = oneBoundingBox;
     			// this._primitivesNeededDrawing.Add( primitivesNeededDrawing );
 
     		// }
@@ -205,7 +187,7 @@
 			// 27                 5        10        0.1 
 			// 15                 10       0.1
 
-        };
+        // };
 
         // me.FindClearAndDrawAreas = function() {
         //     var ClearAreas = [];
@@ -246,19 +228,9 @@
         // };
 
         me.__draw = function() {
-            // var primitivesNeededDrawing = this.FindPrimitivesNeededDrawing();
-            // var primitivesNeededDrawing = this._primitivesNeedingDrawing;
-            // for(var primitive in primitivesNeededDrawing) {
-            // 	primitivesNeededDrawing[primitive].Draw();
-            // }
 			var primitives = this._primitives.GetArray();
             for(var primitive in primitives) {
-            	// if(primitives[primitive].IsChanged()) {
-                    // if(primitives[primitive].name == "A") {
-                    //     console.log("Draw A!!!");
-                    // }
-                    primitives[primitive].Draw();
-                // }
+                primitives[primitive].Draw();
             };
            
             
@@ -266,25 +238,11 @@
 
         me.__clear = function() {
             stats.begin();
-            // var clearAreas = this.FindClearAreas();
-            // var clearAreas = this._clearAreas;            
-            // for(var i in clearAreas) {
-            	// var clearArea = clearAreas[i];
-                // this.GetCtx().clearRect( clearArea.x,clearArea.y,clearArea.width, clearArea.height );
-             //    var points = clearAreas.GetOldPoints();
-            	// this.GetCtx().clearRect( points.point0.x,points.point0.y,points.width, points.height );
-            // // };            
+
             var primitives = this._primitives.GetArray();
             for(var primitive in primitives) {
-                // if(primitives[primitive].IsChanged()) {
-                    // if(primitives[primitive].name == "A") {
-                        // console.log("Clear A!!!");
-                    // }
-                	primitives[primitive].Clear();
-                    // console.log(primitive + " Is Changed");
-                // }
+            	primitives[primitive].Clear();
             };
-            // CTX.clearRect(0,0,1300,600);
 
         };
 
@@ -292,11 +250,6 @@
             var primitives = this._primitives.GetArray();
             for(var primitive in primitives) {
                 primitives[primitive].Update();    
-                // if(primitives[primitive].IsChanged()) {
-                    // console.log(primitives[primitive].name + " Is Changed");
-                // } else {
-                    // console.log(primitives[primitive].name + " Is not Changed");
-                // }
             };
 
             stats.end();
@@ -304,7 +257,6 @@
         };
 
         me.ReDraw = function() {
-            // this.CalculateClearAndDrawQuane();
             this.__clear();
             this.__draw();
             this.__update();
@@ -358,9 +310,6 @@
 			this._left = O.left || this._left;
 			this._top = O.top || this._top;
 			this._zindex = O.zindex || this._zindex;
-			// this._fps = O.fps || this._fps;
-
-			// this._loop.Set( O );
 
 			this.Init();
 		};
@@ -377,27 +326,11 @@
 		me._left = 0;
 		me._top = 0;
 		
-		// me._fps = 0;
-
         me._onMouseDown = [];
         me._onMouseUp = [];
         me._onMouseMove = [];
 
-        // me._childs = [];
-		me._primitives = new ArmContext.Primitives();
-
-		// me._loop = new ArmContext.Loop({
-		// 	"stepFunc": (function(O) {
-  //       					return function() {
-  //       						// O.__calculateClearAndDrawQuane();
-  //                               O.__clear();
-  //                               O.__draw();
-  //                               O.__update();
-                                                            
-		// 			        };
-		// 			    })(me),
-		// 	"fps": me._fps
-		// });
+        me._primitives = new ArmContext.Primitives();
 
 		me.Set( O );
 
