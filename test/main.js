@@ -25,7 +25,7 @@ window.onload = function() {
         .TranslateTo({x: 200, y: 100})
         A.name = "A";
         
-        D = new ArmContext.Image({layer: layer1, image: this.GetObject("googlebot-kun-1b.png"), width : 300, height: 300})
+        D = new ArmContext.Image({layer: layer1, image: this.GetObject("googlebot-kun-1b.png"), width : 100, height: 300})
         .TranslateTo({x: 50, y: 50})
         D.name = "D";
             

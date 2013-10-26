@@ -132,7 +132,7 @@
 			canvas.width = this._width;
 			canvas.height = this._height;
 			canvas.id = this._canvasElemetName;
-			canvas.style.position = 'absolute';
+			canvas.style.position = 'relative';
 			container.appendChild( canvas );
 			var ctx = canvas.getContext('2d');
 
