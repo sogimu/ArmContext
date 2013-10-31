@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+ Tests completed in 24 milliseconds.
+40 tests of 40 passed, 0 failed. 
+-->
+<testsuite name="QUnit - JavaScript Tests" timestamp="2013-09-29T23:51:39Z" tests="40" failures="0" time="0.024">
+<testcase name="gizmo.type" classname="baseVaribleFunctions">
+</testcase>
+<testcase name="gizmo.clone" classname="baseVaribleFunctions">
+</testcase>
+<testcase name="gizmo.isTString" classname="Checks">
+</testcase>
+<testcase name="gizmo.nativeSort" classname="Sorts">
+</testcase>
+<testcase name="gizmo.Class" classname="Class">
+</testcase>
+<testcase name="gizmo.Math." classname="Math">
+</testcase>
+<testcase name="gizmo.Math.Matrix" classname="Matrix">
+</testcase>
+<testcase name="gizmo.Math.Vector2D.X" classname="Vector2D">
+</testcase>
+<testcase name="gizmo.Math.Polygone" classname="Polygone">
+</testcase>
+</testsuite>
