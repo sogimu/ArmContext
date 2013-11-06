@@ -6,17 +6,17 @@
 
 		var me = {};
 
-        me.AddPrimitive = function( O ) {
-            gizmo.Filter(O,"Object");
+        // me.AddPrimitive = function( O ) {
+        //     gizmo.Filter(O,"Object");
 
-            this._primitives.Add( O );
-        };
+        //     this._primitives.Add( O );
+        // };
 
-        me.RemovePrimitive = function( O ) {
-            gizmo.Filter(O,"Object");
+        // me.RemovePrimitive = function( O ) {
+        //     gizmo.Filter(O,"Object");
 
-        	return this._primitives.Remove( O );
-        };
+        // 	return this._primitives.Remove( O );
+        // };
 
         me.SetLisener = function(name,func) {
             gizmo.Filter(name,"String");
@@ -49,18 +49,18 @@
             }
         };
 
-        me.GetTopestPrimitiveUnderPoint = function(O) {
-            gizmo.Filter(O,"Object");
-            gizmo.Filter(O.x,"Number");
-            gizmo.Filter(O.y,"Number");
+        // me.GetTopestPrimitiveUnderPoint = function(O) {
+        //     gizmo.Filter(O,"Object");
+        //     gizmo.Filter(O.x,"Number");
+        //     gizmo.Filter(O.y,"Number");
 
-            return this._primitives.GetTopestPrimitiveUnderPoint( O );
+        //     return this._primitives.GetTopestPrimitiveUnderPoint( O );
 
-        };
+        // };
 
-	    me.SortByZindex = function() {
-	    	this._primitives.SortByZindex();
-	    };
+	    // me.SortByZindex = function() {
+	    // 	this._primitives.SortByZindex();
+	    // };
 
 		me.SetCtx = function( O ) {
 			gizmo.Filter(O,"CanvasRenderingContext2D");
@@ -118,149 +118,40 @@
             this.GetCanvasElement().onmousemove = null;
         };
 
-
-
-		me.Init = function() {
-			var container;
-			if(this._containerElementName == null) {
-				container = document.getElementsByTagName("body")[0];
-			} else {
-				container = document.getElementById(this._containerElementName);
-			}
-			
-			var canvas = document.createElement('canvas');
-			canvas.width = this._width;
-			canvas.height = this._height;
-			canvas.id = this._canvasElemetName;
-			canvas.style.position = 'relative';
-			container.appendChild( canvas );
-			var ctx = canvas.getContext('2d');
-
-			this.SetName( this._canvasElementName );
-			this.SetContainerElement( container );
-			this.SetCanvasElement( canvas );
-			this.SetCtx( ctx );
-
-            // Initializing fps counter (stats.js from mrdoob)
-            stats = new Stats();
-            stats.setMode( 0 );
-            document.body.appendChild( stats.domElement );
-
-		};
-
-     //    me.CalculateClearAndDrawQuane = function() {  //0 < x < n
-	  		// var changedPrimitives = this._primitives.GetChanged(); // n
-    		// var intersectionGroups = changedPrimitives.GetIntersectionGroups(); // [0..n]^2
-    		// for(var i in intersectionGroups) { // [o..n/2]
-    			// var intersectionedPrimitives = intersectionGroups[i];
-
-    			// var oneBoundingBox = /*intersectionedPrimitives*/changedPrimitives.GetOneBoundingBox(); // [0..n]*[0..n/2]
-    			// var primitivesNeededDrawing = this._primitives.GetIntersectionedPrimitives( oneBoundingBox ); // n*[0..n/2]
-    			// this._clearAreas.Add( oneBoundingBox );
-                // this._clearAreas = oneBoundingBox;
-    			// this._primitivesNeededDrawing.Add( primitivesNeededDrawing );
-
-    		// }
-
-    		// n+n*n+n/2*(n+n) = n+2*(n^2); 10обек = 210 итер
-    		// - Большая сложность
-    		// + Малая область очистки экрана; =v2/2 
-    		// - Несколько отчисток экрана; накладные рассходы 
-    		// + Не большое кол-во перересовок
-
-    		// second variant
-
-			// var intersectionPrimitives = this._childs.GetIntersectionedPrimitives(); // n^2
-			// var globalBoundiingBox = intersectionPrimitives.GetBoundingBox(); // n
-			// var drawNeededPrimitives = this._childs.GetIntersectionedPrimitives( globalBoundingBox ); // n
-
-			// n*n+2n; 10обек = 120 итер
-			// + Малая сложность
-			// - Большие области для очистки экрана; =v1*2
-			// + Одна отчистка за иттерацию; нет накладных рассходов
-			// - Большое количество прорисовок
-
-
-			// (v1i/vi2) (v1a/v1a*2) (0.1/0.001) (v1d/v1d*5) 
-			// ~1.8*15			0.5*10    100*0.1    0.2 * 5
-
-			// 27                 5        10        0.1 
-			// 15                 10       0.1
-
-        // };
-
-        // me.FindClearAndDrawAreas = function() {
-        //     var ClearAreas = [];
-
-        //     var changedPrimitives = this._primitives.GetChanged(); // n
-        //     var intersectionGroups = changedPrimitives.GetIntersectionGroups(); // [0..n]^2
-        //     for(var i in intersectionGroups) { // [o..n/2]
-        //         var intersectionedPrimitives = intersectionGroups[i];
-
-        //         var oneBoundingBox = intersectionedPrimitives.GetBoundingBox(); // [0..n]*[0..n/2]
-        //         var drawNeededPrimitives = this._primitives.GetIntersectionedPrimitives( oneBoundingBox ); // n*[0..n/2]
-        //         this._clearAreas.Add( oneBoundingBox );
-        //         this._drawNeededPrimitives.Add( drawNeededPrimitives );
-
-        //     };
-
-        //     return ClearAreas;
-
-        // };
-
-        // me.FindPrimitivesNeededDrawing = function() {
-        //     var PrimitivesNeededDrawing = [];
-
-        //     var changedPrimitives = this._primitives.GetChanged(); // n
-        //     var intersectionGroups = changedPrimitives.GetIntersectionGroups(); // [0..n]^2
-        //     for(var i in intersectionGroups) { // [o..n/2]
-        //         var intersectionedPrimitives = intersectionGroups[i];
-
-        //         var oneBoundingBox = intersectionedPrimitives.GetBoundingBox(); // [0..n]*[0..n/2]
-        //         var drawNeededPrimitives = this._primitives.GetIntersectionedPrimitives( oneBoundingBox ); // n*[0..n/2]
-        //         this._clearAreas.Add( oneBoundingBox );
-        //         this._drawNeededPrimitives.Add( drawNeededPrimitives );
-
-        //     }
-
-        //     return PrimitivesNeededDrawing;
-            
-        // };
-
-        me.__draw = function() {
-			var primitives = this._primitives.GetArray();
-            for(var primitive in primitives) {
-                primitives[primitive].Draw();
-            };
+   //      me.__draw = function() {
+			// var primitives = this._primitives.GetArray();
+   //          for(var primitive in primitives) {
+   //              primitives[primitive].Draw();
+   //          };
            
             
-        };
+   //      };
 
-        me.__clear = function() {
-            stats.begin();
+   //      me.__clear = function() {
+   //          stats.begin();
 
-            var primitives = this._primitives.GetArray();
-            for(var primitive in primitives) {
-            	primitives[primitive].Clear();
-            };
+   //          var primitives = this._primitives.GetArray();
+   //          for(var primitive in primitives) {
+   //          	primitives[primitive].Clear();
+   //          };
 
-        };
+   //      };
 
-        me.__update = function() {
-            var primitives = this._primitives.GetArray();
-            for(var primitive in primitives) {
-                primitives[primitive].Update();    
-            };
+   //      me.__update = function() {
+   //          var primitives = this._primitives.GetArray();
+   //          for(var primitive in primitives) {
+   //              primitives[primitive].Update();    
+   //          };
 
-            stats.end();
+   //          stats.end();
 
-        };
+   //      };
 
-        me.ReDraw = function() {
-            this.__clear();
-            this.__draw();
-            this.__update();
-        };
+   //      me.ReDraw = function() {
+   //          this.__clear();
+   //          this.__draw();
+   //          this.__update();
+   //      };
 
         // event form mouse
         me.__onMouseDown = function(e) {
@@ -297,13 +188,41 @@
 
         };
 
+        me.Constructor = function() {
+            var container;
+            if(this._containerElementName == null) {
+                container = document.getElementsByTagName("body")[0];
+            } else {
+                container = document.getElementById(this._containerElementName);
+            }
+            
+            var canvas = document.createElement('canvas');
+            canvas.width = this._width;
+            canvas.height = this._height;
+            canvas.id = this._canvasElemetName;
+            canvas.className = "ArmCanvasClass ArmCanvas"+this._canvasElemetName;
+            container.appendChild( canvas );
+            var ctx = canvas.getContext('2d');
+
+            this.SetName( this._canvasElementName );
+            this.SetContainerElement( container );
+            this.SetCanvasElement( canvas );
+            this.SetCtx( ctx );
+
+            // Initializing fps counter (stats.js from mrdoob)
+            stats = new Stats();
+            stats.setMode( 0 );
+            document.body.appendChild( stats.domElement );
+
+        };
+
 		me.Set = function( O ) {
 			this.SetName( O.name || this.GetName() );
-			if(document.getElementById( this.GetName() ) == null) {
-				me._canvasElementName = this.GetName();
-			} else {
-				me._canvasElementName = this.GetName() + "." + ArmContext.GetNewUnicalNumber();
-			}			
+			//if(document.getElementById( this.GetName() ) == null) {
+			me._canvasElementName = this.GetName();
+			//} else {
+			//	me._canvasElementName = this.GetName() + "." + ArmContext.GetNewUnicalNumber();
+			//}			
 			this._containerElementName = O.container || this._containerElementName;
 			this._width = O.width || this._width;
 			this._height = O.height || this._height;
@@ -311,7 +230,7 @@
 			this._top = O.top || this._top;
 			this._zindex = O.zindex || this._zindex;
 
-			this.Init();
+			// this.Init();
 		};
 
 		me._defaultName = "Layer";
@@ -330,9 +249,11 @@
         me._onMouseUp = [];
         me._onMouseMove = [];
 
-        me._primitives = new ArmContext.Primitives();
+        // me._primitives = new ArmContext.Primitives();
 
 		me.Set( O );
+
+        me.Constructor();
 
 		return me;
 

@@ -34,7 +34,7 @@
 
             // this._mvMatrix.Translate( dX, dY );
 
-            this._transformQuene.Push({name: "Translate", e: {x: dX, y: dY}});
+            // this._transformQuene.Push({name: "Translate", e: {x: dX, y: dY}});
 
             // this._globalRepresentation.Update( this._internalRepresentation, this._2dContextRepresentation, this._mvMatrix);
             // this._boundingBox.Update( this._globalRepresentation );
@@ -190,13 +190,19 @@
             // return this;
         };
 
-        me.Draw = function() {
+        me.Draw = function(layer) {
+            /*
+            Should using layer->GetCtx() for geting 2d-context and drawing with it
+            */
             console.log("Virtual method Draw");
 
             return this;
         };
 
-        me.Clear = function() {
+        me.Clear = function(layer) {
+            /*
+            Should using layer->GetCtx() for geting 2d-context and drawing with it
+            */
             console.log("Virtual method Clear");
 
             return this;

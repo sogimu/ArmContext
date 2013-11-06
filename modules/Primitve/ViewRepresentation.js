@@ -15,8 +15,8 @@
         me._primitive = primitive; 
 
         //  Not view properties
-        me._ctx = null;
-        me._layer = null;
+        // me._ctx = null;
+        // me._layer = null;
 
         // View properties
         me._globalAlpha = "default";  // 0 < 1 
@@ -31,26 +31,15 @@
         me._pictureUnderPrimitive = {};
 
         me.Set = function(O) {
-            // this._ctx = O.ctx || this._ctx;
-            // this._layer = O.layer || this._layer;
-            // this._ctx = this._layer ? this._layer.GetCtx() : this._ctx;
-   
-            // this._globalAlpha = O.globalAlpha || this._globalAlpha;
-            // this._shadowColor = O.shadowColor || this._shadowColor;
-            // this._shadowBlur = O.shadowBlur || this._shadowBlur;
-            // this._shadowOffsetX = O.shadowOffsetX || this._shadowOffsetX;
-            // this._shadowOffsetY = O.shadowOffsetY || this._shadowOffsetY;
-            // this._zindex = O.zindex || this._zindex;
-
             for(var name in O) {
                 switch( name ) {
-                    case "ctx"     : {
-                        this.SetCtx( O[name] );
-                    }; break;
-                    case "layer"     : {
-                        this.SetLayer( O[name] );
-                        this.SetCtx( this.GetLayer().GetCtx() );
-                    }; break;
+                    // case "ctx"     : {
+                    //     this.SetCtx( O[name] );
+                    // }; break;
+                    // case "layer"     : {
+                    //     this.SetLayer( O[name] );
+                    //     this.SetCtx( this.GetLayer().GetCtx() );
+                    // }; break;
 
                     case "globalAlpha"     : {
                         this.SetGlobalAlpha( O[name] );
@@ -80,16 +69,16 @@
             };
 
         };
-        me.SetCtx = function( ctx ) {
-            gizmo.Filter(ctx,"CanvasRenderingContext2D");
-            this._ctx = ctx;
-        };
+        // me.SetCtx = function( ctx ) {
+        //     gizmo.Filter(ctx,"CanvasRenderingContext2D");
+        //     this._ctx = ctx;
+        // };
 
-        me.SetLayer = function( layer ) {
-            gizmo.Filter(layer,"Object");
-            this._layer = layer;
-            this._layer.AddPrimitive( this._primitive );
-        };
+        // me.SetLayer = function( layer ) {
+        //     gizmo.Filter(layer,"Object");
+        //     this._layer = layer;
+        //     this._layer.AddPrimitive( this._primitive );
+        // };
 
         me.SetGlobalAlpha = function(O) {
             gizmo.Filter(O, "Number");
@@ -125,13 +114,13 @@
 
 
 
-        me.GetCtx = function() {
-            return this._ctx;
-        };
+        // me.GetCtx = function() {
+        //     return this._ctx;
+        // };
 
-        me.GetLayer = function() {
-            return this._layer;
-        };
+        // me.GetLayer = function() {
+        //     return this._layer;
+        // };
 
         me.GetGlobalAlpha = function() {
             return this._globalAlpha;

@@ -46,23 +46,6 @@
         me.Set = function(O) {
             if(this.parentSet) {    this.parentSet( O );    };
 
-            // this._fillObject = O.fillObject || this._fillObject;
-            // this._strokeObject = O.strokeObject || this._strokeObject;
-            // this._lineWidth    = O.lineWidth || this._lineWidth;
-            // this._lineDash = O.lineDash || this._lineDash;
-            // this._miterLimit = O.miterLimit || this._miterLimit;
-
-            // switch(O.lineCap) {
-            //     case "butt": this._lineCap = O.lineCap; break;
-            //     case "round": this._lineCap = O.lineCap; break;
-            //     case "square": this._lineCap = O.lineCap; break;
-            // }
-            // switch(O.lineJoin) {
-            //     case "miter": this._lineJoin = O.lineJoin; break;
-            //     case "round": this._lineJoin = O.lineJoin; break;
-            //     case "bevel": this._lineJoin = O.lineJoin; break;
-            // }
-
             for(var name in O) {
                 switch( name ) {
                     case "fillObject" : { 

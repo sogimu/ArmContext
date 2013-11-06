@@ -33,10 +33,10 @@
         // Инициализация глобального представления примитива
         me._globalRepresentation = ArmContext.RectGlobalRepresentation(me);
 
-        me.Draw = function() {
+        me.Draw = function(layer) {
             var ctxRep = this._2dContextRepresentation;
             var intRep = this._internalRepresentation;
-            var ctx = ctxRep.GetCtx();
+            var ctx = layer.GetCtx();
 
             ctx.save();
                 ctx.beginPath();
@@ -86,10 +86,10 @@
 
         };
 
-        me.Clear = function() {
+        me.Clear = function(layer) {
             var ctxRep = this._2dContextRepresentation;
             var intRep = this._internalRepresentation;
-            var ctx = ctxRep.GetCtx();
+            var ctx = layer.GetCtx();
 
             var boundingBox = this._boundingBox.GetOldPoints();
             var ctx = ctxRep.GetCtx();
