@@ -132,7 +132,7 @@
 			canvas.width = this._width;
 			canvas.height = this._height;
 			canvas.id = this._canvasElemetName;
-			canvas.style.position = 'relative';
+			canvas.className = "ArmCanvasClass ArmCanvas"+this._canvasElemetName;
 			container.appendChild( canvas );
 			var ctx = canvas.getContext('2d');
 
@@ -142,9 +142,9 @@
 			this.SetCtx( ctx );
 
             // Initializing fps counter (stats.js from mrdoob)
-            stats = new Stats();
-            stats.setMode( 0 );
-            document.body.appendChild( stats.domElement );
+            // stats = new Stats();
+            // stats.setMode( 0 );
+            // document.body.appendChild( stats.domElement );
 
 		};
 
@@ -237,7 +237,7 @@
         };
 
         me.__clear = function() {
-            stats.begin();
+            // stats.begin();
 
             var primitives = this._primitives.GetArray();
             for(var primitive in primitives) {
@@ -252,7 +252,7 @@
                 primitives[primitive].Update();    
             };
 
-            stats.end();
+            // stats.end();
 
         };
 
@@ -319,6 +319,7 @@
 		
 		me._containerElement = null;
 		me._canvasElement = null;
+        me._canvasElemetName = me.GetName();
 		me._ctx = null;
 		
 		me._width = 500;
