@@ -87,6 +87,22 @@
 		me.GetCanvasElement = function() {
 			return this._canvasElement;
 		};
+        
+        me.GetWidth = function() {
+            return this.GetCanvasElement().width;
+        };
+
+        me.GetHeight = function() {
+            return this.GetCanvasElement().height;
+        };
+
+        me.GetzIndex = function() {
+            return this.GetCanvasElement().style.zIndex;
+        };
+
+        me.GetContainerElement = function() {
+            return this._containerElement;
+        };
 
 		me.SetContainerElement = function( O ) {
 			// gizmo.Filter(O,"HTMLBodyElement");

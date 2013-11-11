@@ -30,13 +30,9 @@
 
             this._matrix = this._matrix.x( rotateMatrix );
 
-            if(this._onChanged) {
-                this._onChanged.call(primitive);
-            };
-
-            if(this._onChanged) {
-                this._onChanged.call(primitive);
-            };
+            // if(this._onChanged) {
+            //     this._onChanged.call(primitive);
+            // };
 
             return this;
         };
@@ -53,9 +49,9 @@
 
             this._matrix = this._matrix.x( transformMatrix );
 
-            if(this._onChanged) {
-                this._onChanged.call(primitive);
-            };
+            // if(this._onChanged) {
+            //     this._onChanged.call(primitive);
+            // };
 
             return this;
         };
@@ -72,9 +68,9 @@
 
             this._matrix = this._matrix.x( transformMatrix );
 
-            if(this._onChanged) {
-                this._onChanged.call(primitive);
-            };
+            // if(this._onChanged) {
+            //     this._onChanged.call(primitive);
+            // };
 
             return this;
  
@@ -92,9 +88,9 @@
 
             this._matrix = this._matrix.x( transformMatrix );
 
-            if(this._onChanged) {
-                this._onChanged.call(primitive);
-            };
+            // if(this._onChanged) {
+            //     this._onChanged.call(primitive);
+            // };
 
             return this;
         };

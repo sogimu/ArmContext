@@ -97,17 +97,17 @@
             ctx.clearRect(boundingBox.point0.x,boundingBox.point0.y,boundingBox.width,boundingBox.height);
         };
 
-        me._internalRepresentation.SetLisener("onChanged", function() {
-            this.SetChanged();            
-        });
+        // me._internalRepresentation.SetLisener("onChanged", function() {
+        //     this.SetChanged();            
+        // });
 
-        me._2dContextRepresentation.SetLisener("onChanged", function() {
-            this.SetChanged();            
-        });
+        // me._2dContextRepresentation.SetLisener("onChanged", function() {
+        //     this.SetChanged();            
+        // });
 
-        me._mvMatrix.SetLisener("onChanged", function() {
-            this.SetChanged();            
-        });
+        // me._mvMatrix.SetLisener("onChanged", function() {
+        //     this.SetChanged();            
+        // });
 
         me.Set( O );
         me.Update();
