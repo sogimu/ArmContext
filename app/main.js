@@ -38,6 +38,7 @@ window.onload = function() {
 
             // A._internalRepresentation.ShowPoints(CTX);
             // B._internalRepresentation.ShowPoints(CTX);
+
             layer1.ReDraw();                 
         }, 10 );
         
