@@ -11,7 +11,7 @@ var Layer = ArmContext.Layer({container: "container"});
 var canvasClassPattern = /ArmCanvasClass\s+Layer\d*/;
 // var layerNamePattern = /Layer\d*/;
 
-test( "Spawn without params", function() {
+test( "Constor_spawnWithoutParams_Exeption", function() {
 	
 	try {
 		var layer = ArmContext.Layer();
@@ -22,7 +22,7 @@ test( "Spawn without params", function() {
 	}
 		
 });
-test( "Spawn with void param", function() {
+test( "Constor_spawnWithVoidParam_Exeption", function() {
 	
 	try {
 		var layer = ArmContext.Layer({});
@@ -35,7 +35,7 @@ test( "Spawn with void param", function() {
 		
 });
 
-test( "canvas is exist", function() {
+test( "Constructor_Have tag canvas into container_Ok", function() {
 	var canvas = $("#"+containerName+" canvas");
 	if(canvas) {
 		ok( true,  "Ok" );
@@ -44,7 +44,7 @@ test( "canvas is exist", function() {
 		
 });
 
-test( "canvas having CSS class", function() {
+test( "Constructor_Canvas having CSS class_Ok", function() {
 	var canvas = $("#"+containerName+" canvas");
 	console.log(canvas)
 	if(canvasClassPattern.test(canvas.className)) {
@@ -54,7 +54,7 @@ test( "canvas having CSS class", function() {
 		
 });
 
-test( "GetDefaultName()", function() {
+test( "GetDefaultName_Layer.GetDefaultName() == string_Ok", function() {
 	try {
 		if(gizmo.type(Layer.GetDefaultName()) == "String") {
 			ok( true,  "Ok" );
@@ -67,7 +67,7 @@ test( "GetDefaultName()", function() {
 		
 });
 
-test( "GetName()", function() {
+test( "GetName_Layer.GetDefaultName()+\"\d*\").test(Layer.GetName())_Ok", function() {
 	try {
 		if(new RegExp(Layer.GetDefaultName()+"\d*").test(Layer.GetName())) {
 			ok( true,  "Ok" );
@@ -80,7 +80,7 @@ test( "GetName()", function() {
 		
 });
 
-test( "GetCtx() == 'CanvasRenderingContext2D'", function() {
+test( "GetCtx()_GetCtx() == 'CanvasRenderingContext2D'_Ok", function() {
 	
 	try {
 		if(!(Layer.GetCtx() == "CanvasRenderingContext2D")) {
