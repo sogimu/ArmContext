@@ -28,13 +28,13 @@
         me._internalRepresentation = ArmContext.RectInternalRepresentation(me);
 
         // Инициализация canvas представления
-        me._2dContextRepresentation = ArmContext.Rect2dContextRepresentation(me);
+        me._viewRepresentation = ArmContext.RectViewRepresentation(me);
 
         // Инициализация глобального представления примитива
         me._globalRepresentation = ArmContext.RectGlobalRepresentation(me);
 
         me.Draw = function(layer) {
-            var ctxRep = this._2dContextRepresentation;
+            var ctxRep = this._viewRepresentation;
             var intRep = this._internalRepresentation;
             var ctx = layer.GetCtx();
 
@@ -87,27 +87,22 @@
         };
 
         me.Clear = function(layer) {
-            var ctxRep = this._2dContextRepresentation;
+            var ctxRep = this._viewRepresentation;
             var intRep = this._internalRepresentation;
             var ctx = layer.GetCtx();
 
             var boundingBox = this._boundingBox.GetOldPoints();
-            var ctx = ctxRep.GetCtx();
+            if(this._viewRepresentation.IsRounding()) {
+            // console.log(Math.round(boundingBox.point0.x),Math.round(boundingBox.point0.y),Math.round(boundingBox.width),Math.round(boundingBox.height))
+            // console.log(boundingBox.point0.x,boundingBox.point0.y,boundingBox.width,boundingBox.height)
+                ctx.clearRect(Math.round(boundingBox.point0.x),Math.round(boundingBox.point0.y),Math.round(boundingBox.width),Math.round(boundingBox.height));
 
-            ctx.clearRect(boundingBox.point0.x,boundingBox.point0.y,boundingBox.width,boundingBox.height);
+            } else {
+                ctx.clearRect(boundingBox.point0.x,boundingBox.point0.y,boundingBox.width,boundingBox.height);
+
+            }
+
         };
-
-        me._internalRepresentation.SetLisener("onChanged", function() {
-            this.SetChanged();            
-        });
-
-        me._2dContextRepresentation.SetLisener("onChanged", function() {
-            this.SetChanged();            
-        });
-
-        me._mvMatrix.SetLisener("onChanged", function() {
-            this.SetChanged();            
-        });
 
         me.Set( O );
         me.Update();

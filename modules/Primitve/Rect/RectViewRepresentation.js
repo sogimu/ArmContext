@@ -1,7 +1,7 @@
 (function(window) {
-    var Rect2dContextRepresentation = function(primitive) {
+    var RectViewRepresentation = function(primitive) {
 
-        var me = ArmContext.C2dContextRepresentation(primitive);
+        var me = ArmContext.ViewRepresentation(primitive);
 
         me.parentSet = me.Set ? me.Set : null;
         
@@ -151,5 +151,5 @@
         return me;
     };
 
-    ArmContext.Rect2dContextRepresentation = Rect2dContextRepresentation;
+    ArmContext.RectViewRepresentation = RectViewRepresentation;
 })();

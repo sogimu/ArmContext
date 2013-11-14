@@ -45,26 +45,22 @@
         };
 
         me.Clear = function() {
-            var ctxRep = this._2dContextRepresentation;
+            var ctxRep = this._viewRepresentation;
             var intRep = this._internalRepresentation;
-            var boundingBox = this._boundingBox.GetOldPoints();
-            var ctx = ctxRep.GetCtx();
+            var ctx = layer.GetCtx();
 
-            ctx.clearRect(boundingBox.point0.x, boundingBox.point0.y, boundingBox.width, boundingBox.height);
+            var boundingBox = this._boundingBox.GetOldPoints();
+            if(this._viewRepresentation.IsRounding()) {
+            // console.log(Math.round(boundingBox.point0.x),Math.round(boundingBox.point0.y),Math.round(boundingBox.width),Math.round(boundingBox.height))
+            // console.log(boundingBox.point0.x,boundingBox.point0.y,boundingBox.width,boundingBox.height)
+                ctx.clearRect(Math.round(boundingBox.point0.x),Math.round(boundingBox.point0.y),Math.round(boundingBox.width),Math.round(boundingBox.height));
+
+            } else {
+                ctx.clearRect(boundingBox.point0.x,boundingBox.point0.y,boundingBox.width,boundingBox.height);
+
+            }
 
         };
-
-        me._internalRepresentation.SetLisener("onChanged", function() {
-            this.SetChanged();            
-        });
-
-        me._2dContextRepresentation.SetLisener("onChanged", function() {
-            this.SetChanged();            
-        });
-
-        me._mvMatrix.SetLisener("onChanged", function() {
-            this.SetChanged();            
-        });
 
         me.Set( O );
         me.Update();

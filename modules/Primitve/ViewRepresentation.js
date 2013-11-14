@@ -7,16 +7,12 @@
  */
 
 (function(window) {
-    var C2dContextRepresentation = function(primitive) {
+    var ViewRepresentation = function(primitive) {
 
         var me = {};
         
         // Ссылка на примитив-владелец объекта данного класса
         me._primitive = primitive; 
-
-        //  Not view properties
-        // me._ctx = null;
-        // me._layer = null;
 
         // View properties
         me._globalAlpha = "default";  // 0 < 1 
@@ -30,17 +26,11 @@
         me._boundingBox = {};
         me._pictureUnderPrimitive = {};
 
+        me._isRounding = false;
+
         me.Set = function(O) {
             for(var name in O) {
                 switch( name ) {
-                    // case "ctx"     : {
-                    //     this.SetCtx( O[name] );
-                    // }; break;
-                    // case "layer"     : {
-                    //     this.SetLayer( O[name] );
-                    //     this.SetCtx( this.GetLayer().GetCtx() );
-                    // }; break;
-
                     case "globalAlpha"     : {
                         this.SetGlobalAlpha( O[name] );
                     }; break;
@@ -65,20 +55,14 @@
                         this.SetZindex( O[name] );
                     }; break;
 
+                    case "rounding"     : {
+                        this.SetRounding( O[name] );
+                    }; break;
+
                 };
             };
 
         };
-        // me.SetCtx = function( ctx ) {
-        //     gizmo.Filter(ctx,"CanvasRenderingContext2D");
-        //     this._ctx = ctx;
-        // };
-
-        // me.SetLayer = function( layer ) {
-        //     gizmo.Filter(layer,"Object");
-        //     this._layer = layer;
-        //     this._layer.AddPrimitive( this._primitive );
-        // };
 
         me.SetGlobalAlpha = function(O) {
             gizmo.Filter(O, "Number");
@@ -109,18 +93,17 @@
             gizmo.Filter(zindex,"Number");
             this._zindex = zindex;
             
-            this.GetLayer().SortByZindex();
+            // this.GetLayer().SortByZindex();
         };
 
+        me.SetRounding = function(status) {
+            gizmo.Filter(status, "Boolean");
+            return this._isRounding = status;
+        };
 
-
-        // me.GetCtx = function() {
-        //     return this._ctx;
-        // };
-
-        // me.GetLayer = function() {
-        //     return this._layer;
-        // };
+        me.IsRounding = function() {
+            return this._isRounding;
+        };
 
         me.GetGlobalAlpha = function() {
             return this._globalAlpha;
@@ -176,5 +159,5 @@
         return me;
     };
 
-    ArmContext.C2dContextRepresentation = C2dContextRepresentation;
+    ArmContext.ViewRepresentation = ViewRepresentation;
 })();

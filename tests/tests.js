@@ -102,7 +102,7 @@ test( "GetCanvasElement()", function() {
 });
 
 module( "class Primitive" );
-test( "%)", function() {
+test( "Draw", function() {
 	ok( true,  "Ok" );
 	
 });

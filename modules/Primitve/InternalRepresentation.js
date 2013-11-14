@@ -35,7 +35,7 @@
             }
 
             ctx.closePath();
-            CTX.fillStyle = "#ff0000";
+            ctx.fillStyle = "#ff0000";
             
             ctx.stroke();
             ctx.fill();

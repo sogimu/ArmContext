@@ -87,14 +87,14 @@
             var points = this.GetPoints();
 
             for(var i in points) {      
-                CTX.save();
-                    CTX.beginPath();        
-                        CTX.fillStyle = "#00ff00";
-                        CTX.rect(points[i][0]-2,points[i][1]-2,4,4);
-                        CTX.stroke();
-                        CTX.fill();
-                    CTX.closePath();
-                CTX.restore();
+                ctx.save();
+                    ctx.beginPath();        
+                        ctx.fillStyle = "#00ff00";
+                        ctx.rect(points[i][0]-2,points[i][1]-2,4,4);
+                        ctx.stroke();
+                        ctx.fill();
+                    ctx.closePath();
+                ctx.restore();
 
             }  
         };

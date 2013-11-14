@@ -23,6 +23,23 @@
                     width: 0,
                     height: 0}];
 
+        me.SetRect = function(points) {            
+            gizmo.Filter(points, "Object");
+            gizmo.Filter(points.point0, "Object");
+            gizmo.Filter(points.point1, "Object");
+
+            var rect = {point0: points.point0,
+                        point1: points.point1,
+                        point2: {x: points.point1.x, y: points.point0.y},
+                        point3: {x: points.point0.x, y: points.point1.y},
+                        width: points.point1.x - points.point0.x,
+                        height: points.point1.y - points.point0.y};
+            
+            this._rect[0] = rect;
+            this._rect[1] = rect;
+
+        };
+
         me.GetNewPoints = function() {
             return this._rect[0];
         };
@@ -44,27 +61,67 @@
         };
 
         me.SumWith = function(BoundingBox) {
-            var fP = this.GetOldPoints();
-            var sP = BoundingBox.GetOldPoints();
+            var localOldPoints = this.GetOldPoints();
+            var oldPoints = BoundingBox.GetOldPoints();
 
-            var minX = fP.point0.x;
-            var minY = fP.point0.y;
-            var maxX = fP.point2.x;
-            var maxY = fP.point2.y;
+            var minX = localOldPoints.point0.x;
+            var minY = localOldPoints.point0.y;
+            var maxX = localOldPoints.point2.x;
+            var maxY = localOldPoints.point2.y;
 
-            minX = Math.min(fP.point0.x, fP.point1.x, fP.point2.x, fP.point3.x, sP.point0.x, sP.point1.x, sP.point2.x, sP.point3.x);
-            minY = Math.min(fP.point0.y, fP.point1.y, fP.point2.y, fP.point3.y, sP.point0.y, sP.point1.y, sP.point2.y, sP.point3.y);
+            minX = Math.min(localOldPoints.point0.x, localOldPoints.point1.x, localOldPoints.point2.x, localOldPoints.point3.x, oldPoints.point0.x, oldPoints.point1.x, oldPoints.point2.x, oldPoints.point3.x);
+            minY = Math.min(localOldPoints.point0.y, localOldPoints.point1.y, localOldPoints.point2.y, localOldPoints.point3.y, oldPoints.point0.y, oldPoints.point1.y, oldPoints.point2.y, oldPoints.point3.y);
 
-            maxX = Math.max(fP.point0.x, fP.point1.x, fP.point2.x, fP.point3.x, sP.point0.x, sP.point1.x, sP.point2.x, sP.point3.x);
-            maxY = Math.max(fP.point0.y, fP.point1.y, fP.point2.y, fP.point3.y, sP.point0.y, sP.point1.y, sP.point2.y, sP.point3.y);
+            maxX = Math.max(localOldPoints.point0.x, localOldPoints.point1.x, localOldPoints.point2.x, localOldPoints.point3.x, oldPoints.point0.x, oldPoints.point1.x, oldPoints.point2.x, oldPoints.point3.x);
+            maxY = Math.max(localOldPoints.point0.y, localOldPoints.point1.y, localOldPoints.point2.y, localOldPoints.point3.y, oldPoints.point0.y, oldPoints.point1.y, oldPoints.point2.y, oldPoints.point3.y);
 
-            // var rect = {point0: {x: minX, y: minY},
-            //             point1: {x: maxX, y: minY},
-            //             point2: {x: maxX, y: maxY},
-            //             point3: {x: minX, y: maxY},
-            //             width: maxX - minX,
-            //             height: maxY - minY};
             return new ArmContext.BoundingBox({points: {point0: {x: minX, y: minY}, point1: {x: maxX, y: maxY}}});
+
+        };
+
+        me.ShowPoints = function(ctx) {
+            var points = this.GetOldPoints();
+
+            ctx.save();
+            ctx.fillStyle = "#ff0000";
+            ctx.strokeStyle = "#ffff00";
+            
+            ctx.beginPath();
+
+            ctx.moveTo(points["point0"].x,points["point0"].y);
+                
+            for(var i in points) {
+                ctx.lineTo(points[i].x,points[i].y);
+                ctx.rect(points[i].x-2,points[i].y-2,4,4);
+                
+            }
+
+            ctx.lineTo(points["point0"].x,points["point0"].y);
+
+            ctx.closePath();
+            ctx.stroke();
+            ctx.fill();
+
+            points = this.GetNewPoints();
+
+            ctx.fillStyle = "#0000ff";            
+            ctx.beginPath();        
+
+            ctx.moveTo(points["point0"].x,points["point0"].y);
+            
+            for(var i in points) {      
+                ctx.lineTo(points[i].x,points[i].y);
+                ctx.rect(points[i].x-2,points[i].y-2,4,4);
+                
+            };
+            ctx.lineTo(points["point0"].x,points["point0"].y);
+
+            ctx.closePath();
+
+            ctx.stroke();
+            ctx.fill();
+
+            ctx.restore();
 
         };
 
@@ -101,23 +158,7 @@
             for(var name in O) {
                 switch( name ) {
                     case "points" : {
-                        var points = O[name];
-
-                        gizmo.Filter(points, "Object");
-                        gizmo.Filter(points.point0, "Object");
-                        gizmo.Filter(points.point1, "Object");
-
-                        var rect = {point0: points.point0,
-                                    point1: points.point1,
-                                    point2: {x: points.point1.x, y: points.point0.y},
-                                    point3: {x: points.point0.x, y: points.point1.y},
-                                    width: points.point1.x - points.point0.x,
-                                    height: points.point1.y - points.point0.y};
-                        
-                        this._rect[0] = rect;
-                        this._rect[1] = rect;
-
-
+                        this.SetRect(O[name])
                     }; break;
 
                 };
