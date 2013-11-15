@@ -101,8 +101,55 @@ test( "GetCanvasElement()", function() {
 		
 });
 
-module( "class Primitive" );
-test( "Draw", function() {
+module( "class MvMatrix" );
+test( "Constructor GetPoints() == onesMatrix", function() {
+	var mvMatrix = new ArmContext.MvMatrix();
+
+	var points = mvMatrix.GetPoints();
+	if(points[0][0] == 1)
+	if(points[1][1] == 1)
+	if(points[2][2] == 1)
+
+	ok( true,  "Ok" );
+	
+});
+
+test( "Translate()", function() {
+	var mvMatrix = new ArmContext.MvMatrix();
+	mvMatrix.Translate(33,33);
+
+	var points = mvMatrix.GetPoints();
+	if(points[2][0] == 33)
+	if(points[2][1] == 33)
+
+	ok( true,  "Ok" );
+	
+});
+
+test( "Rotate() 10 grad", function() {
+	var mvMatrix = new ArmContext.MvMatrix();
+	mvMatrix.Rotate(0.17453292519943295); // 10 grad //10 / 180 * Math.PI
+
+	var points = mvMatrix.GetPoints();
+	if(points[0][0] == 0.984807753012208)
+	if(points[0][1] == 0.17364817766693033)
+	if(points[1][0] == -0.17364817766693033)
+	if(points[1][1] == 0.984807753012208)
+
+	ok( true,  "Ok" );
+	
+});
+
+test( "Rotate() 370 grad", function() {
+	var mvMatrix = new ArmContext.MvMatrix();
+	mvMatrix.Rotate(0.17453292519943295); // 370 grad //370 % 360 / 180 * Math.PI
+
+	var points = mvMatrix.GetPoints();
+	if(points[0][0] == 0.984807753012208)
+	if(points[0][1] == 0.17364817766693033)
+	if(points[1][0] == -0.17364817766693033)
+	if(points[1][1] == 0.984807753012208)
+
 	ok( true,  "Ok" );
 	
 });
