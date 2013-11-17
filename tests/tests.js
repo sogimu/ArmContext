@@ -8,7 +8,7 @@ body.appendChild( div );
 
 var Layer = ArmContext.Layer({containerID: containerName});
 
-test( "Spawn without params", function() {
+test( "Constor_spawnWithoutParams_Exeption", function() {
 	
 	try {
 		var layer = ArmContext.Layer();
@@ -47,7 +47,7 @@ test( "canvas having zIndex", function() {
 		
 });
 
-test( "GetDefaultName()", function() {
+test( "GetDefaultName_Layer.GetDefaultName() == string_Ok", function() {
 	try {
 		if(gizmo.type(Layer.GetDefaultName()) == "String") {
 			ok( true,  "Ok" );
@@ -60,7 +60,7 @@ test( "GetDefaultName()", function() {
 		
 });
 
-test( "GetName()", function() {
+test( "GetName_Layer.GetDefaultName()+\"\d*\").test(Layer.GetName())_Ok", function() {
 	try {
 		if(new RegExp(Layer.GetDefaultName()+"\d*").test(Layer.GetName())) {
 			ok( true,  "Ok" );
@@ -87,8 +87,7 @@ test( "GetCtx()", function() {
 		
 });
 
-test( "GetCanvasElement()", function() {
-	
+test( "GetCanvasElement()", function() {	
 	try {
 		if(gizmo.type(Layer.GetCanvasElement()) == "HTMLCanvasElement" && Layer.GetCanvasElement() == Layer._canvasElement) {
 			ok( true,  "Ok" );
