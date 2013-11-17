@@ -60,7 +60,7 @@ test( "GetDefaultName_Layer.GetDefaultName() == string_Ok", function() {
 		
 });
 
-test( "GetName_Layer.GetDefaultName()+\"\d*\").test(Layer.GetName())_Ok", function() {
+test( "GetName_Layer.GetDefaultName() have number on end_Ok", function() {
 	try {
 		if(new RegExp(Layer.GetDefaultName()+"\d*").test(Layer.GetName())) {
 			ok( true,  "Ok" );
