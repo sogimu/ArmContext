@@ -155,7 +155,7 @@
 
 module( "Primitive" );
 test( "Primitive", function() {
-	ok( true,  "first test" );
+	ok( false,  "first test" );
 	
 });
 test( "Rect.Draw", function() {
