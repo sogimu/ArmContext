@@ -6,19 +6,19 @@ var div = document.createElement('div');
 div.id=containerName;
 body.appendChild( div );
 
-// var Layer = ArmContext.Layer({containerID: containerName});
+var Layer = ArmContext.Layer({containerID: containerName});
 
-// test( "Constor_spawnWithoutParams_Exeption", function() {
+test( "Constor_spawnWithoutParams_Exeption", function() {
 	
-// 	try {
-// 		var layer = ArmContext.Layer();
+	try {
+		var layer = ArmContext.Layer();
 
-// 	}
-// 	catch(e) {
-// 		ok( true,  "Ok" );
-// 	}
+	}
+	catch(e) {
+		ok( true,  "Ok" );
+	}
 		
-// });
+});
 
 // test( "canvas is exist", function() {
 // 	var canvas = $("#"+containerName+" canvas")[0];
