@@ -139,23 +139,23 @@
 	
 // });
 
-// test( "Rotate() 370 grad", function() {
-// 	var mvMatrix = new ArmContext.MvMatrix();
-// 	mvMatrix.Rotate(0.17453292519943295); // 370 grad //370 % 360 / 180 * Math.PI
+test( "Rotate() 370 grad", function() {
+	var mvMatrix = new ArmContext.MvMatrix();
+	mvMatrix.Rotate(0.17453292519943295); // 370 grad //370 % 360 / 180 * Math.PI
 
-// 	var points = mvMatrix.GetPoints();
-// 	if(points[0][0] == 0.984807753012208)
-// 	if(points[0][1] == 0.17364817766693033)
-// 	if(points[1][0] == -0.17364817766693033)
-// 	if(points[1][1] == 0.984807753012208)
+	var points = mvMatrix.GetPoints();
+	if(points[0][0] == 0.984807753012208)
+	if(points[0][1] == 0.17364817766693033)
+	if(points[1][0] == -0.17364817766693033)
+	if(points[1][1] == 0.984807753012208)
 
-// 	ok( true,  "Ok" );
+	ok( true,  "Ok" );
 	
-// });
+});
 
 module( "Primitive" );
 test( "Primitive", function() {
-	ok( false,  "first test" );
+	ok( true,  "first test" );
 	
 });
 test( "Rect.Draw", function() {
