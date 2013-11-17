@@ -60,32 +60,32 @@ test( "GetDefaultName_Layer.GetDefaultName() == string_Ok", function() {
 		
 });
 
-// test( "GetName_Layer.GetDefaultName()+\"\d*\").test(Layer.GetName())_Ok", function() {
-// 	try {
-// 		if(new RegExp(Layer.GetDefaultName()+"\d*").test(Layer.GetName())) {
-// 			ok( true,  "Ok" );
-// 		}
-// 	}
-// 	catch(e) {
-// 		ok( false,  "Failed" );
+test( "GetName_Layer.GetDefaultName()+\"\d*\").test(Layer.GetName())_Ok", function() {
+	try {
+		if(new RegExp(Layer.GetDefaultName()+"\d*").test(Layer.GetName())) {
+			ok( true,  "Ok" );
+		}
+	}
+	catch(e) {
+		ok( false,  "Failed" );
 
-// 	}
+	}
 		
-// });
+});
 
-// test( "GetCtx()", function() {
+test( "GetCtx()", function() {
 	
-// 	try {
-// 		if(gizmo.type(Layer.GetCtx()) == "CanvasRenderingContext2D" && Layer.GetCtx() == Layer._ctx) {
-// 			ok( true,  "Ok" );
-// 		}
-// 	}
-// 	catch(e) {
-// 		ok( false,  "Failed" );
+	try {
+		if(gizmo.type(Layer.GetCtx()) == "CanvasRenderingContext2D" && Layer.GetCtx() == Layer._ctx) {
+			ok( true,  "Ok" );
+		}
+	}
+	catch(e) {
+		ok( false,  "Failed" );
 
-// 	}
+	}
 		
-// });
+});
 
 // test( "GetCanvasElement()", function() {	
 // 	try {
