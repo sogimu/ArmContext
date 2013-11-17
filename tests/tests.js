@@ -87,18 +87,18 @@ test( "GetCtx()", function() {
 		
 });
 
-// test( "GetCanvasElement()", function() {	
-// 	try {
-// 		if(gizmo.type(Layer.GetCanvasElement()) == "HTMLCanvasElement" && Layer.GetCanvasElement() == Layer._canvasElement) {
-// 			ok( true,  "Ok" );
-// 		}
-// 	}
-// 	catch(e) {
-// 		ok( false,  "Failed" );
+test( "GetCanvasElement()", function() {	
+	try {
+		if(gizmo.type(Layer.GetCanvasElement()) == "HTMLCanvasElement" && Layer.GetCanvasElement() == Layer._canvasElement) {
+			ok( true,  "Ok" );
+		}
+	}
+	catch(e) {
+		ok( false,  "Failed" );
 
-// 	}
+	}
 		
-// });
+});
 
 module( "class MvMatrix" );
 test( "Constructor GetPoints() == onesMatrix", function() {
