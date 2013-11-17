@@ -1,10 +1,10 @@
-// module( "class Layer" );
+module( "class Layer" );
 
-// var containerName = "container";
-// var body = document.getElementsByTagName("body")[0];
-// var div = document.createElement('div');
-// div.id=containerName;
-// body.appendChild( div );
+var containerName = "container";
+var body = document.getElementsByTagName("body")[0];
+var div = document.createElement('div');
+div.id=containerName;
+body.appendChild( div );
 
 // var Layer = ArmContext.Layer({containerID: containerName});
 
