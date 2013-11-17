@@ -20,23 +20,23 @@ test( "Constor_spawnWithoutParams_Exeption", function() {
 		
 });
 
-// test( "canvas is exist", function() {
-// 	var canvas = $("#"+containerName+" canvas")[0];
-// 	if(canvas) {
-// 		ok( true,  "Ok" );
+test( "canvas is exist", function() {
+	var canvas = $("#"+containerName+" canvas")[0];
+	if(canvas) {
+		ok( true,  "Ok" );
 
-// 	}
+	}
 		
-// });
+});
 
-// test( "canvas having CSS class", function() {
-// 	var canvas = $("#"+containerName+" canvas")[0];
-// 	if(/ArmLayerClass\s+Layer\d*/.test(canvas.className)) {
-// 		ok( true,  "Ok" );
+test( "canvas having CSS class", function() {
+	var canvas = $("#"+containerName+" canvas")[0];
+	if(/ArmLayerClass\s+Layer\d*/.test(canvas.className)) {
+		ok( true,  "Ok" );
 
-// 	}
+	}
 		
-// });
+});
 
 // test( "canvas having zIndex", function() {
 // 	var canvas = $("#"+containerName+" canvas")[0];
