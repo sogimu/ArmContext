@@ -38,27 +38,27 @@ test( "canvas having CSS class", function() {
 		
 });
 
-// test( "canvas having zIndex", function() {
-// 	var canvas = $("#"+containerName+" canvas")[0];
-// 	if(/\d\d*/.test(canvas.style.zIndex)) {
-// 		ok( true,  "Ok" );
+test( "canvas having zIndex", function() {
+	var canvas = $("#"+containerName+" canvas")[0];
+	if(/\d\d*/.test(canvas.style.zIndex)) {
+		ok( true,  "Ok" );
 
-// 	}
+	}
 		
-// });
+});
 
-// test( "GetDefaultName_Layer.GetDefaultName() == string_Ok", function() {
-// 	try {
-// 		if(gizmo.type(Layer.GetDefaultName()) == "String") {
-// 			ok( true,  "Ok" );
-// 		}
-// 	}
-// 	catch(e) {
-// 		ok( false,  "Failed" );
+test( "GetDefaultName_Layer.GetDefaultName() == string_Ok", function() {
+	try {
+		if(gizmo.type(Layer.GetDefaultName()) == "String") {
+			ok( true,  "Ok" );
+		}
+	}
+	catch(e) {
+		ok( false,  "Failed" );
 
-// 	}
+	}
 		
-// });
+});
 
 // test( "GetName_Layer.GetDefaultName()+\"\d*\").test(Layer.GetName())_Ok", function() {
 // 	try {
