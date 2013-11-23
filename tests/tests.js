@@ -87,9 +87,9 @@ test( "GetCtx()", function() {
 		
 });
 
-test( "GetCanvasElement()", function() {	
+test( "GetCanvasTag()", function() {	
 	try {
-		if(gizmo.type(Layer.GetCanvasElement()) == "HTMLCanvasElement" && Layer.GetCanvasElement() == Layer._canvasElement) {
+		if(gizmo.type(Layer.GetCanvasTag()) == "HTMLCanvasElement" && Layer.GetCanvasTag() == Layer._canvasTag) {
 			ok( true,  "Ok" );
 		}
 	}
