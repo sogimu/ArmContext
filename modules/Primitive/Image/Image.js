@@ -17,10 +17,10 @@
  * @author <a href="mailto:sogimu@nxt.ru">Alexander Lizin aka Sogimu</a>
  * @version 0.1
  *
- * @requires Primitive.js
- * @requires ImageGlobalRepresentation.js
- * @requires ImageInternalRepresentation.js
- * @requires ImageViewRepresentation.js
+ * @requires modules/Primitive/Primitive.js
+ * @requires modules/Primitive/Image/ImageGlobalRepresentation.js
+ * @requires modules/Primitive/Image/ImageInternalRepresentation.js
+ * @requires modules/Primitive/Image/ImageViewRepresentation.js
  */
 
 (function(window) {

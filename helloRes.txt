@@ -1,0 +1,24 @@
+Dificulty with modules/Primitive/Primitives.js
+Dificulty with modules/Primitive/Primitive.js
+Dificulty with modules/Primitive/Primitives.js
+Dificulty with modules/Primitive/Rect/Rect.js
+Dificulty with modules/Primitive/Image/Image.js
+modules/Layer/Layer.js
+modules/Primitive/InternalRepresentation.js
+modules/Primitive/Debug.js
+modules/Primitive/BoundingBox.js
+modules/Primitive/MvMatrix.js
+modules/Primitive/GlobalRepresentation.js
+modules/Primitive/ViewRepresentation.js
+modules/Primitive/Primitive.js
+modules/Primitive/Primitives.js
+modules/Primitive/Rect/RectInternalRepresentation.js
+modules/Primitive/Rect/RectGlobalRepresentation.js
+modules/Primitive/Rect/RectViewRepresentation.js
+modules/Primitive/Rect/Rect.js
+modules/Primitive/Image/ImageGlobalRepresentation.js
+modules/Primitive/Image/ImageInternalRepresentation.js
+modules/Primitive/Image/ImageViewRepresentation.js
+modules/Primitive/Image/Image.js
+modules/ArmContext/ArmContext.js
+modules/Loader/Loader.js

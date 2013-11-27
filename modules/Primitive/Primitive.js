@@ -3,16 +3,16 @@
  * Описывает виртуальный класс Primitive. Методы и свойства общие для примитивов.
  * 
  * @class Primitive
- * @this {ArmContext.Primitie}
+ * @this {ArmContext.Primitive}
  * @author <a href="mailto:sogimu@nxt.ru">Alexander Lizin aka Sogimu</a>
  * @version 0.1
  *
- * @requires BoundingBox.js
- * @requires Debug.js
- * @requires GlobalRepresentation.js
- * @requires InternalRepresentation.js
- * @requires MvMatrix.js
- * @requires ViewRepresentation.js
+ * @requires modules/Primitive/BoundingBox.js
+ * @requires modules/Primitive/Debug.js
+ * @requires modules/Primitive/GlobalRepresentation.js
+ * @requires modules/Primitive/InternalRepresentation.js
+ * @requires modules/Primitive/MvMatrix.js
+ * @requires modules/Primitive/ViewRepresentation.js
  */
 
 (function(window) {

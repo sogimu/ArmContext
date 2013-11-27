@@ -1,3 +1,15 @@
+/**
+ * @classdesc
+ * Описывает набор классов Primitive.
+ * 
+ * @class Primitives
+ * @this {ArmContext.Primitives}
+ * @author <a href="mailto:sogimu@nxt.ru">Alexander Lizin aka Sogimu</a>
+ * @version 0.1
+ *
+ * @requires modules/Primitive/Primitive.js
+ *
+ */
 
 (function(window) {
 	var Primitives = function(O) {

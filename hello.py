@@ -1,51 +1,101 @@
+from gzip import _PaddedFile
 import sys
 import os
+import re
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("path",
-                    help="Path to dir with files")
+parser.add_argument("path", help="Path to dir with files")
 args = parser.parse_args()
-# for i in os.listdir(args.path):
-# 	print(i)
 
-def getFile(path, pathList):
-	for i in os.listdir(path):
+#pathToFiles = "modules"
 
-		if os.path.isfile(path + "/" + i):
-			pathList += " --js " + path + "/" + i
-		else:
-			pathList = getFile(path + "/" + i, pathList)
-	return pathList;
+class File:
+    """Класс описывающий список зависимостей в нужном порядке"""
+    _dependes = []
+    _path = ""
 
-# print (getFile(args.path, ""))
+    def __init__(self, path, dependes):
+        self._path = path
+        self._dependes = dependes
 
-print("""
-#!/bin/bash
+    def GetPath(self):
+        return self._path
 
-NAME="armcontext"
-VERSION="0.5.1"
-RASHIR="js"
+    def GetDependes(self):
+        return self._dependes
 
-FILE_NAME=$NAME-$VERSION.$RASHIR
-FILE_NAME_MIN=$NAME".min"-$VERSION.$RASHIR
-FILE_NAME_WITHOUT_VERSION=$NAME.$RASHIR
+class FilesList:
+    """Класс описывающий список зависимостей в нужном порядке"""
+    _filesList = []
 
-PATH_TO_COMPILER="./lib/Closure-compiler/"
+    def AddFile(self, file):
+        if not(self.FileAdded(file)):
+            if self.DependsOfFileResolved(file):
+                self._filesList.append(file)
 
-COMPILATION_LEVEL="WHITESPACE_ONLY"
-# COMPILATION_LEVEL="SIMPLE_OPTIMIZATIONS"
-# COMPILATION_LEVEL="ADVANCED_OPTIMIZATIONS"
+    def DependsOfFileResolved(self, file):
+        dependsOfFileResolved = 0;
 
-echo "Building..." """)
-print("""java -jar "$PATH_TO_COMPILER"compiler.jar""" + getFile(args.path, "") + """ --compilation_level "$COMPILATION_LEVEL" --language_in ECMASCRIPT5 --js_output_file ./$FILE_NAME_MIN""")
+        if len(file.GetDependes()) == 0:
+            return 1;
 
-print("""
-echo "$FILE_NAME_MIN"
+        for fileDepend in file.GetDependes():
+            for addedFile in self._filesList:
+                if (addedFile.GetPath() == fileDepend):
+                    dependsOfFileResolved += 1
 
-echo "$FILE_NAME_WITHOUT_VERSION"
-cp "$FILE_NAME_MIN" "$FILE_NAME_WITHOUT_VERSION"
+        if dependsOfFileResolved == len(file.GetDependes()):
+            return 1
+        else:
+            return 0
 
-echo "$FILE_NAME"
-cp "$FILE_NAME_MIN" "$FILE_NAME"
-""")
+    def FileAdded(self, file):
+        if (self._filesList.count(file) != 0):
+            return 1
+        else:
+            return 0
+
+    def AddFiles(self, files):
+        if len(files) == 0:
+            return 0
+
+        files.reverse();
+        file = files.pop();
+        files.reverse();
+        self.AddFile(file)
+
+        if(not(self.FileAdded(file))):
+            files.insert(len(files), file)
+            print('Dificulty with ' + file._path)
+
+        if len(files) != 0:
+            return self.AddFiles(files)
+
+def getListOfFiles(dir, pathList):
+    files = []
+    dirs = []
+    #Получаем список файлов и папок
+    for fileName in os.listdir(dir):
+        path = dir + '/' + fileName
+        if os.path.isfile(path):
+            f = open(path, 'r')
+            dependes = re.findall("(?<=@requires\s)[a-z,A-Z,/]*.js", f.read())
+            f.closed
+            files.append(File(path,dependes))
+        else:
+            dirs.append(path)
+    #Обрабатывваем файлы
+    if len(files) != 0:
+        pathList.AddFiles(files)
+
+    #Обрабатываем директории
+    for dirPath in dirs:
+        listOfFiles = getListOfFiles(dirPath, pathList)
+    return pathList
+
+PL = getListOfFiles(args.path, FilesList())
+
+#Результат
+for f in PL._filesList:
+    print(f._path)
