@@ -6,17 +6,17 @@ import subprocess
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("curPath", help="Path to dir with files")
-parser.add_argument("comPath", help="Path to compiler")
+parser.add_argument("currentPath", help="Path to dir with files")
+parser.add_argument("compilerPath", help="Path to compiler")
 parser.add_argument("compilationLevel", help="Compilation level")
-parser.add_argument("version", help="Version")
+parser.add_argument("fileName", help="Name to generated file")
 
 args = parser.parse_args()
 
-currentPath = args.curPath
+currentPath = args.currentPath
 #currentPath = './modules'
 
-compilerPath = args.comPath
+compilerPath = args.compilerPath
 #compilerPath = "./lib/Closure-compiler/compiler.jar"
 
 compilationLevel = args.compilationLevel
@@ -24,26 +24,15 @@ compilationLevel = args.compilationLevel
 #compilaionLevel = 'SIMPLE_OPTIMIZATIONS'
 #compilaionLevel = 'ADVANCED_OPTIMIZATIONS'
 
-version = args.version
-#version = 0.5.1
+fileName = args.fileName
+#fileName = 'armcontext.js'
 
 print('Current path          = ' + currentPath)
 print('Compiler              = ' + compilerPath)
 print('Compilation level     = ' + compilationLevel)
-print('Version of ArmContext = ' + version)
+print('File name             = ' + fileName)
 
 print("Building...")
-
-NAME="armcontext"
-#VERSION="0.5.1"
-
-FILE_NAME = NAME + '-' + version + '.js'
-FILE_NAME_MIN = NAME + ".min-" + version + '.js'
-FILE_NAME_WITHOUT_VERSION = NAME + '.js'
-
-#COMPILATION_LEVEL="WHITESPACE_ONLY"
-# COMPILATION_LEVEL="SIMPLE_OPTIMIZATIONS"
-# COMPILATION_LEVEL="ADVANCED_OPTIMIZATIONS"
 
 class File:
     """Класс описывающий список зависимостей в нужном порядке"""
@@ -154,7 +143,7 @@ paramWithFilePaths = ''
 for file in files._filesList:
     paramWithFilePaths += ' --js ' + file.GetPath()
 
-cmd = 'java -jar ' + compilerPath + paramWithFilePaths +  ' --compilation_level ' + compilationLevel + ' --language_in ECMASCRIPT5 --js_output_file ' + FILE_NAME_MIN
+cmd = 'java -jar ' + compilerPath + paramWithFilePaths +  ' --compilation_level ' + compilationLevel + ' --language_in ECMASCRIPT5 --js_output_file ' + fileName
 print(cmd)
 proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
 out = proc.stdout.readlines()
