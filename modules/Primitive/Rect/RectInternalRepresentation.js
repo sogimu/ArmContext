@@ -1,3 +1,16 @@
+/**
+ * @classdesc
+ * Описывает класс RectInternalRepresentation. Класс описывающий начальное состояние примитива Rect.
+ * 
+ * @class RectInternalRepresentation
+ * @this {ArmContext.RectInternalRepresentation}
+ * @author <a href="mailto:sogimu@nxt.ru">Alexander Lizin aka Sogimu</a>
+ * @version 0.1
+ *
+ * @requires ArmContext/ArmContext.js
+ * @requires Primitive/InternalRepresentation.js
+ */
+ 
 (function(window) {
     var RectInternalRepresentation = function(primitive) {
 

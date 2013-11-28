@@ -1,7 +1,20 @@
-(function(window) {
-    var Image2dContextRepresentation = function(primitive) {
+/**
+ * @classdesc
+ * Описывает класс ImageViewRepresentation. Класс описывающий внешний вид примитива Image.
+ * 
+ * @class ImageViewRepresentation
+ * @this {ArmContext.ImageViewRepresentation}
+ * @author <a href="mailto:sogimu@nxt.ru">Alexander Lizin aka Sogimu</a>
+ * @version 0.1
+ *
+ * @requires ArmContext/ArmContext.js
+ * @requires Primitive/ViewRepresentation.js
+ */
 
-        var me = ArmContext.C2dContextRepresentation(primitive);
+(function(window) {
+    var ImageViewRepresentation = function(primitive) {
+
+        var me = ArmContext.ViewRepresentation(primitive);
 
         me.parentSet = me.Set ? me.Set : null;
 
@@ -22,5 +35,5 @@
         return me;
     };
 
-    ArmContext.Image2dContextRepresentation = Image2dContextRepresentation;
+    ArmContext.ImageViewRepresentation = ImageViewRepresentation;
 })();

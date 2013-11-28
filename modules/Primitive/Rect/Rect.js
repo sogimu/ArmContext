@@ -17,10 +17,11 @@
  * @author <a href="mailto:sogimu@nxt.ru">Alexander Lizin aka Sogimu</a>
  * @version 0.1
  *
- * @requires modules/Primitive/Primitive.js
- * @requires modules/Primitive/Rect/RectGlobalRepresentation.js
- * @requires modules/Primitive/Rect/RectInternalRepresentation.js
- * @requires modules/Primitive/Rect/RectViewRepresentation.js
+ * @requires ArmContext/ArmContext.js
+ * @requires Primitive/Primitive.js
+ * @requires Primitive/Rect/RectGlobalRepresentation.js
+ * @requires Primitive/Rect/RectInternalRepresentation.js
+ * @requires Primitive/Rect/RectViewRepresentation.js
  */
 
 (function(window) {

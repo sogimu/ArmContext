@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Primitive/Rect/RectViewRepresentation.js</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Source: Primitive/Rect/RectViewRepresentation.js</h1>
+    
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source"><code>/**
+ * @classdesc
+ * Описывает класс RectViewRepresentation. Класс описывающий внешний вид примитива Rect.
+ * 
+ * @class RectViewRepresentation
+ * @this {ArmContext.RectViewRepresentation}
+ * @author &lt;a href="mailto:sogimu@nxt.ru">Alexander Lizin aka Sogimu&lt;/a>
+ * @version 0.1
+ *
+ * @requires ArmContext/ArmContext.js
+ * @requires Primitive/ViewRepresentation.js
+ */
+
+(function(window) {
+    var RectViewRepresentation = function(primitive) {
+
+        var me = ArmContext.ViewRepresentation(primitive);
+
+        me.parentSet = me.Set ? me.Set : null;
+        
+        // View properties
+        me._fillObject = "default";
+        me._strokeObject = "default";
+        me._lineWidth = "default";
+        me._lineDash = "default";
+        me._miterLimit = "default";
+        me._lineCap = "default";
+        me._lineJoin = "default";
+        
+
+        me.GetFillObject = function() {
+            return this._fillObject;
+        };
+
+        me.GetStrokeObject = function() {
+            return this._strokeObject;
+        };
+
+        me.GetLineWidth = function() {
+            return this._lineWidth;
+        };
+
+        me.GetLineDash = function() {
+            return this._lineDash;
+        };
+
+        me.GetMiterLimit = function() {
+            return this._miterLimit;
+        };
+
+        me.GetLineCap = function() {
+            return this._lineCap;
+        };
+
+        me.GetLineJoin = function() {
+            return this._lineJoin;
+        };
+        
+        me.Set = function(O) {
+            if(this.parentSet) {    this.parentSet( O );    };
+
+            for(var name in O) {
+                switch( name ) {
+                    case "fillObject" : { 
+                        this._fillObject  = O[name];
+                        if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
+                    }; break;
+                    
+                    case "strokeObject" : {
+                        this._strokeObject = O[name];
+                        if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
+                    };
+                    break;
+
+                    case "lineWidth" : { 
+                        this._lineWidth  = O[name];
+                        if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
+                    }; break;
+                    
+                    case "lineDash" : {
+                        this._lineDash = O[name];
+                        if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
+                    };
+                    break;
+
+                    case "miterLimit" : { 
+                        this._miterLimit  = O[name];
+                        if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
+                    }; break;
+                    
+                    case "lineCap" : {
+                        switch(O[name]) {
+                            case "butt" : { 
+                                this._lineCap  = O[name];
+                                if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
+                            }; break;
+                            
+                            case "round" : { 
+                                this._lineCap  = O[name];
+                                if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
+                            }; break;
+                            
+                            case "square" : { 
+                                this._lineCap  = O[name];
+                                if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
+                            }; break;
+                        }
+                        if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
+                    };
+                    break;
+
+                    case "lineJoin" : {
+                        switch(O[name]) {
+                            case "miter" : { 
+                                this._lineJoin  = O[name];
+                                if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
+                            }; break;
+
+                            case "round" : { 
+                                this._lineJoin  = O[name];
+                                if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
+                            }; break;
+                            
+                            case "bevel" : { 
+                                this._lineJoin  = O[name];
+                                if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
+                            }; break;
+                        };
+                        if(this._onChanged) {
+                this._onChanged.call(primitive);
+            };
+                    };
+                    break;
+                };
+            };
+
+
+        };
+
+        return me;
+    };
+
+    ArmContext.RectViewRepresentation = RectViewRepresentation;
+})();
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="ArmContext.html">ArmContext</a></li><li><a href="Image.html">Image</a></li><li><a href="ImageGlobalRepresentation.html">ImageGlobalRepresentation</a></li><li><a href="ImageInternalRepresentation.html">ImageInternalRepresentation</a></li><li><a href="ImageViewRepresentation.html">ImageViewRepresentation</a></li><li><a href="Layer.html">Layer</a></li><li><a href="Primitive.html">Primitive</a></li><li><a href="Primitives.html">Primitives</a></li><li><a href="Rect.html">Rect</a></li><li><a href="RectGlobalRepresentation.html">RectGlobalRepresentation</a></li><li><a href="RectInternalRepresentation.html">RectInternalRepresentation</a></li><li><a href="RectViewRepresentation.html">RectViewRepresentation</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha2</a> on Fri Nov 29 2013 02:06:56 GMT+0700 (NOVT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

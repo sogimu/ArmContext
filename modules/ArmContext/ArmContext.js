@@ -1,3 +1,14 @@
+/**
+ * @classdesc
+ * Описывает описывает пространство имен ArmContext.
+ * 
+ * @class ArmContext
+ * @this {ArmContext}
+ * @author <a href="mailto:sogimu@nxt.ru">Alexander Lizin aka Sogimu</a>
+ * @version 0.1
+ *
+ */
+
 (function(window) {
     var ArmContext = function() {
 

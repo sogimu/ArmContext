@@ -1,3 +1,16 @@
+/**
+ * @classdesc
+ * Описывает класс RectGlobalRepresentation. Класс описывающий представление примитива Rect в глобальных координатах.
+ * 
+ * @class RectGlobalRepresentation
+ * @this {ArmContext.RectGlobalRepresentation}
+ * @author <a href="mailto:sogimu@nxt.ru">Alexander Lizin aka Sogimu</a>
+ * @version 0.1
+ *
+ * @requires ArmContext/ArmContext.js
+ * @requires Primitive/GlobalRepresentation.js
+ */
+ 
 (function(window) {
     var RectGlobalRepresentation = function() {
 

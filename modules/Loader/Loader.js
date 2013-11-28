@@ -8,6 +8,8 @@
  * @this {ArmContext.Loader}
  * @author <a href="mailto:sogimu@nxt.ru">Alexander Lizin aka Sogimu</a>
  * @version 0.1
+ *
+ * @requires ArmContext/ArmContext.js
  */
 
 (function(window) {

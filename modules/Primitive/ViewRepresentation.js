@@ -1,9 +1,11 @@
 /**
  * Описывает абстрактный класс ответственный за визуальные свойства примитива.
  *
- * @this {ArmContext.C2dContextRepresentation}
+ * @this {ArmContext.ViewRepresentation}
  * @author <a href="mailto:sogimu@nxt.ru">Alexander Lizin aka Sogimu</a>
  * @version 0.1
+ *
+ * @requires ArmContext/ArmContext.js
  */
 
 (function(window) {

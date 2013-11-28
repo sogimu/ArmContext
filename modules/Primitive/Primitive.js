@@ -7,12 +7,13 @@
  * @author <a href="mailto:sogimu@nxt.ru">Alexander Lizin aka Sogimu</a>
  * @version 0.1
  *
- * @requires modules/Primitive/BoundingBox.js
- * @requires modules/Primitive/Debug.js
- * @requires modules/Primitive/GlobalRepresentation.js
- * @requires modules/Primitive/InternalRepresentation.js
- * @requires modules/Primitive/MvMatrix.js
- * @requires modules/Primitive/ViewRepresentation.js
+ * @requires ArmContext/ArmContext.js
+ * @requires Primitive/BoundingBox.js
+ * @requires Primitive/Debug.js
+ * @requires Primitive/GlobalRepresentation.js
+ * @requires Primitive/InternalRepresentation.js
+ * @requires Primitive/MvMatrix.js
+ * @requires Primitive/ViewRepresentation.js
  */
 
 (function(window) {

@@ -1,3 +1,16 @@
+/**
+ * @classdesc
+ * Описывает класс ImageGlobalRepresentation. Класс описывающий представление примитива Image в глобальных координатах.
+ * 
+ * @class ImageGlobalRepresentation
+ * @this {ArmContext.ImageGlobalRepresentation}
+ * @author <a href="mailto:sogimu@nxt.ru">Alexander Lizin aka Sogimu</a>
+ * @version 0.1
+ *
+ * @requires ArmContext/ArmContext.js
+ * @requires Primitive/GlobalRepresentation.js
+ */
+
 (function(window) {
     var ImageGlobalRepresentation = function() {
 
