@@ -23,7 +23,7 @@
             gizmo.Filter(O,"Object");
             this._primitives.push(O);
 
-            this.SortByZindex();
+            // this.SortByZindex();
 
             return this;
         };

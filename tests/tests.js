@@ -162,3 +162,32 @@ test( "Rect.Draw", function() {
 	ok( true,  "first test" );
 	
 });
+
+module( "Primitives" );
+test( "Primitives.Add()", function() {
+	var primitives = new ArmContext.Primitives();
+	var rect = ArmContext.Rect({width: 100, height: 50});
+
+	primitives.Add(rect);
+
+	if(primitives._primitives.indexOf(rect) != -1) {
+		ok( true,  "Primitive added into primitives._primitives._primitives" );
+	} else {
+		of( false, "Primitive does not added into primitives._primitives._primitives" );
+	}
+	
+});
+
+test( "Primitives.Remove()", function() {
+	var primitives = new ArmContext.Primitives();
+	var rect = ArmContext.Rect({width: 100, height: 50});
+
+	primitives.Add(rect);
+	primitives.Remove(rect);
+
+	if(primitives._primitives.indexOf(rect) == -1) {
+		ok( true,  "Primitive deleted from primitives._primitives._primitives" );
+	} else {
+		of( false, "Primitive does not deleted from primitives._primitives._primitives" );
+	}
+});
