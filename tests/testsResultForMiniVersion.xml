@@ -1,12 +1,47 @@
 <?xml version="1.0"?>
 <!--
- Tests completed in 16 milliseconds.
-0 tests of 1 passed, 1 failed. 
+ Tests completed in 28 milliseconds.
+14 tests of 16 passed, 2 failed. 
 -->
-<testsuite name="QUnit - JavaScript Tests" timestamp="2013-11-27T23:14:50Z" tests="1" failures="1" time="0.016">
-<testcase name="global failure" classname="class Layer">
-<failure message="class Layer" type="class Layer">
-ReferenceError: Can't find variable: ArmContextSource: file:///home/sogimu/ArmContextREBEL/tests/tests.js:9
+<testsuite name="QUnit - JavaScript Tests" timestamp="2013-11-29T00:04:43Z" tests="16" failures="2" time="0.028">
+<testcase name="Constor_spawnWithoutParams_Exeption" classname="class Layer">
+</testcase>
+<testcase name="canvas is exist" classname="class Layer">
+</testcase>
+<testcase name="canvas having CSS class" classname="class Layer">
+</testcase>
+<testcase name="canvas having zIndex" classname="class Layer">
+</testcase>
+<testcase name="GetDefaultName_Layer.GetDefaultName() == string_Ok" classname="class Layer">
+</testcase>
+<testcase name="GetName_Layer.GetDefaultName() have number on end_Ok" classname="class Layer">
+</testcase>
+<testcase name="GetCtx()" classname="class Layer">
+</testcase>
+<testcase name="GetCanvasTag()" classname="class Layer">
+</testcase>
+<testcase name="Constructor GetPoints() == onesMatrix" classname="class MvMatrix">
+</testcase>
+<testcase name="Translate()" classname="class MvMatrix">
+</testcase>
+<testcase name="Rotate() 10 grad" classname="class MvMatrix">
+</testcase>
+<testcase name="Rotate() 370 grad" classname="class MvMatrix">
+</testcase>
+<testcase name="Primitive" classname="Primitive">
+</testcase>
+<testcase name="Rect.Draw" classname="Primitive">
+</testcase>
+<testcase name="Primitives.Add()" classname="Primitives">
+<failure message="Primitives" type="Primitives">
+Died on test #1     at file:///home/sogimu/ArmContextREBEL/tests/resources/qunit-1.10.0.js:343
+    at file:///home/sogimu/ArmContextREBEL/tests/tests.js:179: Varibale is not been set!Source: TypeError: Varibale is not been set!
+</failure>
+</testcase>
+<testcase name="Primitives.Remove()" classname="Primitives">
+<failure message="Primitives" type="Primitives">
+Died on test #1     at file:///home/sogimu/ArmContextREBEL/tests/resources/qunit-1.10.0.js:343
+    at file:///home/sogimu/ArmContextREBEL/tests/tests.js:193: Varibale is not been set!Source: TypeError: Varibale is not been set!
 </failure>
 </testcase>
 </testsuite>

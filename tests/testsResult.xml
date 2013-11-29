@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!--
- Tests completed in 22 milliseconds.
-10 tests of 14 passed, 4 failed. 
+ Tests completed in 30 milliseconds.
+16 tests of 16 passed, 0 failed. 
 -->
-<testsuite name="QUnit - JavaScript Tests" timestamp="2013-11-27T23:14:50Z" tests="14" failures="4" time="0.022">
+<testsuite name="QUnit - JavaScript Tests" timestamp="2013-11-29T00:04:43Z" tests="16" failures="0" time="0.03">
 <testcase name="Constor_spawnWithoutParams_Exeption" classname="class Layer">
 </testcase>
 <testcase name="canvas is exist" classname="class Layer">
@@ -21,31 +21,19 @@
 <testcase name="GetCanvasTag()" classname="class Layer">
 </testcase>
 <testcase name="Constructor GetPoints() == onesMatrix" classname="class MvMatrix">
-<failure message="class MvMatrix" type="class MvMatrix">
-Died on test #1     at file:///home/sogimu/ArmContextREBEL/tests/resources/qunit-1.10.0.js:343
-    at file:///home/sogimu/ArmContextREBEL/tests/tests.js:114: 'undefined' is not a constructor (evaluating 'new ArmContext.MvMatrix()')Source: TypeError: 'undefined' is not a constructor (evaluating 'new ArmContext.MvMatrix()')
-</failure>
 </testcase>
 <testcase name="Translate()" classname="class MvMatrix">
-<failure message="class MvMatrix" type="class MvMatrix">
-Died on test #1     at file:///home/sogimu/ArmContextREBEL/tests/resources/qunit-1.10.0.js:343
-    at file:///home/sogimu/ArmContextREBEL/tests/tests.js:126: 'undefined' is not a constructor (evaluating 'new ArmContext.MvMatrix()')Source: TypeError: 'undefined' is not a constructor (evaluating 'new ArmContext.MvMatrix()')
-</failure>
 </testcase>
 <testcase name="Rotate() 10 grad" classname="class MvMatrix">
-<failure message="class MvMatrix" type="class MvMatrix">
-Died on test #1     at file:///home/sogimu/ArmContextREBEL/tests/resources/qunit-1.10.0.js:343
-    at file:///home/sogimu/ArmContextREBEL/tests/tests.js:140: 'undefined' is not a constructor (evaluating 'new ArmContext.MvMatrix()')Source: TypeError: 'undefined' is not a constructor (evaluating 'new ArmContext.MvMatrix()')
-</failure>
 </testcase>
 <testcase name="Rotate() 370 grad" classname="class MvMatrix">
-<failure message="class MvMatrix" type="class MvMatrix">
-Died on test #1     at file:///home/sogimu/ArmContextREBEL/tests/resources/qunit-1.10.0.js:343
-    at file:///home/sogimu/ArmContextREBEL/tests/tests.js:154: 'undefined' is not a constructor (evaluating 'new ArmContext.MvMatrix()')Source: TypeError: 'undefined' is not a constructor (evaluating 'new ArmContext.MvMatrix()')
-</failure>
 </testcase>
 <testcase name="Primitive" classname="Primitive">
 </testcase>
 <testcase name="Rect.Draw" classname="Primitive">
+</testcase>
+<testcase name="Primitives.Add()" classname="Primitives">
+</testcase>
+<testcase name="Primitives.Remove()" classname="Primitives">
 </testcase>
 </testsuite>
