@@ -125,46 +125,10 @@ test( "Translate()", function() {
 	
 });
 
-test( "Rotate() 10 grad with equals", function() {
+test( "Rotate() 10 grad", function() {
 	var mvMatrix = new ArmContext.MvMatrix();
 	mvMatrix.Rotate(0.17453292519943295); // 10 grad //10 / 180 * Math.PI
 
-	var points = mvMatrix.GetPoints();
-	/*if(points[0][0] == 0.984807753012208)
-	if(points[0][1] == 0.17364817766693033)
-	if(points[1][0] == -0.17364817766693033)
-	if(points[1][1] == 0.984807753012208) */
-	
-	ok(points[0][0] == 0.984807753012208, "is [0][0] == 0.984807753012208");
-	ok(points[0][1] == 0.17364817766693033, "is [0][1] == 0.17364817766693033");
-	ok(points[1][0] == -0.17364817766693033, "is [1][0] == -0.17364817766693033");
-	ok(points[1][1] == 0.984807753012208, "is [1][1] == 0.984807753012208");
-	//ok( true,  "Ok" );
-});
-
-test("Rotate() 10 grad with 'same' function", function() {
-	//=== operator means a comparasion without cast
-	var mvMatrix = new ArmContext.MvMatrix();
-	mvMatrix.Rotate(0.17453292519943295); // 10 grad //10 / 180 * Math.PI
-
-	var points = mvMatrix.GetPoints();
-	
-	same(points[0][0] , 0.984807753012208, "is [0][0] === 0.984807753012208");
-	same(points[0][1] , 0.17364817766693033, "is [0][1] === 0.17364817766693033");
-	same(points[1][0] , -0.17364817766693033, "is [1][0] === -0.17364817766693033");
-	same(points[1][1] , 0.984807753012208, "is [1][1] === 0.984807753012208");
-	
-	same(points[0][0] , 0.985, "is [0][0] === 0.985");
-	same(points[0][1] , 0.174, "is [0][1] === 0.174");
-	same(points[1][0] , -0.174, "is [1][0] === -0.174");
-	same(points[1][1] , 0.985, "is [1][1] === 0.985");
-});
-
-test( "Rotate() 370 grad", function() {
-	var mvMatrix = new ArmContext.MvMatrix();
-	//mvMatrix.Rotate(0.17453292519943295); // 370 grad //370 % 360 / 180 * Math.PI
-	//WTF hmm
-	mvMatrix.Rotate(
 	var points = mvMatrix.GetPoints();
 	if(points[0][0] == 0.984807753012208)
 	if(points[0][1] == 0.17364817766693033)
@@ -175,6 +139,19 @@ test( "Rotate() 370 grad", function() {
 	
 });
 
+test( "Rotate() 370 grad", function() {
+	var mvMatrix = new ArmContext.MvMatrix();
+	mvMatrix.Rotate(0.17453292519943295); // 370 grad //370 % 360 / 180 * Math.PI
+
+	var points = mvMatrix.GetPoints();
+	if(points[0][0] == 0.984807753012208)
+	if(points[0][1] == 0.17364817766693033)
+	if(points[1][0] == -0.17364817766693033)
+	if(points[1][1] == 0.984807753012208)
+
+	ok( true,  "Ok" );
+	
+});
 
 module( "Primitive" );
 test( "Primitive", function() {
