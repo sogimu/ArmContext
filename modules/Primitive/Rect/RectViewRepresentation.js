@@ -57,6 +57,8 @@
         };
         
         me.Set = function(O) {
+            gizmo.Filter(O, "Object");
+
             if(this.parentSet) {    this.parentSet( O );    };
 
             for(var name in O) {

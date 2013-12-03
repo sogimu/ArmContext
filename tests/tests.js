@@ -6,97 +6,42 @@ var div = document.createElement('div');
 div.id=containerName;
 body.appendChild( div );
 
-var Layer = ArmContext.Layer({containerID: containerName});
+var Layer = ArmContext.Layer();
 
-test( "Constor_spawnWithoutParams_Exeption", function() {
-	
-	try {
-		var layer = ArmContext.Layer();
-
-	}
-	catch(e) {
-		ok( true,  "Ok" );
-	}
-		
-});
-
-test( "canvas is exist", function() {
-	var canvas = $("#"+containerName+" canvas")[0];
-	if(canvas) {
-		ok( true,  "Ok" );
-
-	}
+test( "Canvas is exist", function() {
+	ok($("#"+Layer.GetCanvasTagID())[0],  "Ok" );	
 		
 });
 
 test( "canvas having CSS class", function() {
-	var canvas = $("#"+containerName+" canvas")[0];
-	if(/ArmLayerClass\s+Layer\d*/.test(canvas.className)) {
-		ok( true,  "Ok" );
+	ok(/ArmLayerClass\s+Layer\d*/.test($("#"+Layer.GetName())[0].className),  "Ok" );
 
-	}
-		
 });
 
 test( "canvas having zIndex", function() {
-	var canvas = $("#"+containerName+" canvas")[0];
-	if(/\d\d*/.test(canvas.style.zIndex)) {
-		ok( true,  "Ok" );
+	var canvas = $("#"+Layer.GetName())[0];
+	ok(/\d\d*/.test(canvas.style.zIndex*1),  "Ok" );
 
-	}
-		
 });
 
 test( "GetDefaultName_Layer.GetDefaultName() == string_Ok", function() {
-	try {
-		if(gizmo.type(Layer.GetDefaultName()) == "String") {
-			ok( true,  "Ok" );
-		}
-	}
-	catch(e) {
-		ok( false,  "Failed" );
+	ok(gizmo.type(Layer.GetDefaultName()) == "String",  "Ok" );
 
-	}
-		
 });
 
 test( "GetName_Layer.GetDefaultName() have number on end_Ok", function() {
-	try {
-		if(new RegExp(Layer.GetDefaultName()+"\d*").test(Layer.GetName())) {
-			ok( true,  "Ok" );
-		}
-	}
-	catch(e) {
-		ok( false,  "Failed" );
-
-	}
-		
+	ok(new RegExp(Layer.GetDefaultName()+"\d*").test(Layer.GetName()),  "Ok" );		
 });
 
 test( "GetCtx()", function() {
-	
-	try {
-		if(gizmo.type(Layer.GetCtx()) == "CanvasRenderingContext2D" && Layer.GetCtx() == Layer._ctx) {
-			ok( true,  "Ok" );
-		}
-	}
-	catch(e) {
-		ok( false,  "Failed" );
+	ok(gizmo.type(Layer.GetCtx()) == "CanvasRenderingContext2D",  "Ok" );
+	ok(Layer.GetCtx() == Layer._ctx,  "Ok" );
 
-	}
-		
 });
 
-test( "GetCanvasTag()", function() {	
-	try {
-		if(gizmo.type(Layer.GetCanvasTag()) == "HTMLCanvasElement" && Layer.GetCanvasTag() == Layer._canvasTag) {
-			ok( true,  "Ok" );
-		}
-	}
-	catch(e) {
-		ok( false,  "Failed" );
-
-	}
+test( "GetCanvasTag()", function() {
+	ok(gizmo.type(Layer.GetCanvasTag()) == "HTMLCanvasElement", "Ok");
+	ok(Layer.GetCanvasTag() == Layer._canvasTag,  "Ok" );
 		
 });
 
@@ -108,7 +53,6 @@ test( "Constructor GetPoints() == onesMatrix", function() {
 	if(points[0][0] == 1)
 	if(points[1][1] == 1)
 	if(points[2][2] == 1)
-
 	ok( true,  "Ok" );
 	
 });
