@@ -26,7 +26,6 @@
         me._mvMatrix = ArmContext.MvMatrix(me);
         me._debug = ArmContext.Debug(me);
         me._boundingBox = ArmContext.BoundingBox();
-
         /**
          * Метод для перемещения примитива в заданную точку
          *
@@ -72,6 +71,7 @@
 
             this.Update();
             
+
             return this;
         };
 

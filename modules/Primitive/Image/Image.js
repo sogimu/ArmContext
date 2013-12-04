@@ -53,7 +53,7 @@
             var ctx = ctxRep._ctx;
             ctx.save();
                 params = this._mvMatrix.GetTransformParams();
-                ctx.setTransform(params.a, params.b, params.c, params.d, params.e, params.f);
+                ctx.transform(params.a, params.b, params.c, params.d, params.e, params.f);
                 ctx.drawImage(ctxRep.GetImage(), 0,0, intRep.GetWidth(), intRep.GetHeight());
             ctx.restore();
         };
