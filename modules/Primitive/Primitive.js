@@ -4,7 +4,7 @@
  * 
  * @class Primitive
  * @this {ArmContext.Primitive}
- * @author <a href="mailto:sogimu@nxt.ru">Alexander Lizin aka Sogimu</a>
+ * @author Alexander Lizin sogimu@nxt.ru
  * @version 0.1
  *
  * @requires ArmContext/ArmContext.js
@@ -26,7 +26,6 @@
         me._mvMatrix = ArmContext.MvMatrix(me);
         me._debug = ArmContext.Debug(me);
         me._boundingBox = ArmContext.BoundingBox();
-
         /**
          * Метод для перемещения примитива в заданную точку
          *
@@ -72,6 +71,7 @@
 
             this.Update();
             
+
             return this;
         };
 
@@ -256,18 +256,6 @@
         */
         me.GetBoundingBox = function() {
             return this._boundingBox;
-        };
-
-        /**
-        * Проверить пересечение данного примитива с другим
-        *
-        * @method Primitive.IsIntersectionWith
-        * @this {ArmContext.Primitive}
-        * @param {Primitive} primitive Примитив пересечение с которым нужно проверить
-        * @return {boolean}
-        */
-        me.IsIntersectionWith = function(primitive) {
-            return this._boundingBox.IntersectWith( primitive.GetBoundingBox() );
         };
 
         me.Update = function(O) {

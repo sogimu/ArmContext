@@ -36,7 +36,7 @@ window.onload = function() {
         // D.name = "D";
             
         setInterval(function() {
-            A.RotateAt({gradAngle: 10, x: 100, y: 100})
+            // A.RotateAt({gradAngle: 10, x: 100, y: 100})
             // .TranslateTo({x: Math.random() * layer1.GetWidth(), y: 100})
             // D.Rotate({gradAngle: -1, x: 100, y: 100})
             // A._debug.ShowDebugInfo(CTX);
@@ -47,7 +47,7 @@ window.onload = function() {
             // B._internalRepresentation.ShowPoints(CTX);
             stats.begin();
                 A.Clear(layer1);
-                // layer1.GetCtx().clearRect(0,0,layer1.GetWidth(), layer1.GetHeight());
+                // layer1.GetCtx().clearRect(-100,-100,layer1.GetWidth()*2, layer1.GetHeight()*2);
                 A.Draw(layer1);
                 // A._boundingBox.ShowPoints(layer1.GetCtx());
 

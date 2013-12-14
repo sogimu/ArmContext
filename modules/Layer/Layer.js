@@ -20,9 +20,19 @@
 
 (function(window) {
 	var Layer = function( O ) {
-		gizmo.Filter(O, "Object");
 
 		var me = {};
+
+        /**
+         * Установить объект 2d-context
+         *
+         * @method Layer.SetCtx
+         * @this {ArmContext.Layer}
+         * @param {CanvasRenderingContext2D} ctx
+         */
+        me.SetCtx = function(ctx) {
+            this._ctx = ctx;
+        };
 
         /**
          * Установить имя слоя. Так же данное имя устанавливается для id тега <canvas>. 
@@ -34,7 +44,6 @@
         me.SetName = function( O ) {
             gizmo.Filter(O,"String");
             this._name = O;
-            this.SetCanvasTag();
 
         };
 
@@ -47,7 +56,7 @@
          */
         me.SetWidth = function( width ) {
             gizmo.Filter(width,"Number");
-            this.GetCanvasTag().width = width;
+            this._width = width;
         };
         
         /**
@@ -59,7 +68,7 @@
          */
         me.SetHeight = function( height ) {
             gizmo.Filter(height,"Number");
-            this.GetCanvasTag().height = height;
+            this._height = height;
 
         };
 
@@ -70,24 +79,30 @@
          * @this {Layer}
          * @param {number} zIndex
          */
-        me.SetzIndex = function( zIndex ) {
+        me.SetZindex = function( zIndex ) {
             gizmo.Filter(zIndex,"Number");
-            this.GetCanvasTag().style.zIndex = zIndex;
+            if(this.GetCanvasTag()) {
+                this.GetCanvasTag().style.zIndex = zIndex;    
+            }
+            this._zIndex = zIndex;
 
         };
 
         /**
-         * Установить тег-контейнер для слоя через ID тега-контайнера.
+         * Установить тег-контейнер для слоя через ID тега-контейнера.
          *
          * @method Layer.SetContainerTag
          * @this {Layer}
-         * @param {number} containerTagID
          */
-        me.SetContainerTag = function(containerTagID) {
-            gizmo.Filter(containerTagID,"String");
-            var container = document.getElementById(containerTagID);
-            if(container) {
-                this._containerTag = container;
+        me.SetContainerTag = function() {
+            if(this.GetContainerTagID()) {
+                gizmo.Filter(this.GetContainerTagID(),"String");
+                var container = document.getElementById(this._containerTagID);
+                if(container) {
+                    this._containerTag = container;
+                } else {
+                    this._containerTag = document.getElementsByTagName("body")[0];
+                }
             } else {
                 this._containerTag = document.getElementsByTagName("body")[0];
             }
@@ -95,22 +110,45 @@
         };
         
         me.SetCanvasTag = function() {
+            this.SetContainerTag();
+
             var containerTag = this.GetContainerTag();
 
-            if(this.GetCanvasTag() == null) {
-                var canvas = document.createElement('canvas');
-                canvas.width = 500;
-                canvas.height = 500;
-                canvas.id = this.GetName();
-                canvas.style.zIndex = 0;
-                canvas.className = "ArmLayerClass " + this.GetName();
-                this._ctx = canvas.getContext('2d');
+            if(this.GetContainerTag()) {
+                if(this.GetCanvasTag() == null) {
+                    var canvas = document.createElement('canvas');
+                    canvas.width = this.GetWidth();
+                    canvas.height = this.GetHeight();
+                    canvas.id = this.GetName();
+                    canvas.style.zIndex = 0;
+                    canvas.className = "ArmLayerClass " + this.GetName();
+                    this.SetCtx(canvas.getContext('2d'));
 
-                container.appendChild( canvas );
-                this._canvasTag = canvas;
+                    containerTag.appendChild( canvas );
+                    this._canvasTag = canvas;
+                    this.SetCanvasTagID(this.GetName());
+
+                } else {
+                    console.log("Canvas already created container ID: " + this.GetContainerTagID() + ", canvas ID: " + this.GetCanvasTagID());
+                }
+            } else {
+                console.log("Container tag is unknown!");
             }
-            
 
+        };
+
+        /**
+         * Установить ID тега-контейнера.
+         *
+         * @method Layer.SetContainerTagID
+         * @this {Layer}
+         */
+        me.SetContainerTagID = function(id) {
+            this._containerTagID = id;
+        };
+
+        me.SetCanvasTagID = function(id) {
+            this._canvasTagID = id;
         };
 
         /**
@@ -143,7 +181,11 @@
          * @return {number}
          */
         me.GetWidth = function() {
-            return this.GetCanvasTag().width;
+            if(this.GetCanvasTag()) {
+                return this.GetCanvasTag().width;
+            }
+            return this._width;
+
         };
 
         /**
@@ -154,7 +196,11 @@
          * @return {number}
          */
         me.GetHeight = function() {
-            return this.GetCanvasTag().height;
+            if(this.GetCanvasTag()) {
+                return this.GetCanvasTag().height;
+            }
+            return this._height;
+
         };
 
         /**
@@ -191,6 +237,28 @@
         };
 
         /**
+         * Получить ID тега-контейнера тега canvas слоя
+         *
+         * @method Layer.GetContainerTagID
+         * @this {ArmContext.Layer}
+         * @return {string}
+         */
+        me.GetContainerTagID = function() {
+            return this._containerTagID;
+        };
+
+        /**
+         * Получить ID тега canvas слоя
+         *
+         * @method Layer.GetCanvasTagID
+         * @this {ArmContext.Layer}
+         * @return {string}
+         */
+        me.GetCanvasTagID = function() {
+            return this._canvasTagID;
+        };
+
+        /**
          * Получить имя слоя по-умолчанию
          *
          * @method Layer.GetDefaultName
@@ -202,6 +270,8 @@
 		};
 
 		me.Set = function( O ) {
+            gizmo.Filter(O, "Object");
+
             for(var name in O) {
                 switch( name ) {
                     case "name"     : {
@@ -209,7 +279,7 @@
                     }; break;
 
                     case "containerID"     : {
-                        this.SetContainerTag( O[name] );
+                        this.SetContainerTagID( O[name] );
                     }; break;
 
                     case "width"     : {
@@ -239,13 +309,21 @@
 
 		me._defaultName = "Layer";
 
-		me._containerTag = null;
+        me._containerTag = null;
+		me._containerTagID = "";
         me._canvasTag = null;
+        me._canvasTagID = null;
+
+        me._width = 500;
+        me._height = 500;
+
 		me._ctx = null;
 				
         me.SetName.call(me,me.GetDefaultName() + ArmContext.GetNewUnicalNumber());          
         
-		me.Set( O );
+		me.Set( O || {} );
+
+        me.SetCanvasTag();
 
 		return me;
 

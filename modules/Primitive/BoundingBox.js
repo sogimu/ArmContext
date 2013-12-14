@@ -2,7 +2,7 @@
  * Описывает виртуальный класс BoundingBox.
  *
  * @this {ArmContext.BoundingBox}
- * @author <a href="mailto:sogimu@nxt.ru">Alexander Lizin aka Sogimu</a>
+ * @author Alexander Lizin sogimu@nxt.ru
  * @version 0.1
  *
  * @requires ArmContext/ArmContext.js
@@ -12,30 +12,17 @@
     var BoundingBox = function(O) {
         var me = {};
 
-        me._rect = [{point0: new gizmo.Math.Point2D(0,0),
-                    point1: new gizmo.Math.Point2D(0,0),
-                    point2: new gizmo.Math.Point2D(0,0),
-                    point3: new gizmo.Math.Point2D(0,0),
-                    width: 0,
-                    height: 0},
-                    {point0: new gizmo.Math.Point2D(0,0),
-                    point1: new gizmo.Math.Point2D(0,0),
-                    point2: new gizmo.Math.Point2D(0,0),
-                    point3: new gizmo.Math.Point2D(0,0),
-                    width: 0,
-                    height: 0}];
-
         me.SetRect = function(points) {            
             gizmo.Filter(points, "Object");
             gizmo.Filter(points.point0, "Object");
-            gizmo.Filter(points.point1, "Object");
+            gizmo.Filter(points.point2, "Object");
 
             var rect = {point0: points.point0,
-                        point1: points.point1,
-                        point2: {x: points.point1.x, y: points.point0.y},
-                        point3: {x: points.point0.x, y: points.point1.y},
-                        width: points.point1.x - points.point0.x,
-                        height: points.point1.y - points.point0.y};
+                        point1: {x: points.point2.x, y: points.point0.y},
+                        point2: points.point2,
+                        point3: {x: points.point0.x, y: points.point2.y},
+                        width: points.point2.x - points.point0.x,
+                        height: points.point2.y - points.point0.y};
             
             this._rect[0] = rect;
             this._rect[1] = rect;
@@ -50,19 +37,58 @@
             return this._rect[1];
         };
 
-        me.IntersectWith = function(BoundingBox) {
-            var firstPoints = this.GetOldPoints();
-            var secondPoints = BoundingBox.GetOldPoints();
-
-            if(secondPoints.point0.x > firstPoints.point1.x) {return false};
-            if(secondPoints.point1.x < firstPoints.point0.x) {return false};
-            if(secondPoints.point0.y > firstPoints.point3.y) {return false};
-            if(secondPoints.point3.y < firstPoints.point0.x) {return false};
+        me.IntersectWithPoint = function(O) {
+            gizmo.Filter(O,"Object");
+            gizmo.Filter(O.point,"Object");
+            gizmo.Filter(O.point.x,"Number");
+            gizmo.Filter(O.point.y,"Number");
+            
+            var thisBoundingBox = this.GetNewPoints();
+            
+            if(O.point.x < thisBoundingBox.point0.x) {return false};
+            if(O.point.x > thisBoundingBox.point1.x) {return false};
+            if(O.point.y < thisBoundingBox.point0.y) {return false};
+            if(O.point.y > thisBoundingBox.point3.y) {return false};
 
             return true;
         };
 
-        me.SumWith = function(BoundingBox) {
+
+        me.IntersectWithBoundingBox = function(boundingBox) {
+            var thisBoundingBox = this.GetNewPoints();
+            var paramBoundingBox = boundingBox.GetNewPoints();
+
+            if(boundingBox.IntersectWithPoint({point: thisBoundingBox.point0}))                                     {   return true;    }
+            if(boundingBox.IntersectWithPoint({point: {x: thisBoundingBox.point2.x, y: thisBoundingBox.point0.y}})) {   return true;    }
+            if(boundingBox.IntersectWithPoint({point: thisBoundingBox.point2}))                                     {   return true;    }
+            if(boundingBox.IntersectWithPoint({point: {x: thisBoundingBox.point0.x, y: thisBoundingBox.point2.y}})) {   return true;    }
+
+            if(this.IntersectWithPoint({point: paramBoundingBox.point0}))                                        {   return true;    }
+            if(this.IntersectWithPoint({point: {x: paramBoundingBox.point2.x, y: paramBoundingBox.point0.y}}))   {   return true;    }
+            if(this.IntersectWithPoint({point: paramBoundingBox.point2}))                                        {   return true;    }
+            if(this.IntersectWithPoint({point: {x: paramBoundingBox.point0.x, y: paramBoundingBox.point2.y}}))   {   return true;    }
+
+            return false;
+        };
+
+        me.IntersectWithArea = function(points) {
+            gizmo.Filter(points, "Object");
+            gizmo.Filter(points.point0, "Object");
+            gizmo.Filter(points.point2, "Object");
+
+            var areaBoundingBox = new ArmContext.BoundingBox({points: points});
+            if(areaBoundingBox.IntersectWithBoundingBox(this)) {    return true;    }
+
+            if(this.IntersectWithPoint({point: points.point0}))                            {   return true;    }
+            if(this.IntersectWithPoint({point: {x: points.point2.x, y: points.point0.y}})) {   return true;    }
+            if(this.IntersectWithPoint({point: points.point2}))                            {   return true;    }
+            if(this.IntersectWithPoint({point: {x: points.point0.x, y: points.point2.y}})) {   return true;    }
+
+            return false;
+
+        }
+
+        me.GetSumWithBoundingBox = function(BoundingBox) {
             var localOldPoints = this.GetOldPoints();
             var oldPoints = BoundingBox.GetOldPoints();
 
@@ -160,14 +186,28 @@
             for(var name in O) {
                 switch( name ) {
                     case "points" : {
-                        this.SetRect(O[name])
+                        this.SetRect(O[name]);
                     }; break;
+
 
                 };
             };
 
         };
 
+        me._rect = [{point0: new gizmo.Math.Point2D(0,0),
+            point1: new gizmo.Math.Point2D(0,0),
+            point2: new gizmo.Math.Point2D(0,0),
+            point3: new gizmo.Math.Point2D(0,0),
+            width: 0,
+            height: 0},
+            {point0: new gizmo.Math.Point2D(0,0),
+            point1: new gizmo.Math.Point2D(0,0),
+            point2: new gizmo.Math.Point2D(0,0),
+            point3: new gizmo.Math.Point2D(0,0),
+            width: 0,
+            height: 0}];
+        
         me.Set( O || {} );
 
         return me;
