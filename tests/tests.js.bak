@@ -125,7 +125,7 @@ test( "Translate()", function() {
 	
 });
 
-test( "Rotate() 10 grad", function() {
+test( "Rotate() 10 grad with equals", function() {
 	var mvMatrix = new ArmContext.MvMatrix();
 	mvMatrix.Rotate(0.17453292519943295); // 10 grad //10 / 180 * Math.PI
 
@@ -133,15 +133,42 @@ test( "Rotate() 10 grad", function() {
 	if(points[0][0] == 0.984807753012208)
 	if(points[0][1] == 0.17364817766693033)
 	if(points[1][0] == -0.17364817766693033)
-	if(points[1][1] == 0.984807753012208)
+	if(points[1][1] == 0.984807753012208) 
+		ok( true,  "Ok" );
+});
 
-	ok( true,  "Ok" );
+test("Rotate() 10 grad with 'deepEqual' function", function() {
+	//=== operator means a comparasion without cast
+	var mvMatrix = new ArmContext.MvMatrix();
+	mvMatrix.Rotate(0.17453292519943295); // 10 grad //10 / 180 * Math.PI
+
+	var points = mvMatrix.GetPoints();
+	if(points[0][0] === 0.984807753012208)
+	if(points[0][1] === 0.17364817766693033)
+	if(points[1][0] === -0.17364817766693033)
+	if(points[1][1] === 0.984807753012208) 
+		ok( true,  "Ok" );
 	
 });
 
+test("Rotate() 10 grad with 'deepEqual' function when values have been approx", 
+function() {
+	//=== operator means a comparasion without cast
+	var mvMatrix = new ArmContext.MvMatrix();
+	mvMatrix.Rotate(0.17453292519943295); // 10 grad //10 / 180 * Math.PI
+
+	var points = mvMatrix.GetPoints();
+	if(points[0][0] === 0.985)
+	if(points[0][1] === 0.174)
+	if(points[1][0] === -0.174)
+	if(points[1][1] === 0.985) 
+		ok( true,  "Ok" );
+});
+
+
 test( "Rotate() 370 grad", function() {
 	var mvMatrix = new ArmContext.MvMatrix();
-	mvMatrix.Rotate(0.17453292519943295); // 370 grad //370 % 360 / 180 * Math.PI
+	mvMatrix.Rotate(6.45771823237901944); // 370 grad //370 % 360 / 180 * Math.PI
 
 	var points = mvMatrix.GetPoints();
 	if(points[0][0] == 0.984807753012208)
@@ -152,6 +179,7 @@ test( "Rotate() 370 grad", function() {
 	ok( true,  "Ok" );
 	
 });
+
 
 module( "Primitive" );
 test( "Primitive", function() {
