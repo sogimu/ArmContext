@@ -1,4 +1,4 @@
-from gzip import _PaddedFile
+# -*- coding: utf-8 -*-
 import sys
 import os
 import re
